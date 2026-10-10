@@ -1,0 +1,18 @@
+# 后续阶段才需要的重型依赖（第三阶段 LangGraph / 第四阶段 RAG）
+# 本阶段（P0 地基 + P1 核心闭环）不需要安装，先锁定版本口径以免后期返工。
+#
+# 安装时机：进入 P2（LangGraph 编排）与 P3（RAG 检索）时再装：
+#   pip install -r requirements-full.txt
+
+# --- 多智能体编排（P2） ---
+langgraph>=0.2,<0.3
+langchain-core>=0.3,<0.4
+
+# --- 向量库与嵌入（P3） ---
+chromadb>=0.5,<0.6
+sentence-transformers>=3.0,<4.0
+torch>=2.2,<3.0
+
+# --- 认证（用户系统解禁后启用，当前 MVP 为单用户/匿名模式） ---
+# python-jose[cryptography]>=3.3
+# passlib[bcrypt]>=1.7

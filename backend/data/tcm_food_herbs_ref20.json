@@ -1,0 +1,142 @@
+[
+  {
+    "name": "枸杞",
+    "category": "补虚药",
+    "effect": "滋补肝肾，益精明目",
+    "usage": "煲汤、泡茶、煮粥",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "山药",
+    "category": "补虚药",
+    "effect": "益气养阴，补脾肺肾",
+    "usage": "煲汤、煮粥、清蒸",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "薏米",
+    "category": "利水渗湿药",
+    "effect": "利水渗湿，健脾止泻",
+    "usage": "煮粥、煲汤",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "红枣",
+    "category": "补虚药",
+    "effect": "补中益气，养血安神",
+    "usage": "煲汤、泡茶、煮粥",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "桂圆",
+    "category": "补虚药",
+    "effect": "补益心脾，养血安神",
+    "usage": "煲汤、泡茶",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "莲子",
+    "category": "收涩药",
+    "effect": "补脾止泻，益肾涩精",
+    "usage": "煮粥、煲汤",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "百合",
+    "category": "补虚药",
+    "effect": "养阴润肺，清心安神",
+    "usage": "煮粥、煲汤",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "生姜",
+    "category": "温里药",
+    "effect": "温中散寒，解表发汗",
+    "usage": "调味、泡茶",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "大蒜",
+    "category": "温里药",
+    "effect": "解毒杀虫，温中消食",
+    "usage": "调味",
+    "dosage": "3-5瓣"
+  },
+  {
+    "name": "花椒",
+    "category": "温里药",
+    "effect": "温中止痛，杀虫止痒",
+    "usage": "调味",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "陈皮",
+    "category": "理气药",
+    "effect": "理气健脾，燥湿化痰",
+    "usage": "煲汤、泡茶",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "山楂",
+    "category": "消食药",
+    "effect": "消食化积，活血化瘀",
+    "usage": "泡茶、煮粥",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "荷叶",
+    "category": "清热药",
+    "effect": "清热解暑，升发清阳",
+    "usage": "泡茶",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "金银花",
+    "category": "清热药",
+    "effect": "清热解毒，疏散风热",
+    "usage": "泡茶",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "菊花",
+    "category": "解表药",
+    "effect": "疏散风热，清肝明目",
+    "usage": "泡茶",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "蜂蜜",
+    "category": "补虚药",
+    "effect": "补中润燥，止痛解毒",
+    "usage": "冲服、调味",
+    "dosage": "10-20g"
+  },
+  {
+    "name": "阿胶",
+    "category": "补虚药",
+    "effect": "补血滋阴，润燥止血",
+    "usage": "烊化冲服",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "茯苓",
+    "category": "利水渗湿药",
+    "effect": "利水渗湿，健脾宁心",
+    "usage": "煲汤、煮粥",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "芡实",
+    "category": "收涩药",
+    "effect": "益肾固精，补脾止泻",
+    "usage": "煮粥、煲汤",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "葛根",
+    "category": "解表药",
+    "effect": "解肌退热，生津止渴",
+    "usage": "煲汤、泡茶",
+    "dosage": "10-15g"
+  }
+]

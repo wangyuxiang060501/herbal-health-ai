@@ -1,0 +1,1983 @@
+{
+  "version": "v0.1-draft",
+  "count": 106,
+  "standard": "国家卫生健康委《既是食品又是中药材的物质目录》（截至 2026-05，4 批合计 106 种）",
+  "note": "性味/归经/功效/用量/禁忌为初稿，依据《中国药典》《中药学》通用记载编写，全部条目 verified=false，使用前须逐条人工核对（起步路线.md 1.4）",
+  "items": [
+    {
+      "name": "丁香",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "温里药",
+      "nature_flavor": "辛，温",
+      "meridians": "脾、胃、肺、肾经",
+      "effects": "温中降逆，散寒止痛，温肾助阳",
+      "dosage": "1-3g",
+      "contraindications": [
+        "热证及阴虚内热者忌服"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "乌梅",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "收涩药",
+      "nature_flavor": "酸、涩，平",
+      "meridians": "肝、脾、肺、大肠经",
+      "effects": "敛肺止咳，涩肠止泻，生津止渴，安蛔止痛",
+      "dosage": "6-12g",
+      "contraindications": [
+        "表邪未解、内有实热积滞者不宜"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "乌梢蛇",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "祛风湿药",
+      "nature_flavor": "甘，平",
+      "meridians": "肝经",
+      "effects": "祛风通络，止痉",
+      "dosage": "6-12g",
+      "contraindications": [
+        "血虚生风者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "代代花",
+      "alias": "枳壳花",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "理气药",
+      "nature_flavor": "甘、微苦，平",
+      "meridians": "肝、胃经",
+      "effects": "理气宽胸，开胃止呕",
+      "dosage": "1.5-3g",
+      "contraindications": [
+        "气虚、阴虚者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "余甘子",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "清热药",
+      "nature_flavor": "甘、酸、涩，凉",
+      "meridians": "脾、胃经",
+      "effects": "清热利咽，润肺化痰，生津止渴",
+      "dosage": "3-9g",
+      "contraindications": [
+        "脾胃虚寒者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "佛手",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "理气药",
+      "nature_flavor": "辛、苦，温",
+      "meridians": "肝、脾、胃、肺经",
+      "effects": "疏肝理气，和胃止痛，燥湿化痰",
+      "dosage": "3-10g",
+      "contraindications": [
+        "阴虚火旺、无气滞者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "八角茴香",
+      "alias": "大茴香",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "温里药",
+      "nature_flavor": "辛，温",
+      "meridians": "肝、肾、脾、胃经",
+      "effects": "温阳散寒，理气止痛",
+      "dosage": "3-6g",
+      "contraindications": [
+        "阴虚火旺者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "决明子",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "清热药",
+      "nature_flavor": "甘、苦、咸，微寒",
+      "meridians": "肝、大肠经",
+      "effects": "清热明目，润肠通便",
+      "dosage": "9-15g",
+      "contraindications": [
+        "脾胃虚寒、便溏者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用",
+        "低血压患者慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "刀豆",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "理气药",
+      "nature_flavor": "甘，温",
+      "meridians": "胃、肾经",
+      "effects": "温中下气，止呃逆，温肾助阳",
+      "dosage": "6-9g",
+      "contraindications": [
+        "胃热者禁服"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "姜（生姜、干姜）",
+      "alias": "生姜、干姜",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "解表药／温里药",
+      "nature_flavor": "辛，微温（生姜）；辛，热（干姜）",
+      "meridians": "肺、脾、胃经",
+      "effects": "发汗解表，温中止呕，温肺止咳（生姜）；温中散寒，回阳通脉（干姜）",
+      "dosage": "3-10g",
+      "contraindications": [
+        "阴虚内热、热盛及热证者忌服"
+      ],
+      "special_groups": [
+        "孕妇慎用（不宜大量）"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "小茴香",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "温里药",
+      "nature_flavor": "辛，温",
+      "meridians": "肝、肾、脾、胃经",
+      "effects": "散寒止痛，理气和胃",
+      "dosage": "3-6g",
+      "contraindications": [
+        "阴虚火旺者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "小蓟",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "止血药",
+      "nature_flavor": "甘、苦，凉",
+      "meridians": "心、肝经",
+      "effects": "凉血止血，散瘀解毒消痈",
+      "dosage": "5-12g",
+      "contraindications": [
+        "脾胃虚寒者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "山楂",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "消食药",
+      "nature_flavor": "酸、甘，微温",
+      "meridians": "脾、胃、肝经",
+      "effects": "消食健胃，行气散瘀，化浊降脂",
+      "dosage": "9-12g",
+      "contraindications": [
+        "胃酸分泌过多者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "山药",
+      "alias": "薯蓣",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "甘，平",
+      "meridians": "脾、肺、肾经",
+      "effects": "补脾养胃，生津益肺，补肾涩精",
+      "dosage": "15-30g",
+      "contraindications": [
+        "湿盛中满、有实邪者不宜"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "昆布",
+      "alias": "海带",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "化痰止咳平喘药",
+      "nature_flavor": "咸，寒",
+      "meridians": "肝、胃、肾经",
+      "effects": "消痰软坚散结，利水消肿",
+      "dosage": "6-12g",
+      "contraindications": [
+        "脾胃虚寒者慎用"
+      ],
+      "special_groups": [
+        "甲亢患者慎用（富碘）"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "木瓜",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "祛风湿药",
+      "nature_flavor": "酸，温",
+      "meridians": "肝、脾经",
+      "effects": "舒筋活络，和胃化湿",
+      "dosage": "6-9g",
+      "contraindications": [
+        "内有郁热、小便短赤者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "杏仁（甜、苦）",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "止咳平喘药",
+      "nature_flavor": "苦，微温；有小毒",
+      "meridians": "肺、大肠经",
+      "effects": "降气止咳平喘，润肠通便",
+      "dosage": "5-10g",
+      "contraindications": [
+        "苦杏仁有小毒，不宜过量或生食"
+      ],
+      "special_groups": [
+        "孕妇慎用",
+        "儿童慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "枣（大枣、酸枣、黑枣）",
+      "alias": "大枣",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "甘，温",
+      "meridians": "脾、胃、心经",
+      "effects": "补中益气，养血安神",
+      "dosage": "6-15g",
+      "contraindications": [
+        "痰湿、积滞、齿病者慎用"
+      ],
+      "special_groups": [
+        "糖尿病患者慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "枳椇子",
+      "alias": "拐枣",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "利水渗湿药",
+      "nature_flavor": "甘、酸，平",
+      "meridians": "脾经",
+      "effects": "利水消肿，解酒毒，止渴除烦",
+      "dosage": "4.5-9g",
+      "contraindications": [
+        "脾胃虚寒者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "枸杞子",
+      "alias": "枸杞",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "甘，平",
+      "meridians": "肝、肾经",
+      "effects": "滋补肝肾，益精明目",
+      "dosage": "6-12g",
+      "contraindications": [
+        "外邪实热、脾虚湿滞泄泻者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "栀子",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "清热药",
+      "nature_flavor": "苦，寒",
+      "meridians": "心、肺、三焦经",
+      "effects": "泻火除烦，清热利湿，凉血解毒",
+      "dosage": "6-10g",
+      "contraindications": [
+        "脾虚便溏者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "桃仁",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "活血化瘀药",
+      "nature_flavor": "苦、甘，平；有小毒",
+      "meridians": "心、肝、大肠经",
+      "effects": "活血祛瘀，润肠通便，止咳平喘",
+      "dosage": "5-10g",
+      "contraindications": [
+        "血虚者慎用",
+        "不可过量"
+      ],
+      "special_groups": [
+        "孕妇禁用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "桑叶",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "解表药",
+      "nature_flavor": "甘、苦，寒",
+      "meridians": "肺、肝经",
+      "effects": "疏散风热，清肺润燥，清肝明目",
+      "dosage": "5-10g",
+      "contraindications": [
+        "脾胃虚寒者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "桑椹",
+      "alias": "桑葚",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "甘、酸，寒",
+      "meridians": "心、肝、肾经",
+      "effects": "滋阴补血，生津润燥",
+      "dosage": "9-15g",
+      "contraindications": [
+        "脾胃虚寒、大便溏泄者忌服"
+      ],
+      "special_groups": [
+        "儿童不宜多食",
+        "糖尿病患者慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "桔梗",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "化痰止咳平喘药",
+      "nature_flavor": "苦、辛，平",
+      "meridians": "肺经",
+      "effects": "宣肺祛痰，利咽排脓",
+      "dosage": "3-10g",
+      "contraindications": [
+        "呕吐、呛咳、咯血者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "桔红",
+      "alias": "橘红",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "化痰止咳平喘药",
+      "nature_flavor": "辛、苦，温",
+      "meridians": "肺、脾经",
+      "effects": "理气宽中，燥湿化痰",
+      "dosage": "3-9g",
+      "contraindications": [
+        "阴虚燥咳、久咳气虚者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "榧子",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "驱虫药",
+      "nature_flavor": "甘，平",
+      "meridians": "肺、胃、大肠经",
+      "effects": "杀虫消积，润肠通便，润肺止咳",
+      "dosage": "9-15g",
+      "contraindications": [
+        "腹泻、孕妇慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "槐米",
+      "alias": "槐花蕾",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "止血药",
+      "nature_flavor": "苦，微寒",
+      "meridians": "肝、大肠经",
+      "effects": "凉血止血，清肝泻火",
+      "dosage": "5-10g",
+      "contraindications": [
+        "脾胃虚寒者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "槐花",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "止血药",
+      "nature_flavor": "苦，微寒",
+      "meridians": "肝、大肠经",
+      "effects": "凉血止血，清肝泻火",
+      "dosage": "5-10g",
+      "contraindications": [
+        "脾胃虚寒、阴虚发热者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "橘皮",
+      "alias": "陈皮",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "理气药",
+      "nature_flavor": "辛、苦，温",
+      "meridians": "脾、肺经",
+      "effects": "理气健脾，燥湿化痰",
+      "dosage": "3-10g",
+      "contraindications": [
+        "阴虚燥咳、气虚证者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "沙棘",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "消食药",
+      "nature_flavor": "甘、酸、涩，温",
+      "meridians": "脾、胃、肺、心经",
+      "effects": "健脾消食，止咳祛痰，活血散瘀",
+      "dosage": "3-9g",
+      "contraindications": [
+        "阴虚火旺者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "淡竹叶",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "清热药",
+      "nature_flavor": "甘、淡，寒",
+      "meridians": "心、胃、小肠经",
+      "effects": "清热泻火，除烦止渴，利尿通淋",
+      "dosage": "6-10g",
+      "contraindications": [
+        "体虚有寒、孕妇忌用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "淡豆豉",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "解表药",
+      "nature_flavor": "辛、甘、微苦，凉",
+      "meridians": "肺、胃经",
+      "effects": "解表，除烦，宣发郁热",
+      "dosage": "6-12g",
+      "contraindications": [
+        "无明确禁忌"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "火麻仁",
+      "alias": "大麻仁",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "泻下药",
+      "nature_flavor": "甘，平",
+      "meridians": "脾、胃、大肠经",
+      "effects": "润肠通便",
+      "dosage": "10-15g",
+      "contraindications": [
+        "脾虚便溏、阳痿遗精者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "牡蛎",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "平肝息风药",
+      "nature_flavor": "咸，微寒",
+      "meridians": "肝、胆、肾经",
+      "effects": "重镇安神，潜阳补阴，软坚散结，收敛固涩",
+      "dosage": "9-30g",
+      "contraindications": [
+        "脾胃虚寒、肾虚无火者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "玉竹",
+      "alias": "葳蕤",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "甘，微寒",
+      "meridians": "肺、胃经",
+      "effects": "养阴润燥，生津止渴",
+      "dosage": "6-12g",
+      "contraindications": [
+        "痰湿气滞、脾虚便溏者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "甘草",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "甘，平",
+      "meridians": "心、肺、脾、胃经",
+      "effects": "补脾益气，清热解毒，祛痰止咳，缓急止痛，调和诸药",
+      "dosage": "2-10g",
+      "contraindications": [
+        "湿盛胀满、水肿者不宜",
+        "不宜大剂量久服"
+      ],
+      "special_groups": [
+        "高血压患者慎用（大剂量久服可致水钠潴留）"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "白扁豆",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "甘，微温",
+      "meridians": "脾、胃经",
+      "effects": "健脾化湿，和中消暑",
+      "dosage": "9-15g",
+      "contraindications": [
+        "食积腹胀者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "白扁豆花",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "化湿药",
+      "nature_flavor": "甘、淡，平",
+      "meridians": "脾、胃、大肠经",
+      "effects": "消暑化湿，健脾止泻",
+      "dosage": "3-9g",
+      "contraindications": [
+        "寒湿中阻者不宜"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "白果",
+      "alias": "银杏",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "止咳平喘药",
+      "nature_flavor": "甘、苦、涩，平；有毒",
+      "meridians": "肺、肾经",
+      "effects": "敛肺定喘，止带缩尿",
+      "dosage": "5-10g",
+      "contraindications": [
+        "生食有毒，不可生食或过量"
+      ],
+      "special_groups": [
+        "儿童慎用（易中毒）",
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "白芷",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "解表药",
+      "nature_flavor": "辛，温",
+      "meridians": "肺、胃、大肠经",
+      "effects": "解表散寒，祛风止痛，宣通鼻窍，燥湿止带",
+      "dosage": "3-10g",
+      "contraindications": [
+        "阴虚血热者忌服"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "百合",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "甘，微寒",
+      "meridians": "心、肺经",
+      "effects": "养阴润肺，清心安神",
+      "dosage": "6-12g",
+      "contraindications": [
+        "风寒咳嗽、脾胃虚寒者不宜"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "益智仁",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "辛，温",
+      "meridians": "脾、肾经",
+      "effects": "温脾止泻摄唾，暖肾固精缩尿",
+      "dosage": "3-10g",
+      "contraindications": [
+        "阴虚火旺者忌服"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "砂仁",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "化湿药",
+      "nature_flavor": "辛，温",
+      "meridians": "脾、胃、肾经",
+      "effects": "化湿开胃，温脾止泻，理气安胎",
+      "dosage": "3-6g（后下）",
+      "contraindications": [
+        "阴虚有热者忌服"
+      ],
+      "special_groups": [
+        "孕妇遵医嘱使用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "紫苏",
+      "alias": "紫苏叶",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "解表药",
+      "nature_flavor": "辛，温",
+      "meridians": "肺、脾经",
+      "effects": "解表散寒，行气和胃，解鱼蟹毒",
+      "dosage": "5-10g",
+      "contraindications": [
+        "温病初起、阴虚者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "紫苏籽",
+      "alias": "苏子",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "化痰止咳平喘药",
+      "nature_flavor": "辛，温",
+      "meridians": "肺、大肠经",
+      "effects": "降气化痰，止咳平喘，润肠通便",
+      "dosage": "3-10g",
+      "contraindications": [
+        "阴虚咳喘、脾虚便溏者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "罗汉果",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "化痰止咳平喘药",
+      "nature_flavor": "甘，凉",
+      "meridians": "肺、大肠经",
+      "effects": "清热润肺，利咽开音，滑肠通便",
+      "dosage": "9-15g",
+      "contraindications": [
+        "脾胃虚寒便溏者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "肉桂",
+      "alias": "桂皮",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "温里药",
+      "nature_flavor": "辛、甘，大热",
+      "meridians": "肾、脾、心、肝经",
+      "effects": "补火助阳，散寒止痛，温通经脉，引火归元",
+      "dosage": "1-5g",
+      "contraindications": [
+        "阴虚火旺、里有实热者忌服",
+        "有出血倾向者慎用"
+      ],
+      "special_groups": [
+        "孕妇禁用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "肉豆蔻",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "收涩药",
+      "nature_flavor": "辛，温",
+      "meridians": "脾、胃、大肠经",
+      "effects": "温中行气，涩肠止泻",
+      "dosage": "3-10g",
+      "contraindications": [
+        "湿热泻痢、胃热疼痛者忌服"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "胖大海",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "化痰止咳平喘药",
+      "nature_flavor": "甘，寒",
+      "meridians": "肺、大肠经",
+      "effects": "清热润肺，利咽开音，润肠通便",
+      "dosage": "2-3枚",
+      "contraindications": [
+        "脾胃虚寒腹泻者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "芡实",
+      "alias": "鸡头米",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "收涩药",
+      "nature_flavor": "甘、涩，平",
+      "meridians": "脾、肾经",
+      "effects": "益肾固精，补脾止泻，除湿止带",
+      "dosage": "9-15g",
+      "contraindications": [
+        "便秘、消化不良者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "花椒",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "温里药",
+      "nature_flavor": "辛，温",
+      "meridians": "脾、胃、肾经",
+      "effects": "温中止痛，杀虫止痒",
+      "dosage": "3-6g",
+      "contraindications": [
+        "阴虚火旺者忌服"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "茯苓",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "利水渗湿药",
+      "nature_flavor": "甘、淡，平",
+      "meridians": "心、脾、肾经",
+      "effects": "利水渗湿，健脾宁心",
+      "dosage": "10-15g",
+      "contraindications": [
+        "虚寒精气不固、小便不禁者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "荷叶",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "清热药",
+      "nature_flavor": "苦，平",
+      "meridians": "肝、脾、胃经",
+      "effects": "清暑化湿，升发清阳，凉血止血",
+      "dosage": "3-10g",
+      "contraindications": [
+        "体瘦气血虚弱者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "莱菔子",
+      "alias": "萝卜子",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "消食药",
+      "nature_flavor": "辛、甘，平",
+      "meridians": "脾、胃、肺经",
+      "effects": "消食除胀，降气化痰",
+      "dosage": "5-12g",
+      "contraindications": [
+        "气虚、无食积痰滞者慎用",
+        "不宜与人参类同用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "莲子",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "收涩药",
+      "nature_flavor": "甘、涩，平",
+      "meridians": "脾、肾、心经",
+      "effects": "补脾止泻，止带，益肾涩精，养心安神",
+      "dosage": "6-15g",
+      "contraindications": [
+        "大便燥结者不宜"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "菊花",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "解表药",
+      "nature_flavor": "甘、苦，微寒",
+      "meridians": "肺、肝经",
+      "effects": "疏散风热，平肝明目，清热解毒",
+      "dosage": "5-10g",
+      "contraindications": [
+        "气虚胃寒、食少泄泻者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "菊苣",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "清热利湿药",
+      "nature_flavor": "苦，寒",
+      "meridians": "肝、胆、胃经",
+      "effects": "清肝利胆，健胃消食，利尿消肿",
+      "dosage": "3-9g",
+      "contraindications": [
+        "脾胃虚寒者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "葛根",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "解表药",
+      "nature_flavor": "甘、辛，凉",
+      "meridians": "脾、胃、肺经",
+      "effects": "解肌退热，生津止渴，升阳止泻，通经活络",
+      "dosage": "10-15g",
+      "contraindications": [
+        "表虚多汗、胃寒者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "蒲公英",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "清热药",
+      "nature_flavor": "苦、甘，寒",
+      "meridians": "肝、胃经",
+      "effects": "清热解毒，消肿散结，利尿通淋",
+      "dosage": "10-15g",
+      "contraindications": [
+        "阳虚外寒、脾胃虚弱者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "薄荷",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "解表药",
+      "nature_flavor": "辛，凉",
+      "meridians": "肺、肝经",
+      "effects": "疏散风热，清利头目，利咽透疹，疏肝行气",
+      "dosage": "3-6g（后下）",
+      "contraindications": [
+        "体虚多汗、阴虚发热者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用",
+        "哺乳期慎用（可减少乳汁分泌）"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "薏苡仁",
+      "alias": "薏米",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "利水渗湿药",
+      "nature_flavor": "甘、淡，凉",
+      "meridians": "脾、胃、肺经",
+      "effects": "利水渗湿，健脾止泻，除痹排脓，解毒散结",
+      "dosage": "9-30g",
+      "contraindications": [
+        "津液不足、大便燥结者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "薤白",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "理气药",
+      "nature_flavor": "辛、苦，温",
+      "meridians": "心、肺、胃、大肠经",
+      "effects": "通阳散结，行气导滞",
+      "dosage": "5-10g",
+      "contraindications": [
+        "气虚、阴虚发热者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "藿香",
+      "alias": "广藿香",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "化湿药",
+      "nature_flavor": "辛，微温",
+      "meridians": "脾、胃、肺经",
+      "effects": "芳香化浊，和中止呕，发表解暑",
+      "dosage": "5-10g",
+      "contraindications": [
+        "阴虚火旺、胃热作呕者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "蜂蜜",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "甘，平",
+      "meridians": "肺、脾、大肠经",
+      "effects": "补中润燥，止痛解毒",
+      "dosage": "15-30g",
+      "contraindications": [
+        "痰湿内蕴、中满痞胀、腹泻者忌服"
+      ],
+      "special_groups": [
+        "1岁以下婴儿禁用（肉毒杆菌风险）",
+        "糖尿病患者慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "蝮蛇",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "祛风湿药",
+      "nature_flavor": "甘，温；有毒",
+      "meridians": "肝经",
+      "effects": "祛风通络，攻毒定惊",
+      "dosage": "3-9g",
+      "contraindications": [
+        "阴虚血燥者慎用"
+      ],
+      "special_groups": [
+        "孕妇禁用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "覆盆子",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "收涩药",
+      "nature_flavor": "甘、酸，微温",
+      "meridians": "肝、肾、膀胱经",
+      "effects": "益肾固精缩尿，养肝明目",
+      "dosage": "6-12g",
+      "contraindications": [
+        "阴虚火旺、小便短涩者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "赤小豆",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "利水渗湿药",
+      "nature_flavor": "甘、酸，平",
+      "meridians": "心、小肠经",
+      "effects": "利水消肿，解毒排脓",
+      "dosage": "9-30g",
+      "contraindications": [
+        "阴虚津伤者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "郁李仁",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "泻下药",
+      "nature_flavor": "辛、苦、甘，平",
+      "meridians": "脾、大肠、小肠经",
+      "effects": "润肠通便，下气利水",
+      "dosage": "6-10g",
+      "contraindications": [
+        "阴虚液亏者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "酸枣仁",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "安神药",
+      "nature_flavor": "甘、酸，平",
+      "meridians": "心、肝、胆经",
+      "effects": "养心补肝，宁心安神，敛汗生津",
+      "dosage": "10-15g",
+      "contraindications": [
+        "实热郁火、滑泄者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "金银花",
+      "alias": "忍冬花",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "清热药",
+      "nature_flavor": "甘，寒",
+      "meridians": "肺、心、胃经",
+      "effects": "清热解毒，疏散风热",
+      "dosage": "6-15g",
+      "contraindications": [
+        "脾胃虚寒、气虚疮疡脓清者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "阿胶",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "甘，平",
+      "meridians": "肺、肝、肾经",
+      "effects": "补血止血，滋阴润燥",
+      "dosage": "3-9g（烊化兑服）",
+      "contraindications": [
+        "脾胃虚弱、呕吐泄泻者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "青果",
+      "alias": "橄榄",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "清热药",
+      "nature_flavor": "甘、酸，平",
+      "meridians": "肺、胃经",
+      "effects": "清热解毒，利咽生津",
+      "dosage": "4.5-9g",
+      "contraindications": [
+        "脾胃虚寒者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "香橼",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "理气药",
+      "nature_flavor": "辛、苦、酸，温",
+      "meridians": "肝、脾、肺经",
+      "effects": "疏肝理气，宽中化痰",
+      "dosage": "3-10g",
+      "contraindications": [
+        "阴虚血燥、气虚者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "香薷",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "解表药",
+      "nature_flavor": "辛，微温",
+      "meridians": "肺、脾、胃经",
+      "effects": "发汗解表，化湿和中，利水消肿",
+      "dosage": "3-10g",
+      "contraindications": [
+        "表虚有汗、阴虚者忌用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "马齿苋",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "清热药",
+      "nature_flavor": "酸，寒",
+      "meridians": "肝、大肠经",
+      "effects": "清热解毒，凉血止血，止痢",
+      "dosage": "9-15g",
+      "contraindications": [
+        "脾胃虚寒泄泻者忌服"
+      ],
+      "special_groups": [
+        "孕妇禁用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "高良姜",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "温里药",
+      "nature_flavor": "辛，热",
+      "meridians": "脾、胃经",
+      "effects": "温胃止呕，散寒止痛",
+      "dosage": "3-6g",
+      "contraindications": [
+        "阴虚有热、肝胃火郁者忌服"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "鱼腥草",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "清热药",
+      "nature_flavor": "辛，微寒",
+      "meridians": "肺经",
+      "effects": "清热解毒，消痈排脓，利尿通淋",
+      "dosage": "15-25g",
+      "contraindications": [
+        "虚寒证、阴证疮疡者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "鲜白茅根",
+      "alias": "白茅根",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "止血药",
+      "nature_flavor": "甘，寒",
+      "meridians": "肺、胃、膀胱经",
+      "effects": "凉血止血，清热利尿",
+      "dosage": "9-30g",
+      "contraindications": [
+        "脾胃虚寒、溲多不渴者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "鲜芦根",
+      "alias": "芦根",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "清热药",
+      "nature_flavor": "甘，寒",
+      "meridians": "肺、胃经",
+      "effects": "清热泻火，生津止渴，除烦止呕，利尿",
+      "dosage": "15-30g",
+      "contraindications": [
+        "脾胃虚寒者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "鸡内金",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "消食药",
+      "nature_flavor": "甘，平",
+      "meridians": "脾、胃、小肠、膀胱经",
+      "effects": "健胃消食，涩精止遗，通淋化石",
+      "dosage": "3-10g",
+      "contraindications": [
+        "脾虚无积滞者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "麦芽",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "消食药",
+      "nature_flavor": "甘，平",
+      "meridians": "脾、胃经",
+      "effects": "行气消食，健脾开胃，回乳消胀",
+      "dosage": "10-15g",
+      "contraindications": [
+        "无积滞、脾胃虚者慎用"
+      ],
+      "special_groups": [
+        "哺乳期慎用（可回乳）",
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "黄精",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "甘，平",
+      "meridians": "脾、肺、肾经",
+      "effects": "补气养阴，健脾润肺，益肾填精",
+      "dosage": "9-15g",
+      "contraindications": [
+        "痰湿壅滞、中寒泄泻者不宜"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "黄芥子",
+      "alias": "芥子",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "温里药",
+      "nature_flavor": "辛，温",
+      "meridians": "肺、胃经",
+      "effects": "温肺豁痰，散结通络止痛",
+      "dosage": "3-9g",
+      "contraindications": [
+        "肺虚咳嗽、阴虚火旺者忌服"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "黑胡椒",
+      "alias": "",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "温里药",
+      "nature_flavor": "辛，热",
+      "meridians": "胃、大肠经",
+      "effects": "温中散寒，下气消痰",
+      "dosage": "1-3g",
+      "contraindications": [
+        "阴虚有火、消化道溃疡者忌服"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "黑芝麻",
+      "alias": "胡麻仁",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "甘，平",
+      "meridians": "肝、肾、大肠经",
+      "effects": "补肝肾，益精血，润肠燥",
+      "dosage": "9-15g",
+      "contraindications": [
+        "脾虚便溏者慎用"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "龙眼肉（桂圆）",
+      "alias": "桂圆",
+      "batch": 1,
+      "batch_source": "2002年《既是食品又是药品的物品名单》（原卫生部公布）",
+      "category": "补虚药",
+      "nature_flavor": "甘，温",
+      "meridians": "心、脾经",
+      "effects": "补益心脾，养血安神",
+      "dosage": "9-15g",
+      "contraindications": [
+        "内有痰火及湿滞停饮者忌服"
+      ],
+      "special_groups": [
+        "孕妇慎用",
+        "糖尿病患者慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "姜黄",
+      "alias": "",
+      "batch": 2,
+      "batch_source": "2019年国家卫健委新增 6 种",
+      "category": "活血化瘀药",
+      "nature_flavor": "辛、苦，温",
+      "meridians": "肝、脾经",
+      "effects": "破血行气，通经止痛",
+      "dosage": "3-10g",
+      "contraindications": [
+        "血虚而无气滞血瘀者慎用"
+      ],
+      "special_groups": [
+        "孕妇禁用",
+        "胆道疾病者慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "山柰",
+      "alias": "沙姜",
+      "batch": 2,
+      "batch_source": "2019年国家卫健委新增 6 种",
+      "category": "温里药",
+      "nature_flavor": "辛，温",
+      "meridians": "胃经",
+      "effects": "行气温中，消食止痛",
+      "dosage": "6-9g",
+      "contraindications": [
+        "阴虚血亏、胃有郁火者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "当归",
+      "alias": "",
+      "batch": 2,
+      "batch_source": "2019年国家卫健委新增 6 种",
+      "category": "补虚药",
+      "nature_flavor": "甘、辛，温",
+      "meridians": "肝、心、脾经",
+      "effects": "补血活血，调经止痛，润肠通便",
+      "dosage": "6-12g",
+      "contraindications": [
+        "湿盛中满、大便泄泻者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用",
+        "月经过多者慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "草果",
+      "alias": "",
+      "batch": 2,
+      "batch_source": "2019年国家卫健委新增 6 种",
+      "category": "化湿药",
+      "nature_flavor": "辛，温",
+      "meridians": "脾、胃经",
+      "effects": "燥湿温中，截疟除痰",
+      "dosage": "3-6g",
+      "contraindications": [
+        "阴虚血少、无寒湿者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "荜茇",
+      "alias": "",
+      "batch": 2,
+      "batch_source": "2019年国家卫健委新增 6 种",
+      "category": "温里药",
+      "nature_flavor": "辛，热",
+      "meridians": "胃、大肠经",
+      "effects": "温中散寒，下气止痛",
+      "dosage": "1-3g",
+      "contraindications": [
+        "阴虚火旺者忌服"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "西红花",
+      "alias": "藏红花",
+      "batch": 2,
+      "batch_source": "2019年国家卫健委新增 6 种",
+      "category": "活血化瘀药",
+      "nature_flavor": "甘，微寒",
+      "meridians": "心、肝经",
+      "effects": "活血化瘀，凉血解毒，解郁安神",
+      "dosage": "1-3g",
+      "contraindications": [
+        "出血倾向者慎用"
+      ],
+      "special_groups": [
+        "孕妇禁用",
+        "月经过多者慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "党参",
+      "alias": "",
+      "batch": 3,
+      "batch_source": "2023年国家卫健委新增 9 种",
+      "category": "补虚药",
+      "nature_flavor": "甘，平",
+      "meridians": "脾、肺经",
+      "effects": "健脾益肺，养血生津",
+      "dosage": "9-30g",
+      "contraindications": [
+        "不宜与藜芦同用（十八反）",
+        "实证、热证者不宜"
+      ],
+      "special_groups": [],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "天麻",
+      "alias": "",
+      "batch": 3,
+      "batch_source": "2023年国家卫健委新增 9 种",
+      "category": "平肝息风药",
+      "nature_flavor": "甘，平",
+      "meridians": "肝经",
+      "effects": "息风止痉，平抑肝阳，祛风通络",
+      "dosage": "3-10g",
+      "contraindications": [
+        "津液衰少、血虚阴虚者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "山茱萸",
+      "alias": "",
+      "batch": 3,
+      "batch_source": "2023年国家卫健委新增 9 种",
+      "category": "收涩药",
+      "nature_flavor": "酸、涩，微温",
+      "meridians": "肝、肾经",
+      "effects": "补益肝肾，涩精固脱",
+      "dosage": "6-12g",
+      "contraindications": [
+        "命门火炽、素有湿热者不宜"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "杜仲叶",
+      "alias": "",
+      "batch": 3,
+      "batch_source": "2023年国家卫健委新增 9 种",
+      "category": "补虚药",
+      "nature_flavor": "微辛，温",
+      "meridians": "肝、肾经",
+      "effects": "补肝肾，强筋骨",
+      "dosage": "6-15g",
+      "contraindications": [
+        "阴虚火旺者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "灵芝",
+      "alias": "",
+      "batch": 3,
+      "batch_source": "2023年国家卫健委新增 9 种",
+      "category": "安神药",
+      "nature_flavor": "甘，平",
+      "meridians": "心、肺、肝、肾经",
+      "effects": "补气安神，止咳平喘",
+      "dosage": "6-12g",
+      "contraindications": [
+        "外感初起者不宜"
+      ],
+      "special_groups": [
+        "孕妇慎用",
+        "手术前后、出血倾向者慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "肉苁蓉（荒漠）",
+      "alias": "",
+      "batch": 3,
+      "batch_source": "2023年国家卫健委新增 9 种",
+      "category": "补虚药",
+      "nature_flavor": "甘、咸，温",
+      "meridians": "肾、大肠经",
+      "effects": "补肾阳，益精血，润肠通便",
+      "dosage": "6-10g",
+      "contraindications": [
+        "阴虚火旺、大便溏泄者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "西洋参",
+      "alias": "花旗参",
+      "batch": 3,
+      "batch_source": "2023年国家卫健委新增 9 种",
+      "category": "补虚药",
+      "nature_flavor": "甘、微苦，凉",
+      "meridians": "心、肺、肾经",
+      "effects": "补气养阴，清热生津",
+      "dosage": "3-6g",
+      "contraindications": [
+        "不宜与藜芦同用",
+        "脾胃虚寒、寒湿者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "铁皮石斛",
+      "alias": "",
+      "batch": 3,
+      "batch_source": "2023年国家卫健委新增 9 种",
+      "category": "补虚药",
+      "nature_flavor": "甘，微寒",
+      "meridians": "胃、肾经",
+      "effects": "益胃生津，滋阴清热",
+      "dosage": "6-12g",
+      "contraindications": [
+        "温热病早期、湿温未化燥者忌用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "黄芪",
+      "alias": "",
+      "batch": 3,
+      "batch_source": "2023年国家卫健委新增 9 种",
+      "category": "补虚药",
+      "nature_flavor": "甘，微温",
+      "meridians": "脾、肺经",
+      "effects": "补气升阳，固表止汗，利水消肿，生津养血，行滞通痹",
+      "dosage": "9-30g",
+      "contraindications": [
+        "表实邪盛、阴虚阳亢者不宜"
+      ],
+      "special_groups": [
+        "孕妇慎用",
+        "自身免疫性疾病活动期慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "化橘红",
+      "alias": "",
+      "batch": 4,
+      "batch_source": "2024年国家卫健委新增 4 种",
+      "category": "化痰止咳平喘药",
+      "nature_flavor": "辛、苦，温",
+      "meridians": "肺、脾经",
+      "effects": "理气宽中，燥湿化痰",
+      "dosage": "3-6g",
+      "contraindications": [
+        "阴虚燥咳、气虚者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "地黄",
+      "alias": "生地黄、熟地黄",
+      "batch": 4,
+      "batch_source": "2024年国家卫健委新增 4 种",
+      "category": "清热药／补虚药",
+      "nature_flavor": "苦，寒（生地黄）；甘，微温（熟地黄）",
+      "meridians": "心、肝、肾经",
+      "effects": "清热凉血，养阴生津（生）；补血滋阴，益精填髓（熟）",
+      "dosage": "10-15g",
+      "contraindications": [
+        "脾虚湿滞、腹满便溏者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "天冬",
+      "alias": "天门冬",
+      "batch": 4,
+      "batch_source": "2024年国家卫健委新增 4 种",
+      "category": "补虚药",
+      "nature_flavor": "甘、苦，寒",
+      "meridians": "肺、肾经",
+      "effects": "养阴润燥，清肺生津",
+      "dosage": "6-12g",
+      "contraindications": [
+        "虚寒泄泻、风寒咳嗽者忌服"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    },
+    {
+      "name": "麦冬",
+      "alias": "麦门冬",
+      "batch": 4,
+      "batch_source": "2024年国家卫健委新增 4 种",
+      "category": "补虚药",
+      "nature_flavor": "甘、微苦，微寒",
+      "meridians": "心、肺、胃经",
+      "effects": "养阴润肺，益胃生津，清心除烦",
+      "dosage": "6-12g",
+      "contraindications": [
+        "风寒感冒、脾胃虚寒泄泻者慎用"
+      ],
+      "special_groups": [
+        "孕妇慎用"
+      ],
+      "verified": false,
+      "source": "国家卫生健康委《既是食品又是中药材的物质目录》"
+    }
+  ]
+}

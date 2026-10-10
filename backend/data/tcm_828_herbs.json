@@ -1,0 +1,6626 @@
+[
+  {
+    "name": "人参",
+    "category": "补虚药",
+    "meridian": "脾肺心经",
+    "effect": "大补元气，复脉固脱",
+    "component": "人参皂苷、多糖",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "黄芪",
+    "category": "补虚药",
+    "meridian": "脾肺经",
+    "effect": "补气升阳，固表止汗",
+    "component": "黄芪多糖、皂苷",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "当归",
+    "category": "补虚药",
+    "meridian": "肝心脾经",
+    "effect": "补血活血，调经止痛",
+    "component": "阿魏酸、当归多糖",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "白术",
+    "category": "补虚药",
+    "meridian": "脾胃经",
+    "effect": "健脾益气，燥湿利水",
+    "component": "挥发油、白术多糖",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "白芷",
+    "category": "解表药",
+    "meridian": "胃大肠肺经",
+    "effect": "解表散寒，祛风止痛，宣通鼻窍",
+    "component": "白芷素、挥发油、树脂",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "甘草",
+    "category": "补虚药",
+    "meridian": "心肺脾胃经",
+    "effect": "益气补中，清热解毒",
+    "component": "甘草酸、甘草苷",
+    "dosage": "2-10g"
+  },
+  {
+    "name": "党参",
+    "category": "补虚药",
+    "meridian": "脾肺经",
+    "effect": "补中益气，健脾益肺",
+    "component": "党参多糖、皂苷",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "西洋参",
+    "category": "补虚药",
+    "meridian": "心肺肾经",
+    "effect": "补气养阴，清热生津",
+    "component": "西洋参皂苷",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "麦冬",
+    "category": "补虚药",
+    "meridian": "心肺胃经",
+    "effect": "养阴生津，润肺清心",
+    "component": "麦冬多糖、皂苷",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "枸杞子",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "滋补肝肾，益精明目",
+    "component": "枸杞多糖、胡萝卜素",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "熟地黄",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补血养阴，填精益髓",
+    "component": "地黄多糖、梓醇",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "肉桂",
+    "category": "温里药",
+    "meridian": "肾脾心肝经",
+    "effect": "补火助阳，散寒止痛",
+    "component": "桂皮醛、挥发油",
+    "dosage": "1-5g"
+  },
+  {
+    "name": "干姜",
+    "category": "温里药",
+    "meridian": "脾胃肾心肺经",
+    "effect": "温中散寒，回阳通脉",
+    "component": "姜辣素、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "高良姜",
+    "category": "温里药",
+    "meridian": "脾胃经",
+    "effect": "温中止痛，温中止呕",
+    "component": "高良姜素、挥发油",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "吴茱萸",
+    "category": "温里药",
+    "meridian": "肝脾胃肾经",
+    "effect": "散寒止痛，降逆止呕",
+    "component": "吴茱萸碱、挥发油",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "丁香",
+    "category": "温里药",
+    "meridian": "脾胃肺肾经",
+    "effect": "温中降逆，散寒止痛",
+    "component": "丁香油酚、挥发油",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "陈皮",
+    "category": "理气药",
+    "meridian": "脾肺经",
+    "effect": "理气健脾，燥湿化痰",
+    "component": "挥发油、橙皮苷",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "枳实",
+    "category": "理气药",
+    "meridian": "脾胃大肠经",
+    "effect": "破气消积，化痰散痞",
+    "component": "挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "木香",
+    "category": "理气药",
+    "meridian": "脾胃大肠胆三焦经",
+    "effect": "行气止痛，健脾消食",
+    "component": "挥发油、木香碱",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "香附",
+    "category": "理气药",
+    "meridian": "肝脾三焦经",
+    "effect": "疏肝解郁，理气宽中",
+    "component": "挥发油、香附烯",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "砂仁",
+    "category": "理气药",
+    "meridian": "脾胃肾经",
+    "effect": "化湿开胃，温脾止泻",
+    "component": "挥发油、砂仁苷",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "黄连",
+    "category": "清热药",
+    "meridian": "心肝胃大肠经",
+    "effect": "清热燥湿，泻火解毒",
+    "component": "黄连素、黄连碱",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "黄芩",
+    "category": "清热药",
+    "meridian": "肺胆脾大肠小肠经",
+    "effect": "清热燥湿，泻火解毒",
+    "component": "黄芩苷、黄芩素",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "金银花",
+    "category": "清热药",
+    "meridian": "肺心胃经",
+    "effect": "清热解毒，疏散风热",
+    "component": "绿原酸、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "连翘",
+    "category": "清热药",
+    "meridian": "肺心小肠经",
+    "effect": "清热解毒，消肿散结",
+    "component": "连翘苷、挥发油",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "板蓝根",
+    "category": "清热药",
+    "meridian": "心胃经",
+    "effect": "清热解毒，凉血利咽",
+    "component": "靛蓝、靛玉红",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "蒲公英",
+    "category": "清热药",
+    "meridian": "肝胃经",
+    "effect": "清热解毒，消肿散结",
+    "component": "蒲公英甾醇、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "牡丹皮",
+    "category": "清热药",
+    "meridian": "心肝肾经",
+    "effect": "清热凉血，活血化瘀",
+    "component": "丹皮酚、牡丹苷",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "玄参",
+    "category": "清热药",
+    "meridian": "肺胃肾经",
+    "effect": "清热凉血，滋阴降火",
+    "component": "玄参素、多糖",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "赤芍",
+    "category": "清热药",
+    "meridian": "肝经",
+    "effect": "清热凉血，散瘀止痛",
+    "component": "芍药苷、赤芍素",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "石膏",
+    "category": "清热药",
+    "meridian": "肺胃经",
+    "effect": "清热泻火，除烦止渴",
+    "component": "含水硫酸钙",
+    "dosage": "15-60g"
+  },
+  {
+    "name": "鹿茸",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补肾阳，益精血，强筋骨",
+    "component": "鹿茸多肽、氨基酸、多胺类",
+    "dosage": "1-5g"
+  },
+  {
+    "name": "冬虫夏草",
+    "category": "补虚药",
+    "meridian": "肺肾经",
+    "effect": "补肾益肺，止血化痰",
+    "component": "虫草素、腺苷、虫草多糖",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "制何首乌",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补肝肾，益精血，乌须发",
+    "component": "蒽醌类、二苯乙烯苷、卵磷脂",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "白芍",
+    "category": "补虚药",
+    "meridian": "肝脾经",
+    "effect": "养血调经，敛阴止汗，柔肝止痛",
+    "component": "芍药苷、白芍苷、挥发油",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "黄精",
+    "category": "补虚药",
+    "meridian": "脾肺肾经",
+    "effect": "补气养阴，健脾润肺，益肾填精",
+    "component": "黄精多糖、甾体皂苷、氨基酸",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "桑寄生",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "祛风湿，补肝肾，强筋骨",
+    "component": "槲寄生苷、黄酮类、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "巴戟天",
+    "category": "补虚药",
+    "meridian": "肾肝经",
+    "effect": "补肾阳，强筋骨，祛风湿",
+    "component": "巴戟天苷、甲基异茜草素、多糖",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "栀子",
+    "category": "清热药",
+    "meridian": "心肝肺三焦经",
+    "effect": "泻火除烦，清热利湿，凉血解毒",
+    "component": "栀子苷、熊果酸、挥发油",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "龙胆",
+    "category": "清热药",
+    "meridian": "肝胆经",
+    "effect": "清热燥湿，泻肝胆火",
+    "component": "龙胆苦苷、当药苷、生物碱",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "苦参",
+    "category": "清热药",
+    "meridian": "心肝胃大肠经",
+    "effect": "清热燥湿，杀虫止痒，利尿",
+    "component": "苦参碱、氧化苦参碱、黄酮",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "决明子",
+    "category": "清热药",
+    "meridian": "肝大肠经",
+    "effect": "清热明目，润肠通便",
+    "component": "大黄酚、大黄素、决明素",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "穿心莲",
+    "category": "清热药",
+    "meridian": "心肺大肠膀胱经",
+    "effect": "清热解毒，凉血消肿，燥湿",
+    "component": "穿心莲内酯、新穿心莲内酯、黄酮",
+    "dosage": "6-9g"
+  },
+  {
+    "name": "橘红",
+    "category": "理气药",
+    "meridian": "脾肺经",
+    "effect": "理气宽中，燥湿化痰",
+    "component": "挥发油、橙皮苷、柠檬烯",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "青皮",
+    "category": "理气药",
+    "meridian": "肝胆胃经",
+    "effect": "疏肝理气，消积化滞",
+    "component": "挥发油、橙皮苷、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "乌药",
+    "category": "理气药",
+    "meridian": "肺脾肾膀胱经",
+    "effect": "行气止痛，温肾散寒",
+    "component": "乌药碱、挥发油、生物碱",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "佛手",
+    "category": "理气药",
+    "meridian": "肝脾胃经",
+    "effect": "疏肝理气，和胃止痛，燥湿化痰",
+    "component": "佛手内酯、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "附子",
+    "category": "温里药",
+    "meridian": "心肾脾经",
+    "effect": "回阳救逆，补火助阳，散寒止痛",
+    "component": "乌头碱、次乌头碱、去甲猪毛菜碱",
+    "dosage": "3-15g"
+  },
+  {
+    "name": "桂枝",
+    "category": "温里药",
+    "meridian": "心肺膀胱经",
+    "effect": "发汗解肌，温通经脉，助阳化气",
+    "component": "桂皮醛、苯甲酸、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "小茴香",
+    "category": "温里药",
+    "meridian": "肝胃肾经",
+    "effect": "散寒止痛，理气和胃",
+    "component": "茴香脑、茴香酮、挥发油",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "荜茇",
+    "category": "温里药",
+    "meridian": "脾胃经",
+    "effect": "温中散寒，下气止痛",
+    "component": "胡椒碱、荜茇酰胺、挥发油",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "紫苏叶",
+    "category": "解表药",
+    "meridian": "肺脾经",
+    "effect": "解表散寒，行气和胃",
+    "component": "紫苏醛、紫苏酮、挥发油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "荆芥",
+    "category": "解表药",
+    "meridian": "肺肝经",
+    "effect": "祛风解表，透疹消疮",
+    "component": "薄荷酮、异薄荷酮、挥发油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "防风",
+    "category": "解表药",
+    "meridian": "膀胱肝脾经",
+    "effect": "祛风解表，胜湿止痛，止痉",
+    "component": "防风皂苷、防风苷、挥发油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "羌活",
+    "category": "解表药",
+    "meridian": "膀胱肾经",
+    "effect": "解表散寒，祛风胜湿，止痛",
+    "component": "羌活挥发油、羌活苷、生物碱",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "独活",
+    "category": "解表药",
+    "meridian": "肾膀胱经",
+    "effect": "祛风除湿，通痹止痛",
+    "component": "二氢呋喃型呋喃酮、独活苷、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "秦艽",
+    "category": "补虚药",
+    "meridian": "胃肝胆经",
+    "effect": "祛风湿，清湿热，舒筋络，止痹痛，退虚热",
+    "component": "秦艽碱甲、秦艽碱乙、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "木瓜",
+    "category": "舒筋活络药",
+    "meridian": "肝脾经",
+    "effect": "舒筋活络，和胃化湿",
+    "component": "齐墩果酸、熊果酸、皂苷",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "威灵仙",
+    "category": "祛风湿药",
+    "meridian": "膀胱经",
+    "effect": "祛风湿，通经络，止痛，消骨鲠",
+    "component": "威灵仙苷、白头翁素、挥发油",
+    "dosage": "6-9g"
+  },
+  {
+    "name": "桑椹",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补肝肾，益精血，乌须发，生津润肠",
+    "component": "桑葚多糖、花青素、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "杜仲",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补肝肾，强筋骨，安胎",
+    "component": "杜仲苷、松脂醇二葡萄糖苷、挥发油",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "牛膝",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "逐瘀通经，补肝肾，强筋骨，利尿通淋，引血下行",
+    "component": "牛膝皂苷、β-蜕皮甾酮、多糖",
+    "dosage": "5-12g"
+  },
+  {
+    "name": "续断",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补肝肾，强筋骨，续折伤，止崩漏",
+    "component": "川续断皂苷、β-谷甾醇、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "骨碎补",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补肾强骨，续伤止痛",
+    "component": "骨碎补苷、黄酮、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "补骨脂",
+    "category": "补虚药",
+    "meridian": "肾脾经",
+    "effect": "补肾壮阳，固精缩尿，温脾止泻，纳气平喘",
+    "component": "补骨脂素、异补骨脂素、挥发油",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "益智仁",
+    "category": "补虚药",
+    "meridian": "脾肾经",
+    "effect": "温脾止泻摄涎，暖肾缩尿固精",
+    "component": "益智仁酮、挥发油、生物碱",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "菟丝子",
+    "category": "补虚药",
+    "meridian": "肝肾脾经",
+    "effect": "补益肝肾，固精缩尿，安胎，明目，止泻",
+    "component": "菟丝子苷、金丝桃苷、多糖",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "沙苑子",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补肾助阳，固精缩尿，养肝明目",
+    "component": "沙苑子苷、黄酮、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "肉苁蓉",
+    "category": "补虚药",
+    "meridian": "肾大肠经",
+    "effect": "补肾阳，益精血，润肠通便",
+    "component": "肉苁蓉苷、松果菊苷、多糖",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "锁阳",
+    "category": "补虚药",
+    "meridian": "肝大肠经",
+    "effect": "补肾阳，强筋骨，润肠通便",
+    "component": "锁阳苷、黄酮、挥发油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "淫羊藿",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补肾阳，强筋骨，祛风湿",
+    "component": "淫羊藿苷、槲皮素、挥发油",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "川芎",
+    "category": "活血化瘀药",
+    "meridian": "肝胆心包经",
+    "effect": "活血行气，祛风止痛",
+    "component": "川芎嗪、阿魏酸、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "延胡索",
+    "category": "活血化瘀药",
+    "meridian": "肝脾经",
+    "effect": "活血行气，止痛",
+    "component": "延胡索乙素、原阿片碱、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "郁金",
+    "category": "活血化瘀药",
+    "meridian": "肝心肺经",
+    "effect": "活血止痛，行气解郁，清心凉血，利胆退黄",
+    "component": "郁金素、挥发油、姜黄素",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "姜黄",
+    "category": "活血化瘀药",
+    "meridian": "肝脾经",
+    "effect": "破血行气，通经止痛",
+    "component": "姜黄素、挥发油、姜黄碱",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "乳香",
+    "category": "活血化瘀药",
+    "meridian": "心肝脾经",
+    "effect": "活血定痛，消肿生肌",
+    "component": "乳香酸、挥发油、树脂",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "没药",
+    "category": "活血化瘀药",
+    "meridian": "心肝脾经",
+    "effect": "活血定痛，消肿生肌",
+    "component": "没药酸、挥发油、树脂",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "五灵脂",
+    "category": "活血化瘀药",
+    "meridian": "肝经",
+    "effect": "活血止痛，化瘀止血",
+    "component": "五灵脂酸、五灵脂皂苷、氨基酸",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "丹参",
+    "category": "活血化瘀药",
+    "meridian": "心肝心包经",
+    "effect": "活血祛瘀，通经止痛，清心除烦，凉血消痈",
+    "component": "丹参酮、丹酚酸、挥发油",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "红花",
+    "category": "活血化瘀药",
+    "meridian": "心肝经",
+    "effect": "活血通经，散瘀止痛",
+    "component": "红花苷、红花黄色素、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "桃仁",
+    "category": "活血化瘀药",
+    "meridian": "心肝大肠经",
+    "effect": "活血祛瘀，润肠通便，止咳平喘",
+    "component": "桃仁苷、苦杏仁苷、挥发油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "益母草",
+    "category": "活血化瘀药",
+    "meridian": "肝心膀胱经",
+    "effect": "活血调经，利尿消肿，清热解毒",
+    "component": "益母草碱、益母草苷、挥发油",
+    "dosage": "10-30g"
+  },
+  {
+    "name": "泽兰",
+    "category": "活血化瘀药",
+    "meridian": "肝脾经",
+    "effect": "活血调经，祛瘀消痈，利水消肿",
+    "component": "泽兰苷、泽兰内酯、挥发油",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "川牛膝",
+    "category": "活血化瘀药",
+    "meridian": "肝肾经",
+    "effect": "逐瘀通经，通利关节，利尿通淋",
+    "component": "川牛膝皂苷、β-蜕皮甾酮、挥发油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "土鳖虫",
+    "category": "活血化瘀药",
+    "meridian": "肝经",
+    "effect": "破血逐瘀，续筋接骨",
+    "component": "土鳖虫蛋白、氨基酸、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "水蛭",
+    "category": "活血化瘀药",
+    "meridian": "肝经",
+    "effect": "破血通经，逐瘀消癥",
+    "component": "水蛭素、抗凝血酶、氨基酸",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "虻虫",
+    "category": "活血化瘀药",
+    "meridian": "肝经",
+    "effect": "破血逐瘀，散积消癥",
+    "component": "虻虫蛋白、氨基酸、挥发油",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "斑蝥",
+    "category": "活血化瘀药",
+    "meridian": "肝胃肾经",
+    "effect": "破血逐瘀，散结消癥，攻毒蚀疮",
+    "component": "斑蝥素、脂肪油、挥发油",
+    "dosage": "0.03-0.06g"
+  },
+  {
+    "name": "穿山甲",
+    "category": "活血化瘀药",
+    "meridian": "肝胃经",
+    "effect": "活血消癥，通经下乳，消肿排脓，搜风通络",
+    "component": "穿山甲蛋白、氨基酸、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "王不留行",
+    "category": "活血化瘀药",
+    "meridian": "肝胃经",
+    "effect": "活血通经，下乳消痈，利尿通淋",
+    "component": "王不留行苷、挥发油、皂苷",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "苏木",
+    "category": "活血化瘀药",
+    "meridian": "心肝脾经",
+    "effect": "活血祛瘀，消肿止痛",
+    "component": "苏木素、苏木碱、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "血竭",
+    "category": "活血化瘀药",
+    "meridian": "心肝经",
+    "effect": "活血定痛，化瘀止血，生肌敛疮",
+    "component": "血竭素、血竭红素、树脂",
+    "dosage": "1-2g"
+  },
+  {
+    "name": "儿茶",
+    "category": "活血化瘀药",
+    "meridian": "心脾经",
+    "effect": "活血止痛，止血敛疮，清热化痰",
+    "component": "儿茶素、表儿茶素、黏液质",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "刘寄奴",
+    "category": "活血化瘀药",
+    "meridian": "心肝脾经",
+    "effect": "散瘀止痛，疗伤止血，破血通经，消食化积",
+    "component": "刘寄奴苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "半夏",
+    "category": "化痰止咳平喘药",
+    "meridian": "脾胃肺经",
+    "effect": "燥湿化痰，降逆止呕，消痞散结",
+    "component": "生物碱、挥发油、黏液蛋白",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "天南星",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺肝脾经",
+    "effect": "燥湿化痰，祛风止痉，散结消肿",
+    "component": "生物碱、挥发油、皂苷",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "白附子",
+    "category": "化痰止咳平喘药",
+    "meridian": "胃肝经",
+    "effect": "燥湿化痰，祛风止痉，解毒散结",
+    "component": "生物碱、挥发油、皂苷",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "白前",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "降气，消痰，止咳",
+    "component": "白前皂苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "旋覆花",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺胃经",
+    "effect": "降气化痰，降逆止呕",
+    "component": "旋覆花皂苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "代赭石",
+    "category": "化痰止咳平喘药",
+    "meridian": "心肝经",
+    "effect": "平肝潜阳，降逆止呕，降气平喘",
+    "component": "三氧化二铁、挥发油、微量元素",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "芥子",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺胃经",
+    "effect": "温肺豁痰利气，散结通络止痛",
+    "component": "芥子苷、挥发油、脂肪油",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "射干",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "清热解毒，消痰利咽",
+    "component": "射干苷、鸢尾苷、挥发油",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "麻黄",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺膀胱经",
+    "effect": "发汗解表，宣肺平喘，利水消肿",
+    "component": "麻黄碱、伪麻黄碱、挥发油",
+    "dosage": "2-9g"
+  },
+  {
+    "name": "杏仁",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺大肠经",
+    "effect": "降气止咳平喘，润肠通便",
+    "component": "苦杏仁苷、脂肪油、挥发油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "紫苏子",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺大肠经",
+    "effect": "降气化痰，止咳平喘，润肠通便",
+    "component": "紫苏子油、挥发油、氨基酸",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "白果仁",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "敛肺平喘，收涩止带",
+    "component": "银杏苷、白果内酯、脂肪油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "款冬花",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "润肺下气，止咳化痰",
+    "component": "款冬花酮、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "紫菀",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "润肺下气，化痰止咳",
+    "component": "紫菀苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "马兜铃",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺大肠经",
+    "effect": "清肺降气，止咳平喘，清肠消痔",
+    "component": "马兜铃酸、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "枇杷叶",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺胃经",
+    "effect": "清肺止咳，降逆止呕",
+    "component": "枇杷叶苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "葶苈子",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺膀胱经",
+    "effect": "泻肺平喘，利水消肿",
+    "component": "葶苈子苷、挥发油、脂肪油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "桑白皮",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "泻肺平喘，利水消肿",
+    "component": "桑白皮苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "瓜蒌",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺胃大肠经",
+    "effect": "清热化痰，宽胸散结，润肠通便",
+    "component": "瓜蒌苷、挥发油、脂肪油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "浙贝母",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺心经",
+    "effect": "清热化痰，散结消痈",
+    "component": "浙贝母碱、挥发油、皂苷",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "川贝母",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺心经",
+    "effect": "清热化痰，润肺止咳，散结消痈",
+    "component": "川贝母碱、挥发油、皂苷",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "竹茹",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺胃经",
+    "effect": "清热化痰，除烦止呕",
+    "component": "竹茹多糖、挥发油、氨基酸",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "前胡",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "降气化痰，散风清热",
+    "component": "前胡苷、挥发油、香豆素",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "胖大海",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺大肠经",
+    "effect": "清热润肺，利咽解毒，润肠通便",
+    "component": "胖大海素、黏液质、氨基酸",
+    "dosage": "2-3枚"
+  },
+  {
+    "name": "山楂",
+    "category": "消食药",
+    "meridian": "脾胃肝经",
+    "effect": "消食化积，活血化瘀",
+    "component": "山楂酸、黄酮、挥发油",
+    "dosage": "9-12g"
+  },
+  {
+    "name": "神曲",
+    "category": "消食药",
+    "meridian": "脾胃经",
+    "effect": "消食和胃",
+    "component": "消化酶、维生素、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "麦芽",
+    "category": "消食药",
+    "meridian": "脾胃经",
+    "effect": "消食健脾，回乳消胀",
+    "component": "淀粉酶、转化糖酶、维生素",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "谷芽",
+    "category": "消食药",
+    "meridian": "脾胃经",
+    "effect": "消食开胃，健脾益气",
+    "component": "淀粉酶、转化糖酶、维生素",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "莱菔子",
+    "category": "消食药",
+    "meridian": "脾胃肺经",
+    "effect": "消食除胀，降气化痰",
+    "component": "莱菔子素、挥发油、脂肪油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "鸡内金",
+    "category": "消食药",
+    "meridian": "脾胃小肠膀胱经",
+    "effect": "消食健胃，涩精止遗，化结石",
+    "component": "胃激素、角蛋白、氨基酸",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "鸡矢藤",
+    "category": "消食药",
+    "meridian": "脾胃肺经",
+    "effect": "消食健胃，化痰止咳，清热解毒，止痛",
+    "component": "鸡矢藤苷、挥发油、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "酸枣仁",
+    "category": "安神药",
+    "meridian": "心肝经",
+    "effect": "养心益肝，安神敛汗",
+    "component": "酸枣仁皂苷、黄酮、挥发油",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "柏子仁",
+    "category": "安神药",
+    "meridian": "心肾大肠经",
+    "effect": "养心安神，润肠通便",
+    "component": "柏子仁苷、挥发油、脂肪油",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "远志",
+    "category": "安神药",
+    "meridian": "心肾肺经",
+    "effect": "安神益智，交通心肾，祛痰消肿",
+    "component": "远志皂苷、挥发油、脂肪油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "合欢皮",
+    "category": "安神药",
+    "meridian": "心肝经",
+    "effect": "解郁安神，活血消肿",
+    "component": "合欢皮苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "夜交藤",
+    "category": "安神药",
+    "meridian": "心肝经",
+    "effect": "养心安神，祛风通络",
+    "component": "首乌藤苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "磁石",
+    "category": "安神药",
+    "meridian": "心肝肾经",
+    "effect": "平肝潜阳，重镇安神，纳气平喘，聪耳明目",
+    "component": "四氧化三铁、微量元素",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "朱砂",
+    "category": "安神药",
+    "meridian": "心经",
+    "effect": "清心镇惊，安神解毒",
+    "component": "硫化汞、微量元素",
+    "dosage": "0.1-0.5g"
+  },
+  {
+    "name": "龙骨",
+    "category": "安神药",
+    "meridian": "心肝经",
+    "effect": "镇惊安神，平肝潜阳，收敛固涩",
+    "component": "碳酸钙、磷酸钙、微量元素",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "牡蛎",
+    "category": "安神药",
+    "meridian": "肝胆肾经",
+    "effect": "重镇安神，潜阳补阴，软坚散结",
+    "component": "碳酸钙、磷酸钙、微量元素",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "猪苓",
+    "category": "利水渗湿药",
+    "meridian": "肾膀胱经",
+    "effect": "利水渗湿",
+    "component": "猪苓多糖、麦角固醇、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "泽泻",
+    "category": "利水渗湿药",
+    "meridian": "肾膀胱经",
+    "effect": "利水渗湿，泄热，化浊降脂",
+    "component": "泽泻醇、挥发油、三萜类",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "车前子",
+    "category": "利水渗湿药",
+    "meridian": "肝肾肺经",
+    "effect": "清热通淋，清肝明目，化痰止咳，止泻",
+    "component": "车前子苷、黏液质、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "滑石",
+    "category": "利水渗湿药",
+    "meridian": "膀胱经",
+    "effect": "利水通淋，清解暑热，祛湿敛疮",
+    "component": "含水硅酸镁、微量元素",
+    "dosage": "10-20g"
+  },
+  {
+    "name": "木通",
+    "category": "利水渗湿药",
+    "meridian": "心小肠膀胱经",
+    "effect": "利尿通淋，清心除烦，通经下乳",
+    "component": "木通皂苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "通草",
+    "category": "利水渗湿药",
+    "meridian": "肺胃经",
+    "effect": "清热通淋，通气下乳",
+    "component": "通草多糖、氨基酸、微量元素",
+    "dosage": "3-5g"
+  },
+  {
+    "name": "萹蓄",
+    "category": "利水渗湿药",
+    "meridian": "膀胱经",
+    "effect": "利尿通淋，杀虫止痒",
+    "component": "萹蓄苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "五味子",
+    "category": "收涩药",
+    "meridian": "肺肾心经",
+    "effect": "收敛固涩，益气生津，补肾宁心",
+    "component": "五味子素、挥发油、有机酸",
+    "dosage": "2-6g"
+  },
+  {
+    "name": "乌梅",
+    "category": "收涩药",
+    "meridian": "肝脾肺大肠经",
+    "effect": "敛肺，涩肠，生津，安蛔",
+    "component": "乌梅苷、有机酸、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "诃子",
+    "category": "收涩药",
+    "meridian": "肺大肠经",
+    "effect": "涩肠止泻，敛肺止咳，降火利咽",
+    "component": "诃子苷、挥发油、鞣质",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "肉豆蔻",
+    "category": "收涩药",
+    "meridian": "脾胃经",
+    "effect": "温中行气，涩肠止泻",
+    "component": "肉豆蔻苷、挥发油、脂肪油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "赤石脂",
+    "category": "收涩药",
+    "meridian": "胃大肠经",
+    "effect": "涩肠止泻，止血，生肌敛疮",
+    "component": "硅酸盐、微量元素",
+    "dosage": "10-20g"
+  },
+  {
+    "name": "禹余粮",
+    "category": "收涩药",
+    "meridian": "胃大肠经",
+    "effect": "涩肠止泻，止血，止带",
+    "component": "铁的氧化物、微量元素",
+    "dosage": "10-20g"
+  },
+  {
+    "name": "罂粟壳",
+    "category": "收涩药",
+    "meridian": "肺大肠经",
+    "effect": "敛肺止咳，涩肠止泻，止痛",
+    "component": "吗啡、可待因、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "金樱子",
+    "category": "收涩药",
+    "meridian": "脾肾膀胱经",
+    "effect": "固精缩尿止带，涩肠止泻",
+    "component": "金樱子皂苷、有机酸、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "桑螵蛸",
+    "category": "收涩药",
+    "meridian": "肝肾经",
+    "effect": "固精缩尿，补肾助阳",
+    "component": "桑螵蛸蛋白、氨基酸、挥发油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "海螵蛸",
+    "category": "收涩药",
+    "meridian": "肝肾经",
+    "effect": "收敛止血，涩精止带，制酸止痛，收湿敛疮",
+    "component": "碳酸钙、磷酸钙、微量元素",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "莲子",
+    "category": "收涩药",
+    "meridian": "脾肾经",
+    "effect": "补脾止泻，益肾涩精，养心安神",
+    "component": "莲子多糖、生物碱、氨基酸",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "芡实",
+    "category": "收涩药",
+    "meridian": "脾肾经",
+    "effect": "益肾固精，补脾止泻，祛湿止带",
+    "component": "芡实多糖、氨基酸、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "山茱萸",
+    "category": "收涩药",
+    "meridian": "肝肾经",
+    "effect": "补益肝肾，收敛固涩",
+    "component": "山茱萸苷、熊果酸、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "覆盆子",
+    "category": "收涩药",
+    "meridian": "肝肾经",
+    "effect": "固精缩尿，益肝肾，明目",
+    "component": "覆盆子酮、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "五倍子",
+    "category": "收涩药",
+    "meridian": "肺大肠肾经",
+    "effect": "敛肺降火，涩肠止泻，敛汗止血，收湿敛疮",
+    "component": "五倍子单宁、挥发油、树脂",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "浮小麦",
+    "category": "收涩药",
+    "meridian": "心经",
+    "effect": "固表止汗，益气除热",
+    "component": "淀粉、蛋白质、挥发油",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "麻黄根",
+    "category": "收涩药",
+    "meridian": "心脾肺经",
+    "effect": "固表止汗",
+    "component": "麻黄根素、麻黄碱、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "常山",
+    "category": "涌吐药",
+    "meridian": "肺肝心经",
+    "effect": "涌吐痰涎，截疟",
+    "component": "常山碱、常山素、挥发油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "瓜蒂",
+    "category": "涌吐药",
+    "meridian": "脾胃经",
+    "effect": "涌吐痰食，祛湿退黄",
+    "component": "瓜蒂素、葫芦素、挥发油",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "胆矾",
+    "category": "涌吐药",
+    "meridian": "肝胆经",
+    "effect": "涌吐痰涎，解毒收湿",
+    "component": "硫酸铜、微量元素",
+    "dosage": "0.3-0.6g"
+  },
+  {
+    "name": "藜芦",
+    "category": "涌吐药",
+    "meridian": "肺胃肝经",
+    "effect": "涌吐风痰，杀虫",
+    "component": "藜芦碱、挥发油、皂苷",
+    "dosage": "0.3-0.6g"
+  },
+  {
+    "name": "蛇床子",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肾肝经",
+    "effect": "燥湿祛风，杀虫止痒，温肾壮阳",
+    "component": "蛇床子素、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "土荆皮",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肺经",
+    "effect": "杀虫止痒",
+    "component": "土荆皮酸、挥发油、黄酮",
+    "dosage": "外用适量"
+  },
+  {
+    "name": "硫黄",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "大肠经",
+    "effect": "外用解毒杀虫止痒，内服补火助阳通便",
+    "component": "单质硫、微量元素",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "雄黄",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝大肠经",
+    "effect": "解毒杀虫，燥湿祛痰，截疟",
+    "component": "二硫化二砷、微量元素",
+    "dosage": "0.05-0.1g"
+  },
+  {
+    "name": "砒霜",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝大肠经",
+    "effect": "外用攻毒杀虫，蚀疮去腐；内服截疟，祛痰平喘",
+    "component": "三氧化二砷、微量元素",
+    "dosage": "0.002-0.004g"
+  },
+  {
+    "name": "轻粉",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝大肠经",
+    "effect": "外用杀虫攻毒敛疮；内服祛痰消积，逐水通便",
+    "component": "氯化亚汞、微量元素",
+    "dosage": "0.1-0.2g"
+  },
+  {
+    "name": "炉甘石",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝胃经",
+    "effect": "解毒明目退翳，收湿止痒敛疮",
+    "component": "碳酸锌、微量元素",
+    "dosage": "外用适量"
+  },
+  {
+    "name": "硼砂",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肺胃经",
+    "effect": "外用清热解毒，消肿防腐；内服清肺化痰",
+    "component": "四硼酸钠、微量元素",
+    "dosage": "外用适量"
+  },
+  {
+    "name": "白矾",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝肺经",
+    "effect": "外用解毒杀虫燥湿止痒；内服止血止泻，祛除风痰",
+    "component": "硫酸铝钾、微量元素",
+    "dosage": "0.6-1.5g"
+  },
+  {
+    "name": "槟榔",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "胃大肠经",
+    "effect": "杀虫消积，降气，行水，截疟",
+    "component": "槟榔碱、槟榔素、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "榧子",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肺胃大肠经",
+    "effect": "杀虫消积，润肺止咳，润肠通便",
+    "component": "榧子油、挥发油、氨基酸",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "雷丸",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "胃大肠经",
+    "effect": "杀虫消积",
+    "component": "雷丸素、蛋白酶、挥发油",
+    "dosage": "15-21g"
+  },
+  {
+    "name": "荜澄茄",
+    "category": "温里药",
+    "meridian": "脾胃肾经",
+    "effect": "温中散寒，行气止痛",
+    "component": "荜澄茄素、挥发油、生物碱",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "炮姜",
+    "category": "温里药",
+    "meridian": "脾肺经",
+    "effect": "温经止血，温中止痛",
+    "component": "姜辣素、挥发油、树脂",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "艾叶",
+    "category": "温里药",
+    "meridian": "肝脾肾经",
+    "effect": "温经止血，散寒止痛，外用祛湿止痒",
+    "component": "艾油、艾叶碱、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "檀香",
+    "category": "理气药",
+    "meridian": "脾胃肺经",
+    "effect": "行气温中，开胃止痛",
+    "component": "檀香挥发油、檀香碱、树脂",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "沉香",
+    "category": "理气药",
+    "meridian": "脾胃肾经",
+    "effect": "行气止痛，温中止呕，纳气平喘",
+    "component": "沉香挥发油、沉香素、树脂",
+    "dosage": "1-5g"
+  },
+  {
+    "name": "降香",
+    "category": "理气药",
+    "meridian": "肝脾经",
+    "effect": "化瘀止血，理气止痛",
+    "component": "降香挥发油、降香素、树脂",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "大腹皮",
+    "category": "理气药",
+    "meridian": "脾胃大肠经",
+    "effect": "行气宽中，行水消肿",
+    "component": "大腹皮苷、挥发油、黄酮",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "甘松",
+    "category": "理气药",
+    "meridian": "脾胃经",
+    "effect": "行气止痛，开郁醒脾",
+    "component": "甘松酮、挥发油、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "九香虫",
+    "category": "理气药",
+    "meridian": "肝脾肾经",
+    "effect": "理气止痛，温中助阳",
+    "component": "九香虫素、挥发油、氨基酸",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "川楝子",
+    "category": "理气药",
+    "meridian": "肝小肠膀胱经",
+    "effect": "疏肝泄热，行气止痛，杀虫",
+    "component": "川楝素、挥发油、三萜类",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "薤白",
+    "category": "理气药",
+    "meridian": "肺胃大肠经",
+    "effect": "通阳散结，行气导滞",
+    "component": "薤白苷、挥发油、氨基酸",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "荔枝核",
+    "category": "理气药",
+    "meridian": "肝胃经",
+    "effect": "行气散结，祛寒止痛",
+    "component": "荔枝核苷、挥发油、氨基酸",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "薄荷",
+    "category": "解表药",
+    "meridian": "肺肝经",
+    "effect": "疏散风热，清利头目，利咽透疹，疏肝行气",
+    "component": "薄荷醇、薄荷酮、挥发油",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "牛蒡子",
+    "category": "解表药",
+    "meridian": "肺胃经",
+    "effect": "疏散风热，宣肺透疹，解毒利咽",
+    "component": "牛蒡子苷、挥发油、脂肪油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "蝉蜕",
+    "category": "解表药",
+    "meridian": "肝经",
+    "effect": "疏散风热，利咽开音，透疹，明目退翳，息风止痉",
+    "component": "蝉蜕蛋白、氨基酸、微量元素",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "桑叶",
+    "category": "解表药",
+    "meridian": "肺肝经",
+    "effect": "疏散风热，清肺润燥，清肝明目",
+    "component": "桑叶苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "蔓荆子",
+    "category": "解表药",
+    "meridian": "膀胱肝胃经",
+    "effect": "疏散风热，清利头目",
+    "component": "蔓荆子碱、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "淡豆豉",
+    "category": "解表药",
+    "meridian": "肺胃经",
+    "effect": "解表，除烦，宣发郁热",
+    "component": "淡豆豉苷、发酵产物、氨基酸",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "浮萍",
+    "category": "解表药",
+    "meridian": "肺膀胱经",
+    "effect": "宣散风热，透疹止痒，利尿消肿",
+    "component": "浮萍苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "木贼",
+    "category": "解表药",
+    "meridian": "肺肝经",
+    "effect": "疏散风热，明目退翳",
+    "component": "木贼苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "蒺藜",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "平肝解郁，活血祛风，明目，止痒",
+    "component": "蒺藜苷、蒺藜碱、挥发油",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "天麻",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "息风止痉，平抑肝阳，祛风通络",
+    "component": "天麻素、天麻苷元、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "钩藤",
+    "category": "平肝熄风药",
+    "meridian": "肝心包经",
+    "effect": "息风止痉，清热平肝",
+    "component": "钩藤碱、钩藤次碱、挥发油",
+    "dosage": "3-12g"
+  },
+  {
+    "name": "地龙",
+    "category": "平肝熄风药",
+    "meridian": "肝脾膀胱经",
+    "effect": "清热定惊，通络，平喘，利尿",
+    "component": "地龙素、蚯蚓素、氨基酸",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "全蝎",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "息风止痉，通络止痛，攻毒散结",
+    "component": "蝎毒蛋白、氨基酸、挥发油",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "蜈蚣",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "息风止痉，通络止痛，攻毒散结",
+    "component": "蜈蚣毒蛋白、氨基酸、挥发油",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "白僵蚕",
+    "category": "平肝熄风药",
+    "meridian": "肝肺胃经",
+    "effect": "息风止痉，祛风止痛，化痰散结",
+    "component": "僵蚕蛋白、氨基酸、挥发油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "石决明",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "平肝潜阳，清肝明目",
+    "component": "碳酸钙、珍珠层粉、微量元素",
+    "dosage": "10-30g"
+  },
+  {
+    "name": "珍珠母",
+    "category": "平肝熄风药",
+    "meridian": "心肝经",
+    "effect": "平肝潜阳，安神定惊，明目退翳",
+    "component": "碳酸钙、珍珠层粉、微量元素",
+    "dosage": "10-30g"
+  },
+  {
+    "name": "麝香",
+    "category": "开窍药",
+    "meridian": "心脾肝经",
+    "effect": "开窍醒神，活血通经，消肿止痛",
+    "component": "麝香酮、麝香吡啶、多肽类",
+    "dosage": "0.03-0.1g"
+  },
+  {
+    "name": "冰片",
+    "category": "开窍药",
+    "meridian": "心脾肺经",
+    "effect": "开窍醒神，清热止痛",
+    "component": "龙脑、挥发油、树脂",
+    "dosage": "0.15-0.3g"
+  },
+  {
+    "name": "苏合香",
+    "category": "开窍药",
+    "meridian": "心脾经",
+    "effect": "开窍辟秽，止痛",
+    "component": "苏合香树脂、桂皮酸、挥发油",
+    "dosage": "0.3-1g"
+  },
+  {
+    "name": "石菖蒲",
+    "category": "开窍药",
+    "meridian": "心胃经",
+    "effect": "开窍醒神，化湿和胃，宁神益智",
+    "component": "石菖蒲挥发油、α-细辛脑、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "蟾酥",
+    "category": "开窍药",
+    "meridian": "心经",
+    "effect": "开窍醒神，止痛，解毒",
+    "component": "蟾酥灵、蟾毒配基、氨基酸",
+    "dosage": "0.015-0.03g"
+  },
+  {
+    "name": "川乌",
+    "category": "祛风湿药",
+    "meridian": "心肝脾经",
+    "effect": "祛风除湿，温经止痛",
+    "component": "乌头碱、次乌头碱、中乌头碱",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "草乌",
+    "category": "祛风湿药",
+    "meridian": "心肝脾经",
+    "effect": "祛风除湿，温经止痛",
+    "component": "乌头碱、次乌头碱、乌头原碱",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "蕲蛇",
+    "category": "祛风湿药",
+    "meridian": "肝经",
+    "effect": "祛风通络，止痉止痒",
+    "component": "蕲蛇酶、蛋白质、氨基酸",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "乌梢蛇",
+    "category": "祛风湿药",
+    "meridian": "肝经",
+    "effect": "祛风通络，止痉",
+    "component": "乌梢蛇蛋白、氨基酸、微量元素",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "络石藤",
+    "category": "祛风湿药",
+    "meridian": "心肝经",
+    "effect": "祛风通络，凉血消肿",
+    "component": "络石苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "雷公藤",
+    "category": "祛风湿药",
+    "meridian": "肝经",
+    "effect": "祛风除湿，通络止痛，活血消肿",
+    "component": "雷公藤甲素、雷公藤红素、生物碱",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "伸筋草",
+    "category": "祛风湿药",
+    "meridian": "肝脾肾经",
+    "effect": "祛风除湿，舒筋活络",
+    "component": "伸筋草酮、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "海风藤",
+    "category": "祛风湿药",
+    "meridian": "肝经",
+    "effect": "祛风除湿，通络止痛",
+    "component": "海风藤苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "老鹳草",
+    "category": "祛风湿药",
+    "meridian": "肝大肠经",
+    "effect": "祛风除湿，通络止痛，清热利湿",
+    "component": "老鹳草素、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "穿山龙",
+    "category": "祛风湿药",
+    "meridian": "肝肾经",
+    "effect": "祛风除湿，舒筋通络，活血止痛",
+    "component": "薯蓣皂苷、薯蓣皂素、多糖",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "徐长卿",
+    "category": "祛风湿药",
+    "meridian": "肝胃经",
+    "effect": "祛风化湿，止痛止痒",
+    "component": "丹皮酚、徐长卿苷、挥发油",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "防己",
+    "category": "祛风湿药",
+    "meridian": "膀胱肾脾经",
+    "effect": "祛风除湿，止痛，利水消肿",
+    "component": "粉防己碱、防己诺林碱、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "桑枝",
+    "category": "祛风湿药",
+    "meridian": "肝经",
+    "effect": "祛风通络，利关节",
+    "component": "桑枝苷、黄酮、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "大黄",
+    "category": "泻下药",
+    "meridian": "脾胃大肠肝心经",
+    "effect": "泻下攻积，清热泻火，凉血解毒，逐瘀通经，利湿退黄",
+    "component": "大黄素、大黄酸、蒽醌类",
+    "dosage": "3-15g"
+  },
+  {
+    "name": "芒硝",
+    "category": "泻下药",
+    "meridian": "胃大肠经",
+    "effect": "泻下通便，润燥软坚，清火消肿",
+    "component": "硫酸钠、微量元素",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "番泻叶",
+    "category": "泻下药",
+    "meridian": "大肠经",
+    "effect": "泻下通便",
+    "component": "番泻叶苷、蒽醌类",
+    "dosage": "2-6g"
+  },
+  {
+    "name": "芦荟",
+    "category": "泻下药",
+    "meridian": "肝大肠经",
+    "effect": "泻下通便，清肝杀虫",
+    "component": "芦荟素、芦荟大黄素、多糖",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "火麻仁",
+    "category": "泻下药",
+    "meridian": "脾胃大肠经",
+    "effect": "润肠通便",
+    "component": "脂肪油、蛋白质、维生素",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "郁李仁",
+    "category": "泻下药",
+    "meridian": "脾大肠经",
+    "effect": "润肠通便，利水消肿",
+    "component": "郁李仁苷、脂肪油、挥发油",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "甘遂",
+    "category": "泻下药",
+    "meridian": "脾肺肾经",
+    "effect": "泻水逐饮，消肿散结",
+    "component": "甘遂素、三萜类、挥发油",
+    "dosage": "0.5-1.5g"
+  },
+  {
+    "name": "芫花",
+    "category": "泻下药",
+    "meridian": "脾肺肾经",
+    "effect": "泻水逐饮，祛痰止咳，外用杀虫",
+    "component": "芫花素、挥发油、黄酮",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "牵牛子",
+    "category": "泻下药",
+    "meridian": "肺肾大肠经",
+    "effect": "泻水逐饮，消痰涤饮，杀虫攻积",
+    "component": "牵牛子苷、脂肪油、挥发油",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "巴豆",
+    "category": "泻下药",
+    "meridian": "胃大肠经",
+    "effect": "峻下冷积，逐水退肿，豁痰利咽；外用蚀疮",
+    "component": "巴豆油、巴豆素、蛋白质",
+    "dosage": "0.1-0.3g"
+  },
+  {
+    "name": "香薷",
+    "category": "祛暑药",
+    "meridian": "肺膀胱经",
+    "effect": "发汗解表，化湿和中，利水消肿",
+    "component": "香薷酮、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "藿香",
+    "category": "祛暑药",
+    "meridian": "脾胃肺经",
+    "effect": "芳香化浊，和中止呕，发表解暑",
+    "component": "藿香酮、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "佩兰",
+    "category": "祛暑药",
+    "meridian": "脾胃经",
+    "effect": "芳香化湿，醒脾开胃，发表解暑",
+    "component": "佩兰酮、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "青蒿",
+    "category": "清虚热药",
+    "meridian": "肝胆肾经",
+    "effect": "清虚热，除骨蒸，解暑热，截疟，退黄",
+    "component": "青蒿素、青蒿琥酯、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "地骨皮",
+    "category": "清虚热药",
+    "meridian": "肺肝肾经",
+    "effect": "退虚热，凉血，清肺降火，生津",
+    "component": "地骨皮苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "银柴胡",
+    "category": "清虚热药",
+    "meridian": "肝经",
+    "effect": "退虚热，除疳热",
+    "component": "银柴胡苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "胡黄连",
+    "category": "清虚热药",
+    "meridian": "肝胃大肠经",
+    "effect": "退虚热，除疳热，清湿热",
+    "component": "胡黄连苷、挥发油、三萜类",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "夏枯草",
+    "category": "清热药",
+    "meridian": "肝胆经",
+    "effect": "清肝泻火，明目，散结消肿",
+    "component": "夏枯草苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "苍术",
+    "category": "芳香化湿药",
+    "meridian": "脾胃肝经",
+    "effect": "燥湿健脾，祛风散寒，明目",
+    "component": "苍术素、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "厚朴",
+    "category": "芳香化湿药",
+    "meridian": "脾胃肺大肠经",
+    "effect": "燥湿消痰，下气除满",
+    "component": "厚朴酚、挥发油、生物碱",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "豆蔻",
+    "category": "芳香化湿药",
+    "meridian": "脾胃肺经",
+    "effect": "化湿行气，温中止呕，开胃消食",
+    "component": "豆蔻挥发油、豆蔻素、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "草果",
+    "category": "芳香化湿药",
+    "meridian": "脾胃经",
+    "effect": "燥湿温中，截疟除痰",
+    "component": "草果挥发油、草果素、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "太子参",
+    "category": "补虚药",
+    "meridian": "脾肺经",
+    "effect": "益气健脾，生津润肺",
+    "component": "太子参多糖、皂苷、氨基酸",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "大枣",
+    "category": "补虚药",
+    "meridian": "脾胃经",
+    "effect": "补中益气，养血安神",
+    "component": "大枣多糖、环磷酸腺苷、氨基酸",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "刺五加",
+    "category": "补虚药",
+    "meridian": "肝脾肾经",
+    "effect": "益气健脾，补肾安神",
+    "component": "刺五加苷、挥发油、黄酮",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "绞股蓝",
+    "category": "补虚药",
+    "meridian": "脾肺肾经",
+    "effect": "益气健脾，化痰止咳，清热解毒",
+    "component": "绞股蓝皂苷、多糖、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "红景天",
+    "category": "补虚药",
+    "meridian": "心肝脾经",
+    "effect": "益气活血，通脉平喘",
+    "component": "红景天苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "沙棘",
+    "category": "补虚药",
+    "meridian": "脾胃肺经",
+    "effect": "健脾消食，止咳祛痰，活血散瘀",
+    "component": "沙棘多糖、黄酮、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "仙茅",
+    "category": "补虚药",
+    "meridian": "肾肝脾经",
+    "effect": "补肾阳，强筋骨，祛寒湿",
+    "component": "仙茅苷、仙茅素、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "海马",
+    "category": "补虚药",
+    "meridian": "肝肾功能经",
+    "effect": "温肾壮阳，散结消肿",
+    "component": "海马蛋白、氨基酸、微量元素",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "紫河车",
+    "category": "补虚药",
+    "meridian": "肺肝肾经",
+    "effect": "补肾益精，养血益气",
+    "component": "紫河车蛋白、氨基酸、激素",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "蛤蚧",
+    "category": "补虚药",
+    "meridian": "肺肾经",
+    "effect": "补肺益肾，纳气定喘，助阳益精",
+    "component": "蛤蚧蛋白、氨基酸、挥发油",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "龙眼肉",
+    "category": "补虚药",
+    "meridian": "心脾经",
+    "effect": "补益心脾，养血安神",
+    "component": "龙眼多糖、氨基酸、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "狗脊",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "祛风湿，补肝肾，强腰膝",
+    "component": "狗脊苷、挥发油、鞣质",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "南沙参",
+    "category": "补虚药",
+    "meridian": "肺胃经",
+    "effect": "养阴清肺，化痰益气",
+    "component": "南沙参多糖、皂苷、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "北沙参",
+    "category": "补虚药",
+    "meridian": "肺胃经",
+    "effect": "养阴清肺，益胃生津",
+    "component": "北沙参多糖、皂苷、挥发油",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "玉竹",
+    "category": "补虚药",
+    "meridian": "肺胃经",
+    "effect": "养阴润燥，生津止渴",
+    "component": "玉竹多糖、皂苷、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "石斛",
+    "category": "补虚药",
+    "meridian": "胃肾经",
+    "effect": "益胃生津，滋阴清热",
+    "component": "石斛碱、石斛多糖、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "天冬",
+    "category": "补虚药",
+    "meridian": "肺肾经",
+    "effect": "养阴润燥，清肺生津",
+    "component": "天冬多糖、天冬酰胺、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "百合",
+    "category": "补虚药",
+    "meridian": "肺心经",
+    "effect": "养阴润肺，清心安神",
+    "component": "百合多糖、百合苷、秋水仙碱",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "墨旱莲",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "滋补肝肾，凉血止血",
+    "component": "墨旱莲苷、黄酮、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "女贞子",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "滋补肝肾，明目乌发",
+    "component": "女贞子苷、齐墩果酸、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "何首乌",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补肝肾，益精血，乌须发，强筋骨",
+    "component": "蒽醌类、二苯乙烯苷、卵磷脂",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "生地黄",
+    "category": "补虚药",
+    "meridian": "心肝肺肾经",
+    "effect": "清热凉血，养阴生津",
+    "component": "地黄多糖、梓醇、挥发油",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "鳖甲",
+    "category": "补虚药",
+    "meridian": "肝脾肾经",
+    "effect": "滋阴退热，软坚散结",
+    "component": "鳖甲蛋白、氨基酸、微量元素",
+    "dosage": "9-24g"
+  },
+  {
+    "name": "龟甲",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "滋阴潜阳，益肾强骨，养血补心",
+    "component": "龟甲蛋白、氨基酸、微量元素",
+    "dosage": "9-24g"
+  },
+  {
+    "name": "灵芝",
+    "category": "安神药",
+    "meridian": "心肝肾经",
+    "effect": "补气安神，止咳平喘",
+    "component": "灵芝多糖、灵芝酸、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "黑芝麻",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补肝肾，益精血，润肠通便",
+    "component": "芝麻素、脂肪油、蛋白质",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "胡桃肉",
+    "category": "补虚药",
+    "meridian": "肾肺大肠经",
+    "effect": "补肾温肺，润肠通便",
+    "component": "胡桃油、核桃蛋白、维生素",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "海龙",
+    "category": "补虚药",
+    "meridian": "肝肾功能经",
+    "effect": "温肾壮阳，散结消肿",
+    "component": "海龙蛋白、氨基酸、微量元素",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "沙参",
+    "category": "补虚药",
+    "meridian": "肺胃经",
+    "effect": "养阴清肺，益胃生津",
+    "component": "沙参多糖、皂苷、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "鹿角胶",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "温补肝肾，益精养血",
+    "component": "鹿角胶蛋白、氨基酸、微量元素",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "龟甲胶",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "滋阴养血，补心安神",
+    "component": "龟甲胶蛋白、氨基酸、微量元素",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "糯稻根",
+    "category": "收涩药",
+    "meridian": "心肝经",
+    "effect": "固表止汗，退虚热",
+    "component": "糯稻根素、挥发油、氨基酸",
+    "dosage": "30-60g"
+  },
+  {
+    "name": "苏叶",
+    "category": "解表药",
+    "meridian": "肺脾经",
+    "effect": "解表散寒，行气和胃",
+    "component": "紫苏醛、紫苏酮、挥发油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "葱白",
+    "category": "解表药",
+    "meridian": "肺胃经",
+    "effect": "发汗解表，散寒通阳",
+    "component": "葱白发油、大蒜素、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "胡荽",
+    "category": "解表药",
+    "meridian": "肺胃经",
+    "effect": "发表透疹，开胃消食",
+    "component": "胡荽挥发油、胡荽素、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "柽柳",
+    "category": "解表药",
+    "meridian": "肺胃心经",
+    "effect": "发表透疹，祛风除湿",
+    "component": "柽柳苷、挥发油、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "白薇",
+    "category": "清虚热药",
+    "meridian": "胃肝肺经",
+    "effect": "清热凉血，利尿通淋，解毒疗疮",
+    "component": "白薇苷、挥发油、黄酮",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "紫雪丹",
+    "category": "开窍药",
+    "meridian": "心肝经",
+    "effect": "清热开窍，息风止痉",
+    "component": "水牛角、麝香、朱砂",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "安宫牛黄丸",
+    "category": "开窍药",
+    "meridian": "心肝经",
+    "effect": "清热解毒，开窍醒神",
+    "component": "牛黄、麝香、水牛角浓缩粉",
+    "dosage": "3g"
+  },
+  {
+    "name": "至宝丹",
+    "category": "开窍药",
+    "meridian": "心肝经",
+    "effect": "化浊开窍，清热解毒",
+    "component": "麝香、牛黄、水牛角",
+    "dosage": "3g"
+  },
+  {
+    "name": "紫金锭",
+    "category": "开窍药",
+    "meridian": "心肝经",
+    "effect": "辟瘟解毒，消肿止痛",
+    "component": "麝香、雄黄、山慈菇",
+    "dosage": "0.6-1.5g"
+  },
+  {
+    "name": "大承气汤",
+    "category": "泻下药",
+    "meridian": "脾胃大肠肝心经",
+    "effect": "峻下热结",
+    "component": "大黄、厚朴、枳实、芒硝",
+    "dosage": "3-15g"
+  },
+  {
+    "name": "小承气汤",
+    "category": "泻下药",
+    "meridian": "脾胃大肠经",
+    "effect": "轻下热结",
+    "component": "大黄、厚朴、枳实",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "调胃承气汤",
+    "category": "泻下药",
+    "meridian": "脾胃大肠经",
+    "effect": "缓下热结",
+    "component": "大黄、芒硝、甘草",
+    "dosage": "3-12g"
+  },
+  {
+    "name": "西瓜翠衣",
+    "category": "祛暑药",
+    "meridian": "心脾胃经",
+    "effect": "清暑除烦，生津止渴",
+    "component": "西瓜翠衣苷、挥发油、糖类",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "扁豆花",
+    "category": "祛暑药",
+    "meridian": "脾胃经",
+    "effect": "解暑化湿",
+    "component": "扁豆花苷、挥发油、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "绿豆衣",
+    "category": "祛暑药",
+    "meridian": "心胃经",
+    "effect": "清暑热，除烦",
+    "component": "绿豆衣苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "大豆黄卷",
+    "category": "祛暑药",
+    "meridian": "肺胃经",
+    "effect": "清暑利湿",
+    "component": "大豆黄卷苷、挥发油、氨基酸",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "赤小豆",
+    "category": "利水渗湿药",
+    "meridian": "心脾胃经",
+    "effect": "利水消肿，解毒排脓",
+    "component": "赤小豆苷、挥发油、蛋白质",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "黑豆",
+    "category": "利水渗湿药",
+    "meridian": "脾经",
+    "effect": "利水，祛风，解毒",
+    "component": "黑豆蛋白、脂肪油、维生素",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "绿豆",
+    "category": "清热药",
+    "meridian": "心胃经",
+    "effect": "清热，解毒，消暑，除烦",
+    "component": "绿豆蛋白、脂肪油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "冬瓜仁",
+    "category": "利水渗湿药",
+    "meridian": "肺脾经",
+    "effect": "清肺化痰，消痈排脓，利水",
+    "component": "冬瓜仁苷、脂肪油、挥发油",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "瓜蒌仁",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺胃大肠经",
+    "effect": "润肺化痰，滑肠通便",
+    "component": "瓜蒌仁苷、脂肪油、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "白芥子",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺胃经",
+    "effect": "温肺豁痰利气，散结通络止痛",
+    "component": "芥子苷、挥发油、脂肪油",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "桔梗",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "宣肺利咽，祛痰排脓",
+    "component": "桔梗皂苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "白果",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "敛肺平喘，收涩止带",
+    "component": "银杏苷、白果内酯、脂肪油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "白及",
+    "category": "止血药",
+    "meridian": "肺肝胃经",
+    "effect": "收敛止血，消肿生肌",
+    "component": "白及胶、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "仙鹤草",
+    "category": "止血药",
+    "meridian": "心肝肺经",
+    "effect": "收敛止血，截疟，止痢，解毒",
+    "component": "仙鹤草素、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "棕榈炭",
+    "category": "止血药",
+    "meridian": "肝肺大肠经",
+    "effect": "收敛止血",
+    "component": "棕榈炭素、挥发油、鞣质",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "血余炭",
+    "category": "止血药",
+    "meridian": "肝胃经",
+    "effect": "收敛止血，化瘀，利尿",
+    "component": "血余炭素、氨基酸、微量元素",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "灶心土",
+    "category": "止血药",
+    "meridian": "脾胃经",
+    "effect": "温中健脾，散寒止血",
+    "component": "硅酸盐、微量元素",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "大蓟",
+    "category": "止血药",
+    "meridian": "心肝经",
+    "effect": "凉血止血，散瘀解毒消痈",
+    "component": "大蓟苷、挥发油、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "小蓟",
+    "category": "止血药",
+    "meridian": "心肝经",
+    "effect": "凉血止血，散瘀解毒消痈",
+    "component": "小蓟苷、挥发油、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "地榆",
+    "category": "止血药",
+    "meridian": "肝胃大肠经",
+    "effect": "凉血止血，解毒敛疮",
+    "component": "地榆苷、挥发油、鞣质",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "槐角",
+    "category": "止血药",
+    "meridian": "肝大肠经",
+    "effect": "凉血止血，清热明目",
+    "component": "槐角苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "槐花",
+    "category": "止血药",
+    "meridian": "肝大肠经",
+    "effect": "凉血止血，清肝泻火",
+    "component": "槐花苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "侧柏叶",
+    "category": "止血药",
+    "meridian": "肺肝脾经",
+    "effect": "凉血止血，化痰止咳，生发乌发",
+    "component": "侧柏叶苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "苎麻根",
+    "category": "止血药",
+    "meridian": "肝心胃经",
+    "effect": "凉血止血，清热利尿，安胎",
+    "component": "苎麻根苷、挥发油、黄酮",
+    "dosage": "10-30g"
+  },
+  {
+    "name": "金荞麦",
+    "category": "清热药",
+    "meridian": "肺经",
+    "effect": "清热解毒，排脓祛瘀",
+    "component": "金荞麦苷、挥发油、黄酮",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "千里光",
+    "category": "清热药",
+    "meridian": "肝脾经",
+    "effect": "清热解毒，明目，止痒",
+    "component": "千里光苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "狗尾草",
+    "category": "清热药",
+    "meridian": "肝经",
+    "effect": "清热利湿，祛风明目",
+    "component": "狗尾草苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "败酱草",
+    "category": "清热药",
+    "meridian": "肝胃大肠经",
+    "effect": "清热解毒，消痈排脓，化瘀止痛",
+    "component": "败酱草苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "大血藤",
+    "category": "清热药",
+    "meridian": "肝大肠经",
+    "effect": "清热解毒，活血止痛，祛风通络",
+    "component": "大血藤苷、挥发油、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "委陵菜",
+    "category": "清热药",
+    "meridian": "肝大肠经",
+    "effect": "清热解毒，凉血止痢",
+    "component": "委陵菜苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "鸦胆子",
+    "category": "清热药",
+    "meridian": "肝胃大肠经",
+    "effect": "清热解毒，截疟止痢，腐蚀赘疣",
+    "component": "鸦胆子素、挥发油、黄酮",
+    "dosage": "0.5-2g"
+  },
+  {
+    "name": "白头翁",
+    "category": "清热药",
+    "meridian": "胃大肠经",
+    "effect": "清热解毒，凉血止痢",
+    "component": "白头翁素、挥发油、三萜类",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "秦皮",
+    "category": "清热药",
+    "meridian": "肝胆大肠经",
+    "effect": "清热燥湿，收涩止痢，止带明目",
+    "component": "秦皮苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "马齿苋",
+    "category": "清热药",
+    "meridian": "肝大肠经",
+    "effect": "清热解毒，凉血止血，止痢",
+    "component": "马齿苋苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "白鲜皮",
+    "category": "清热药",
+    "meridian": "脾胃经",
+    "effect": "清热燥湿，祛风解毒",
+    "component": "白鲜皮碱、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "土茯苓",
+    "category": "清热药",
+    "meridian": "肝胃经",
+    "effect": "解毒，除湿，利关节",
+    "component": "土茯苓苷、挥发油、黄酮",
+    "dosage": "15-60g"
+  },
+  {
+    "name": "牛黄",
+    "category": "清热药",
+    "meridian": "心肝经",
+    "effect": "清热解毒，息风止痉，化痰开窍",
+    "component": "胆酸、胆红素、胆固醇",
+    "dosage": "0.15-0.35g"
+  },
+  {
+    "name": "熊胆",
+    "category": "清热药",
+    "meridian": "心肝肺经",
+    "effect": "清热解毒，息风止痉，明目",
+    "component": "熊胆酸、氨基酸",
+    "dosage": "0.2-0.5g"
+  },
+  {
+    "name": "功劳叶",
+    "category": "清热药",
+    "meridian": "肺肝经",
+    "effect": "清热燥湿，泻火解毒",
+    "component": "功劳叶苷、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "马尾连",
+    "category": "清热药",
+    "meridian": "心脾胃经",
+    "effect": "清热燥湿，泻火解毒",
+    "component": "马尾连碱、小檗碱",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "冬凌草",
+    "category": "清热药",
+    "meridian": "肺胃经",
+    "effect": "清热解毒，消肿散结",
+    "component": "冬凌草素、挥发油",
+    "dosage": "30-60g"
+  },
+  {
+    "name": "三叶青",
+    "category": "清热药",
+    "meridian": "肺肝经",
+    "effect": "清热解毒，消肿散结，化痰止咳",
+    "component": "三叶青苷、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "淡竹叶",
+    "category": "清热药",
+    "meridian": "心胃小肠经",
+    "effect": "清热除烦，利尿",
+    "component": "淡竹叶苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "谷精草",
+    "category": "清热药",
+    "meridian": "肝经",
+    "effect": "疏散风热，明目退翳",
+    "component": "谷精草苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "五加皮",
+    "category": "祛风湿药",
+    "meridian": "肝肾经",
+    "effect": "祛风湿，补肝肾，强筋骨，利水消肿",
+    "component": "五加皮苷、挥发油、黄酮",
+    "dosage": "6-9g"
+  },
+  {
+    "name": "白豆蔻",
+    "category": "芳香化湿药",
+    "meridian": "肺脾胃经",
+    "effect": "化湿行气，温中止呕",
+    "component": "白豆蔻挥发油、白豆蔻苷、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "草豆蔻",
+    "category": "芳香化湿药",
+    "meridian": "脾胃经",
+    "effect": "燥湿，温中，行气",
+    "component": "草豆蔻挥发油、草豆蔻苷、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "刺蒺藜",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "平肝解郁，活血祛风，明目，止痒",
+    "component": "蒺藜苷、蒺藜碱、挥发油",
+    "dosage": "6-9g"
+  },
+  {
+    "name": "罗布麻",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "平肝潜阳，清热利尿",
+    "component": "罗布麻苷、罗布麻碱、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "蜂房",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝胃经",
+    "effect": "攻毒杀虫，祛风止痛",
+    "component": "蜂房蛋白、挥发油、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "大蒜",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "脾胃肺经",
+    "effect": "解毒消肿，杀虫，止痢",
+    "component": "大蒜素、挥发油、氨基酸",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "松花粉",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝胃经",
+    "effect": "外用收敛止血，燥湿止痒",
+    "component": "松花粉蛋白、脂肪油、微量元素",
+    "dosage": "外用适量"
+  },
+  {
+    "name": "皂矾",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝脾经",
+    "effect": "外用解毒杀虫止痒，内服补血",
+    "component": "硫酸亚铁、微量元素",
+    "dosage": "0.8-1.5g"
+  },
+  {
+    "name": "大戟",
+    "category": "泻下药",
+    "meridian": "肺肾大肠经",
+    "effect": "泻水逐饮，消肿散结",
+    "component": "大戟素、挥发油、三萜类",
+    "dosage": "0.5-1.5g"
+  },
+  {
+    "name": "商陆",
+    "category": "泻下药",
+    "meridian": "肺肾大肠经",
+    "effect": "泻下逐水，消肿散结",
+    "component": "商陆素、挥发油、三萜类",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "千金子",
+    "category": "泻下药",
+    "meridian": "肝大肠经",
+    "effect": "峻下逐水，破血通经",
+    "component": "千金子素、挥发油、脂肪油",
+    "dosage": "0.5-1g"
+  },
+  {
+    "name": "脆蛇蜥",
+    "category": "祛风湿药",
+    "meridian": "肝经",
+    "effect": "祛风通络，活血止痛",
+    "component": "脆蛇蜥蛋白、氨基酸、微量元素",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "合欢花",
+    "category": "安神药",
+    "meridian": "心肝经",
+    "effect": "解郁安神",
+    "component": "合欢花苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "紫苏",
+    "category": "解表药",
+    "meridian": "肺脾经",
+    "effect": "解表散寒，行气和胃，解鱼蟹毒",
+    "component": "紫苏醛、紫苏酮、挥发油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "野菊花",
+    "category": "清热药",
+    "meridian": "肺肝经",
+    "effect": "清热解毒，消肿",
+    "component": "野菊花苷、挥发油、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "紫花地丁",
+    "category": "清热药",
+    "meridian": "心肝经",
+    "effect": "清热解毒，凉血消肿",
+    "component": "紫花地丁苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "大青叶",
+    "category": "清热药",
+    "meridian": "心肝胃经",
+    "effect": "清热解毒，凉血消斑",
+    "component": "大青叶苷、靛玉红、挥发油",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "青黛",
+    "category": "清热药",
+    "meridian": "肝肺经",
+    "effect": "清热解毒，凉血消斑，清肝泻火，定惊",
+    "component": "青黛素、靛蓝、黄酮",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "贯众",
+    "category": "清热药",
+    "meridian": "肝脾经",
+    "effect": "清热解毒，凉血止血，杀虫",
+    "component": "贯众苷、挥发油、黄酮",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "鱼腥草",
+    "category": "清热药",
+    "meridian": "肺经",
+    "effect": "清热解毒，消痈排脓，利尿通淋",
+    "component": "鱼腥草素、挥发油、黄酮",
+    "dosage": "15-25g"
+  },
+  {
+    "name": "红藤",
+    "category": "清热药",
+    "meridian": "肝大肠经",
+    "effect": "清热解毒，活血止痛，祛风通络",
+    "component": "红藤苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "山豆根",
+    "category": "清热药",
+    "meridian": "肺胃经",
+    "effect": "清热解毒，消肿利咽",
+    "component": "山豆根碱、挥发油、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "马勃",
+    "category": "清热药",
+    "meridian": "肺经",
+    "effect": "清肺利咽，止血",
+    "component": "马勃素、挥发油、氨基酸",
+    "dosage": "2-6g"
+  },
+  {
+    "name": "龙胆草",
+    "category": "清热药",
+    "meridian": "肝胆经",
+    "effect": "清热燥湿，泻肝胆火",
+    "component": "龙胆草苷、龙胆苦苷、挥发油",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "车前草",
+    "category": "利水渗湿药",
+    "meridian": "肝肺小肠经",
+    "effect": "清热利尿，祛痰，凉血，解毒",
+    "component": "车前草苷、挥发油、黄酮",
+    "dosage": "10-20g"
+  },
+  {
+    "name": "萆薢",
+    "category": "利水渗湿药",
+    "meridian": "胃肾经",
+    "effect": "利湿去浊，祛风除痹",
+    "component": "萆薢苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "石韦",
+    "category": "利水渗湿药",
+    "meridian": "肺膀胱经",
+    "effect": "利尿通淋，清肺止咳，凉血止血",
+    "component": "石韦苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "冬葵子",
+    "category": "利水渗湿药",
+    "meridian": "大肠膀胱经",
+    "effect": "利水通淋，滑肠通便，下乳",
+    "component": "冬葵子素、挥发油、脂肪油",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "川木通",
+    "category": "利水渗湿药",
+    "meridian": "心小肠膀胱经",
+    "effect": "清热利尿，通经下乳",
+    "component": "川木通苷、挥发油、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "山药",
+    "category": "补虚药",
+    "meridian": "脾肺肾经",
+    "effect": "补脾养胃，生津益肺，补肾涩精",
+    "component": "山药多糖、薯蓣皂苷、粘液质",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "扁豆",
+    "category": "补虚药",
+    "meridian": "脾胃经",
+    "effect": "健脾化湿，和中消暑",
+    "component": "扁豆蛋白、扁豆苷、脂肪油",
+    "dosage": "10-20g"
+  },
+  {
+    "name": "阿胶",
+    "category": "补虚药",
+    "meridian": "肺肝肾经",
+    "effect": "补血滋阴，润燥，止血",
+    "component": "阿胶蛋白、氨基酸、微量元素",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "蜀椒",
+    "category": "温里药",
+    "meridian": "脾胃肾经",
+    "effect": "温中止痛，杀虫止痒",
+    "component": "花椒挥发油、花椒碱、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "苏梗",
+    "category": "解表药",
+    "meridian": "肺脾经",
+    "effect": "理气宽中，止痛，安胎",
+    "component": "苏梗挥发油、苏梗苷、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "预知子",
+    "category": "理气药",
+    "meridian": "肝胃经",
+    "effect": "疏肝解郁，活血止痛，散结",
+    "component": "预知子苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "豨莶草",
+    "category": "祛风湿药",
+    "meridian": "肝脾肾经",
+    "effect": "祛风湿，利关节，解毒",
+    "component": "豨莶草苷、挥发油、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "路路通",
+    "category": "祛风湿药",
+    "meridian": "肝脾肾经",
+    "effect": "祛风湿，通经络，利水，下乳",
+    "component": "路路通苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "珠子参",
+    "category": "补虚药",
+    "meridian": "肺肝胃经",
+    "effect": "补肺养阴，祛瘀止痛，止血",
+    "component": "珠子参皂苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "椿皮",
+    "category": "清热药",
+    "meridian": "肝胃大肠经",
+    "effect": "清热燥湿，收涩止痢，止带，止血",
+    "component": "椿皮苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "半枝莲",
+    "category": "清热药",
+    "meridian": "肺肝经",
+    "effect": "清热解毒，化瘀利尿",
+    "component": "半枝莲苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "白花蛇舌草",
+    "category": "清热药",
+    "meridian": "肺肝经",
+    "effect": "清热解毒，利湿通淋",
+    "component": "白花蛇舌草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "山慈菇",
+    "category": "清热药",
+    "meridian": "肝脾胃经",
+    "effect": "清热解毒，化痰散结",
+    "component": "山慈菇苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "猫爪草",
+    "category": "清热药",
+    "meridian": "肝肺经",
+    "effect": "化痰散结，解毒消肿",
+    "component": "猫爪草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "木蝴蝶",
+    "category": "清热药",
+    "meridian": "肺肝胃经",
+    "effect": "清肺利咽，疏肝和胃",
+    "component": "木蝴蝶苷、挥发油、黄酮",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "瓦楞子",
+    "category": "清热药",
+    "meridian": "肺胃肝经",
+    "effect": "消痰化瘀，软坚散结，制酸止痛",
+    "component": "碳酸钙、贝壳素、微量元素",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "海蛤壳",
+    "category": "清热药",
+    "meridian": "肺胃经",
+    "effect": "清热化痰，软坚散结，制酸止痛",
+    "component": "碳酸钙、蛤壳素、微量元素",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "海浮石",
+    "category": "清热药",
+    "meridian": "肺肾经",
+    "effect": "清热化痰，软坚散结",
+    "component": "海浮石素、挥发油、微量元素",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "昆布",
+    "category": "清热药",
+    "meridian": "肝胃肾经",
+    "effect": "消痰软坚散结，利水消肿",
+    "component": "昆布多糖、褐藻酸钠、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "海藻",
+    "category": "清热药",
+    "meridian": "肝胃肾经",
+    "effect": "消痰软坚散结，利水消肿",
+    "component": "海藻多糖、褐藻酸钠、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "黄药子",
+    "category": "清热药",
+    "meridian": "肝胃经",
+    "effect": "化痰散结，凉血止血，解毒消肿",
+    "component": "黄药子苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "芜荑",
+    "category": "驱虫药",
+    "meridian": "脾胃经",
+    "effect": "杀虫消积",
+    "component": "芜荑苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "紫珠叶",
+    "category": "止血药",
+    "meridian": "肝肺经",
+    "effect": "收敛止血，凉血散瘀，消肿解毒",
+    "component": "紫珠叶苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "藕节",
+    "category": "止血药",
+    "meridian": "肝肺胃经",
+    "effect": "收敛止血，化瘀",
+    "component": "藕节苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "羊蹄",
+    "category": "止血药",
+    "meridian": "肝大肠经",
+    "effect": "凉血止血，解毒散结，杀虫",
+    "component": "羊蹄苷、大黄素、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "鹤虱",
+    "category": "驱虫药",
+    "meridian": "脾胃经",
+    "effect": "杀虫消积",
+    "component": "鹤虱苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "南瓜子",
+    "category": "驱虫药",
+    "meridian": "胃大肠经",
+    "effect": "杀虫",
+    "component": "南瓜子氨酸、南瓜子蛋白",
+    "dosage": "60-120g"
+  },
+  {
+    "name": "使君子",
+    "category": "驱虫药",
+    "meridian": "脾胃经",
+    "effect": "杀虫消积",
+    "component": "使君子氨酸、使君子苷",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "苦楝皮",
+    "category": "驱虫药",
+    "meridian": "肝脾胃经",
+    "effect": "杀虫，疗癣",
+    "component": "苦楝素、挥发油",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "橘核",
+    "category": "理气药",
+    "meridian": "肝经",
+    "effect": "理气散结，止痛",
+    "component": "橘核苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "枳壳",
+    "category": "理气药",
+    "meridian": "脾胃经",
+    "effect": "理气宽中，行滞消胀",
+    "component": "枳壳苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "香橼",
+    "category": "理气药",
+    "meridian": "肝肺脾经",
+    "effect": "疏肝理气，宽中化痰",
+    "component": "香橼挥发油、香橼苷、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "娑罗子",
+    "category": "理气药",
+    "meridian": "肝胃经",
+    "effect": "疏肝解郁，和胃止痛",
+    "component": "娑罗子苷、挥发油、三萜类",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "八月札",
+    "category": "理气药",
+    "meridian": "肝胃经",
+    "effect": "疏肝理气，健脾和胃，散结",
+    "component": "八月札苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "茯苓皮",
+    "category": "利水渗湿药",
+    "meridian": "肺脾肾经",
+    "effect": "利水消肿",
+    "component": "茯苓皮多糖、茯苓酸、挥发油",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "薏苡仁",
+    "category": "利水渗湿药",
+    "meridian": "脾胃肺经",
+    "effect": "利水渗湿，健脾止泻，除痹，排脓",
+    "component": "薏苡仁酯、薏苡素、蛋白质",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "赤茯苓",
+    "category": "利水渗湿药",
+    "meridian": "心脾经",
+    "effect": "利水渗湿，益心脾",
+    "component": "赤茯苓多糖、挥发油、三萜类",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "半边莲",
+    "category": "利水渗湿药",
+    "meridian": "心小肠经",
+    "effect": "利水消肿，清热解毒",
+    "component": "半边莲碱、挥发油、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "瞿麦",
+    "category": "利水渗湿药",
+    "meridian": "心小肠经",
+    "effect": "利尿通淋，活血通经",
+    "component": "瞿麦苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "灯心草",
+    "category": "利水渗湿药",
+    "meridian": "心肺小肠经",
+    "effect": "清心降火，利尿通淋",
+    "component": "灯心草苷、挥发油、黄酮",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "茵陈",
+    "category": "利水渗湿药",
+    "meridian": "脾胃肝胆经",
+    "effect": "清利湿热，利胆退黄",
+    "component": "茵陈挥发油、茵陈苷、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "地肤子",
+    "category": "利水渗湿药",
+    "meridian": "膀胱经",
+    "effect": "清热利湿，祛风止痒",
+    "component": "地肤子皂苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "冬瓜子",
+    "category": "利水渗湿药",
+    "meridian": "肺脾经",
+    "effect": "清肺化痰，消痈排脓，利水",
+    "component": "冬瓜子苷、脂肪油、挥发油",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "千年健",
+    "category": "祛风湿药",
+    "meridian": "肝肾经",
+    "effect": "祛风湿，壮筋骨",
+    "component": "千年健苷、挥发油、黄酮",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "钻地风",
+    "category": "祛风湿药",
+    "meridian": "肝脾经",
+    "effect": "祛风湿，通络止痛",
+    "component": "钻地风苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "海桐皮",
+    "category": "祛风湿药",
+    "meridian": "肝脾经",
+    "effect": "祛风湿，通络止痛，杀虫止痒",
+    "component": "海桐皮苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "松节",
+    "category": "舒筋活络药",
+    "meridian": "心肝经",
+    "effect": "祛风燥湿，舒筋通络",
+    "component": "松节油、松香、挥发油",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "红豆蔻",
+    "category": "芳香化湿药",
+    "meridian": "脾胃经",
+    "effect": "散寒燥湿，醒脾消食",
+    "component": "红豆蔻挥发油、红豆蔻苷、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "松子仁",
+    "category": "泻下药",
+    "meridian": "肝肺大肠经",
+    "effect": "润肠通便，润肺止咳",
+    "component": "松子仁苷、挥发油、脂肪油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "金钱草",
+    "category": "利水渗湿药",
+    "meridian": "肝胆肾膀胱经",
+    "effect": "利湿退黄，利尿通淋，解毒消肿",
+    "component": "金钱草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "海金沙",
+    "category": "利水渗湿药",
+    "meridian": "膀胱小肠经",
+    "effect": "清热利尿，通淋止痛",
+    "component": "海金沙素、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "青果",
+    "category": "清热药",
+    "meridian": "肺胃经",
+    "effect": "清热解毒，利咽生津",
+    "component": "青果苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "锦灯笼",
+    "category": "清热药",
+    "meridian": "肺经",
+    "effect": "清热解毒，利咽化痰，利尿",
+    "component": "锦灯笼苷、挥发油、黄酮",
+    "dosage": "5-9g"
+  },
+  {
+    "name": "白蔹",
+    "category": "清热药",
+    "meridian": "心胃经",
+    "effect": "清热解毒，消痈散结，敛疮生肌",
+    "component": "白蔹苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "漏芦",
+    "category": "清热药",
+    "meridian": "胃经",
+    "effect": "清热解毒，消痈散结，通经下乳",
+    "component": "漏芦苷、挥发油、黄酮",
+    "dosage": "5-9g"
+  },
+  {
+    "name": "重楼",
+    "category": "清热药",
+    "meridian": "肝经",
+    "effect": "清热解毒，消肿止痛，凉肝定惊",
+    "component": "重楼皂苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "琥珀",
+    "category": "安神药",
+    "meridian": "心肝膀胱经",
+    "effect": "镇惊安神，活血散瘀，利尿通淋",
+    "component": "琥珀酸、树脂、挥发油",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "珍珠",
+    "category": "安神药",
+    "meridian": "心肝经",
+    "effect": "安神定惊，明目消翳，解毒生肌",
+    "component": "碳酸钙、珍珠蛋白、微量元素",
+    "dosage": "0.3-1g"
+  },
+  {
+    "name": "龙齿",
+    "category": "安神药",
+    "meridian": "心肝经",
+    "effect": "镇惊安神，清热除烦",
+    "component": "钙盐、微量元素",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "臭梧桐",
+    "category": "祛风湿药",
+    "meridian": "肝经",
+    "effect": "祛风湿，降血压",
+    "component": "臭梧桐苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "胡芦巴",
+    "category": "补虚药",
+    "meridian": "肾肝经",
+    "effect": "补肾阳，祛寒湿",
+    "component": "胡芦巴碱、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "韭子",
+    "category": "补虚药",
+    "meridian": "肾肝经",
+    "effect": "补肝肾，壮阳固精",
+    "component": "韭子苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "阳起石",
+    "category": "补虚药",
+    "meridian": "肾经",
+    "effect": "温肾壮阳",
+    "component": "硅酸盐、微量元素",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "潼蒺藜",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补肾壮阳，固精缩尿，养肝明目",
+    "component": "潼蒺藜苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "脐带",
+    "category": "补虚药",
+    "meridian": "肺肾经",
+    "effect": "补肾，纳气，敛汗",
+    "component": "脐带蛋白、氨基酸、微量元素",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "雪莲花",
+    "category": "补虚药",
+    "meridian": "肝脾肾经",
+    "effect": "补肾阳，强筋骨，调经止血",
+    "component": "雪莲花苷、挥发油、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "明党参",
+    "category": "补虚药",
+    "meridian": "肺胃肝经",
+    "effect": "润肺化痰，养阴和胃，平肝解毒",
+    "component": "明党参苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "竹节参",
+    "category": "补虚药",
+    "meridian": "肺肝胃经",
+    "effect": "滋补强壮，散瘀止痛，止血祛痰",
+    "component": "竹节参皂苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "太白参",
+    "category": "补虚药",
+    "meridian": "脾肺肾经",
+    "effect": "补中益气，健脾和胃",
+    "component": "太白参苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "血人参",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补血，活血，调经",
+    "component": "血人参苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "三七",
+    "category": "补虚药",
+    "meridian": "肝胃经",
+    "effect": "散瘀止血，消肿定痛",
+    "component": "三七皂苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "紫贝齿",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "平肝潜阳，镇惊安神，清肝明目",
+    "component": "碳酸钙、紫贝齿素、微量元素",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "赭石",
+    "category": "平肝熄风药",
+    "meridian": "肝心经",
+    "effect": "平肝潜阳，降逆止呕，凉血止血",
+    "component": "三氧化二铁、微量元素",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "莶草",
+    "category": "祛风湿药",
+    "meridian": "肝脾肾经",
+    "effect": "祛风湿，利关节，解毒",
+    "component": "莶草苷、挥发油、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "鬼针草",
+    "category": "清热药",
+    "meridian": "肝肺大肠经",
+    "effect": "清热解毒，凉血止血，散瘀消肿",
+    "component": "鬼针草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "山葡萄",
+    "category": "清热药",
+    "meridian": "心肝肾经",
+    "effect": "清热利湿，散瘀止血",
+    "component": "山葡萄苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "天山雪莲",
+    "category": "补虚药",
+    "meridian": "肝脾肾经",
+    "effect": "补肾阳，强筋骨，调经止血",
+    "component": "雪莲苷、挥发油、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "金莲花",
+    "category": "清热药",
+    "meridian": "肺经",
+    "effect": "清热解毒，消肿",
+    "component": "金莲花苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "西青果",
+    "category": "清热药",
+    "meridian": "肺胃经",
+    "effect": "清热生津，解毒",
+    "component": "西青果苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "无花果",
+    "category": "清热药",
+    "meridian": "肺胃大肠经",
+    "effect": "清热生津，健脾开胃，解毒消肿",
+    "component": "无花果苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "金橘",
+    "category": "理气药",
+    "meridian": "肝胃肺经",
+    "effect": "理气，解郁，化痰，止渴",
+    "component": "金橘苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "代代花",
+    "category": "理气药",
+    "meridian": "肝胃经",
+    "effect": "理气解郁，和胃生津",
+    "component": "代代花苷、挥发油、黄酮",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "梅花",
+    "category": "理气药",
+    "meridian": "肝胃经",
+    "effect": "疏肝解郁，开胃生津",
+    "component": "梅花苷、挥发油、黄酮",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "玫瑰花",
+    "category": "理气药",
+    "meridian": "肝脾经",
+    "effect": "行气解郁，和血，止痛",
+    "component": "玫瑰花苷、挥发油、黄酮",
+    "dosage": "1.5-6g"
+  },
+  {
+    "name": "厚朴花",
+    "category": "理气药",
+    "meridian": "脾胃经",
+    "effect": "芳香化湿，理气宽中",
+    "component": "厚朴花苷、挥发油、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "砂仁壳",
+    "category": "芳香化湿药",
+    "meridian": "脾胃经",
+    "effect": "化湿行气，温中止呕",
+    "component": "砂仁壳挥发油、砂仁苷、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "白扁豆花",
+    "category": "补虚药",
+    "meridian": "脾胃经",
+    "effect": "解暑化湿，健脾和中",
+    "component": "白扁豆花苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "莲房",
+    "category": "止血药",
+    "meridian": "肝经",
+    "effect": "化瘀止血",
+    "component": "莲房苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "莲须",
+    "category": "收涩药",
+    "meridian": "心肾经",
+    "effect": "固肾涩精",
+    "component": "莲须苷、挥发油、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "猫眼草",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺肝经",
+    "effect": "祛痰，散结，解毒，消肿",
+    "component": "猫眼草苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "白屈菜",
+    "category": "清热药",
+    "meridian": "肺心胃经",
+    "effect": "清热解毒，消肿止痛",
+    "component": "白屈菜碱、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "绿萼梅",
+    "category": "理气药",
+    "meridian": "肝胃经",
+    "effect": "疏肝解郁，开胃生津",
+    "component": "绿萼梅苷、挥发油、黄酮",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "月季花",
+    "category": "活血化瘀药",
+    "meridian": "肝经",
+    "effect": "活血调经，疏肝解郁",
+    "component": "月季花苷、挥发油、黄酮",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "凌霄花",
+    "category": "活血化瘀药",
+    "meridian": "肝经",
+    "effect": "活血通经，凉血祛风",
+    "component": "凌霄花苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "急性子",
+    "category": "活血化瘀药",
+    "meridian": "肝脾经",
+    "effect": "破血，消癥，软坚",
+    "component": "急性子苷、挥发油、黄酮",
+    "dosage": "3-5g"
+  },
+  {
+    "name": "自然铜",
+    "category": "活血化瘀药",
+    "meridian": "肝经",
+    "effect": "散瘀止痛，续筋接骨",
+    "component": "二硫化铁、微量元素",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "落得打",
+    "category": "活血化瘀药",
+    "meridian": "肝经",
+    "effect": "活血消肿，续筋接骨",
+    "component": "落得打苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "接骨木",
+    "category": "活血化瘀药",
+    "meridian": "肝经",
+    "effect": "活血止痛，祛风利湿",
+    "component": "接骨木苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "虎耳草",
+    "category": "清热药",
+    "meridian": "肺胃经",
+    "effect": "清热解毒，凉血止血",
+    "component": "虎耳草苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "垂盆草",
+    "category": "清热药",
+    "meridian": "肝胆小肠经",
+    "effect": "清热利湿，解毒消肿",
+    "component": "垂盆草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "凤尾草",
+    "category": "清热药",
+    "meridian": "大肠肝经",
+    "effect": "清热利湿，凉血止血，解毒消肿",
+    "component": "凤尾草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "马鞭草",
+    "category": "清热药",
+    "meridian": "肝脾经",
+    "effect": "清热解毒，活血散瘀，利水消肿",
+    "component": "马鞭草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "连钱草",
+    "category": "清热药",
+    "meridian": "肝胆肾膀胱经",
+    "effect": "利湿通淋，清热解毒，散瘀消肿",
+    "component": "连钱草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "鸭跖草",
+    "category": "清热药",
+    "meridian": "肺胃膀胱经",
+    "effect": "清热泻火，解毒，利水",
+    "component": "鸭跖草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "葎草",
+    "category": "清热药",
+    "meridian": "肺肾经",
+    "effect": "清热解毒，利尿通淋",
+    "component": "葎草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "荠菜",
+    "category": "止血药",
+    "meridian": "肝经",
+    "effect": "凉肝止血，平肝明目，清热利湿",
+    "component": "荠菜苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "断血流",
+    "category": "止血药",
+    "meridian": "肝经",
+    "effect": "凉血止血，清热解毒",
+    "component": "断血流苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "铁苋菜",
+    "category": "止血药",
+    "meridian": "心大肠经",
+    "effect": "清热解毒，利湿，收敛止血",
+    "component": "铁苋菜苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "地锦草",
+    "category": "止血药",
+    "meridian": "肝大肠经",
+    "effect": "清热解毒，凉血止血，利湿退黄",
+    "component": "地锦草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "杠板归",
+    "category": "清热药",
+    "meridian": "肺膀胱经",
+    "effect": "清热解毒，利湿消肿，散瘀止血",
+    "component": "杠板归苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "翻白草",
+    "category": "清热药",
+    "meridian": "胃大肠经",
+    "effect": "清热解毒，凉血止血，消肿",
+    "component": "翻白草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "墓头回",
+    "category": "清热药",
+    "meridian": "大肠经",
+    "effect": "清热燥湿，止血，止带，截疟",
+    "component": "墓头回苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "天名精",
+    "category": "清热药",
+    "meridian": "肺经",
+    "effect": "清热解毒，祛痰，止血，杀虫",
+    "component": "天名精苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "黄荆子",
+    "category": "解表药",
+    "meridian": "肺肝经",
+    "effect": "祛风解表，止咳平喘",
+    "component": "黄荆子苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "黄荆叶",
+    "category": "解表药",
+    "meridian": "肺肝经",
+    "effect": "解表退热，利湿",
+    "component": "黄荆叶苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "牡荆子",
+    "category": "解表药",
+    "meridian": "肺肝经",
+    "effect": "祛风解表，止咳平喘",
+    "component": "牡荆子苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "牡荆叶",
+    "category": "解表药",
+    "meridian": "肺肝经",
+    "effect": "祛风解表，止咳平喘",
+    "component": "牡荆叶苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "凤眼草",
+    "category": "解表药",
+    "meridian": "肺经",
+    "effect": "清热解表，利湿",
+    "component": "凤眼草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "芸香",
+    "category": "解表药",
+    "meridian": "肺肝经",
+    "effect": "祛风解表，通经活络",
+    "component": "芸香苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "石香薷",
+    "category": "解表药",
+    "meridian": "肺经",
+    "effect": "发汗解表，化湿和中",
+    "component": "石香薷挥发油、石香薷苷、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "一枝黄花",
+    "category": "清热药",
+    "meridian": "肺肝经",
+    "effect": "清热解毒，消肿",
+    "component": "一枝黄花苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "六棱菊",
+    "category": "清热药",
+    "meridian": "肺经",
+    "effect": "清热解毒，利湿",
+    "component": "六棱菊苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "球兰",
+    "category": "清热药",
+    "meridian": "肝经",
+    "effect": "清热解毒，消肿",
+    "component": "球兰苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "乌蔹莓",
+    "category": "清热药",
+    "meridian": "心肝肾经",
+    "effect": "清热利湿，解毒消肿",
+    "component": "乌蔹莓苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "金铁锁",
+    "category": "清热药",
+    "meridian": "肝经",
+    "effect": "散瘀止血，消肿止痛",
+    "component": "金铁锁苷、挥发油、黄酮",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "金果榄",
+    "category": "清热药",
+    "meridian": "肺经",
+    "effect": "清热解毒，利咽止痛",
+    "component": "金果榄苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "拳参",
+    "category": "清热药",
+    "meridian": "肝经",
+    "effect": "清热解毒，消肿，止血",
+    "component": "拳参苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "布渣叶",
+    "category": "清热药",
+    "meridian": "肺经",
+    "effect": "清热利湿，消食化痰",
+    "component": "布渣叶苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "葫芦茶",
+    "category": "清热药",
+    "meridian": "肺肝膀胱经",
+    "effect": "清热解毒，利水消肿",
+    "component": "葫芦茶苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "黄狗肾",
+    "category": "补虚药",
+    "meridian": "肾经",
+    "effect": "补肾壮阳",
+    "component": "黄狗肾蛋白、氨基酸、微量元素",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "羊红膻",
+    "category": "补虚药",
+    "meridian": "肝脾肾经",
+    "effect": "补肾阳，强筋骨",
+    "component": "羊红膻苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "牛鞭",
+    "category": "补虚药",
+    "meridian": "肾经",
+    "effect": "补肾壮阳",
+    "component": "牛鞭蛋白、氨基酸、微量元素",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "驴鞭",
+    "category": "补虚药",
+    "meridian": "肾经",
+    "effect": "补肾壮阳",
+    "component": "驴鞭蛋白、氨基酸、微量元素",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "蚂蚁",
+    "category": "补虚药",
+    "meridian": "肝脾肾经",
+    "effect": "补肾壮阳，通络止痛",
+    "component": "蚂蚁蛋白、氨基酸、微量元素",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "虫夏草",
+    "category": "补虚药",
+    "meridian": "肺肾经",
+    "effect": "补肺益肾，止血化痰",
+    "component": "虫草素、虫草多糖、氨基酸",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "刺猬皮",
+    "category": "收涩药",
+    "meridian": "胃大肠经",
+    "effect": "收敛止血，缩尿",
+    "component": "刺猬皮蛋白、氨基酸、微量元素",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "含羞草",
+    "category": "安神药",
+    "meridian": "心肝肾经",
+    "effect": "宁心安神，清热解毒",
+    "component": "含羞草苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "林檎",
+    "category": "消食药",
+    "meridian": "肝胃经",
+    "effect": "下气化痰，消食",
+    "component": "林檎苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "山楂核",
+    "category": "消食药",
+    "meridian": "胃肝经",
+    "effect": "消食散瘀",
+    "component": "山楂核苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "稻芽",
+    "category": "消食药",
+    "meridian": "脾胃经",
+    "effect": "消食开胃",
+    "component": "稻芽苷、挥发油、氨基酸",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "茯苓",
+    "category": "利水渗湿药",
+    "meridian": "心脾肾经",
+    "effect": "利水渗湿，健脾，宁心",
+    "component": "茯苓多糖、茯苓酸、挥发油",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "葫芦壳",
+    "category": "利水渗湿药",
+    "meridian": "肺膀胱经",
+    "effect": "利水消肿",
+    "component": "葫芦壳苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "淡豆豉",
+    "category": "解表药",
+    "meridian": "肺胃经",
+    "effect": "解表，除烦，宣发郁热",
+    "component": "大豆苷、挥发油、氨基酸",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "大豆黄卷",
+    "category": "解表药",
+    "meridian": "肺胃经",
+    "effect": "解表祛暑，清热利湿",
+    "component": "大豆黄卷苷、挥发油、氨基酸",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "青葙子",
+    "category": "清热药",
+    "meridian": "肝经",
+    "effect": "清肝泻火，明目退翳",
+    "component": "青葙子苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "密蒙花",
+    "category": "清热药",
+    "meridian": "肝经",
+    "effect": "清热养肝，明目退翳",
+    "component": "密蒙花苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "木贼",
+    "category": "清热药",
+    "meridian": "肺肝经",
+    "effect": "疏散风热，明目退翳",
+    "component": "木贼苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "紫草",
+    "category": "清热药",
+    "meridian": "心肝经",
+    "effect": "清热凉血，活血，解毒透疹",
+    "component": "紫草素、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "太子参",
+    "category": "补虚药",
+    "meridian": "脾肺经",
+    "effect": "益气健脾，生津润肺",
+    "component": "太子参苷、挥发油、黄酮",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "黄精",
+    "category": "补虚药",
+    "meridian": "脾肺肾经",
+    "effect": "补气养阴，健脾，润肺，益肾",
+    "component": "黄精多糖、甾体皂苷、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "玉竹",
+    "category": "补虚药",
+    "meridian": "肺胃经",
+    "effect": "养阴润燥，生津止渴",
+    "component": "玉竹多糖、甾体皂苷、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "天冬",
+    "category": "补虚药",
+    "meridian": "肺肾经",
+    "effect": "养阴润燥，清肺生津",
+    "component": "天冬多糖、甾体皂苷、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "石斛",
+    "category": "补虚药",
+    "meridian": "胃肾经",
+    "effect": "益胃生津，滋阴清热",
+    "component": "石斛碱、石斛多糖、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "巴戟天",
+    "category": "补虚药",
+    "meridian": "肾肝经",
+    "effect": "补肾阳，强筋骨，祛风湿",
+    "component": "巴戟天苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "仙茅",
+    "category": "补虚药",
+    "meridian": "肾肝脾经",
+    "effect": "补肾阳，强筋骨，祛寒湿",
+    "component": "仙茅苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "海马",
+    "category": "补虚药",
+    "meridian": "肝肾脏经",
+    "effect": "温肾壮阳，散结消肿",
+    "component": "海马蛋白、氨基酸、微量元素",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "蛤蚧",
+    "category": "补虚药",
+    "meridian": "肺肾经",
+    "effect": "补肺益肾，纳气定喘，助阳益精",
+    "component": "蛤蚧蛋白、氨基酸、微量元素",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "血竭",
+    "category": "活血化瘀药",
+    "meridian": "心肝经",
+    "effect": "活血定痛，化瘀止血，生肌敛疮",
+    "component": "血竭素、挥发油、黄酮",
+    "dosage": "1-1.5g"
+  },
+  {
+    "name": "苏木",
+    "category": "活血化瘀药",
+    "meridian": "心肝肾经",
+    "effect": "活血祛瘀，消肿止痛",
+    "component": "苏木素、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "骨碎补",
+    "category": "活血化瘀药",
+    "meridian": "肝肾经",
+    "effect": "补肾强骨，续伤止痛",
+    "component": "骨碎补苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "续断",
+    "category": "活血化瘀药",
+    "meridian": "肝肾经",
+    "effect": "补肝肾，强筋骨，续折伤，止崩漏",
+    "component": "续断苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "苏子",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺大肠经",
+    "effect": "降气化痰，止咳平喘，润肠通便",
+    "component": "苏子油、苏子苷、挥发油",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "白芥子",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺胃经",
+    "effect": "温肺化痰，利气，散结消肿",
+    "component": "白芥子苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "葶苈子",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺膀胱经",
+    "effect": "泻肺平喘，利水消肿",
+    "component": "葶苈子苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "关白附",
+    "category": "化痰止咳平喘药",
+    "meridian": "胃经",
+    "effect": "燥湿化痰，祛风止痉，散结消肿",
+    "component": "关白附苷、挥发油、黄酮",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "竹茹",
+    "category": "化痰止咳平喘药",
+    "meridian": "胃肺胆经",
+    "effect": "清热化痰，除烦止呕",
+    "component": "竹茹苷、挥发油、黄酮",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "天竹黄",
+    "category": "化痰止咳平喘药",
+    "meridian": "心肝胃经",
+    "effect": "清热化痰，凉心定惊",
+    "component": "天竹黄苷、挥发油、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "猴枣",
+    "category": "化痰止咳平喘药",
+    "meridian": "心经",
+    "effect": "豁痰定惊，清热解毒",
+    "component": "猴枣蛋白、氨基酸、微量元素",
+    "dosage": "0.3-1g"
+  },
+  {
+    "name": "猪胆粉",
+    "category": "化痰止咳平喘药",
+    "meridian": "心肝肺经",
+    "effect": "清热润燥，止咳平喘，解毒",
+    "component": "猪胆蛋白、氨基酸、微量元素",
+    "dosage": "0.3-0.6g"
+  },
+  {
+    "name": "制天南星",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺肝脾经",
+    "effect": "燥湿化痰，祛风止痉",
+    "component": "天南星苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "制半夏",
+    "category": "化痰止咳平喘药",
+    "meridian": "脾胃肺经",
+    "effect": "燥湿化痰，降逆止呕，消痞散结",
+    "component": "半夏蛋白、挥发油、氨基酸",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "硫磺",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "大肠经",
+    "effect": "外用解毒杀虫止痒，内服补火助阳通便",
+    "component": "硫磺、微量元素",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "雄黄",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝大肠经",
+    "effect": "解毒杀虫，燥湿祛痰，截疟",
+    "component": "二硫化二砷、微量元素",
+    "dosage": "0.15-0.3g"
+  },
+  {
+    "name": "白矾",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肺脾肝经",
+    "effect": "外用解毒杀虫燥湿止痒，内服止血止泻，祛除风痰",
+    "component": "硫酸铝钾、微量元素",
+    "dosage": "0.6-1.5g"
+  },
+  {
+    "name": "皂矾",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝脾经",
+    "effect": "外用解毒杀虫止痒，内服补益气血",
+    "component": "硫酸亚铁、微量元素",
+    "dosage": "0.6-1.2g"
+  },
+  {
+    "name": "樟脑",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "心脾经",
+    "effect": "通关窍，利滞气，辟秽浊，杀虫止痒",
+    "component": "樟脑、挥发油",
+    "dosage": "0.1-0.2g"
+  },
+  {
+    "name": "木鳖子",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝脾胃经",
+    "effect": "散结消肿，攻毒疗疮",
+    "component": "木鳖子苷、挥发油、黄酮",
+    "dosage": "0.9-1.2g"
+  },
+  {
+    "name": "蛇床子",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肾经",
+    "effect": "外用祛风燥湿止痒，内服温肾壮阳",
+    "component": "蛇床子苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "土荆皮",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肺经",
+    "effect": "外用杀虫，止痒，疗癣",
+    "component": "土荆皮苷、挥发油、黄酮",
+    "dosage": "外用适量"
+  },
+  {
+    "name": "大风子",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝脾肾经",
+    "effect": "祛风燥湿，攻毒杀虫",
+    "component": "大风子油、大风子苷",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "轻粉",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝大肠经",
+    "effect": "外用杀虫，攻毒，敛疮；内服利水通便",
+    "component": "氯化亚汞、微量元素",
+    "dosage": "0.1-0.2g"
+  },
+  {
+    "name": "砒霜",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝大肠经",
+    "effect": "外用蚀疮去腐，内服劫痰平喘，截疟",
+    "component": "三氧化二砷、微量元素",
+    "dosage": "0.01-0.05g"
+  },
+  {
+    "name": "瓜蒂",
+    "category": "涌吐药",
+    "meridian": "胃经",
+    "effect": "涌吐痰食，祛湿退黄",
+    "component": "瓜蒂苷、挥发油、黄酮",
+    "dosage": "2.5-5g"
+  },
+  {
+    "name": "常山",
+    "category": "涌吐药",
+    "meridian": "肺心肝经",
+    "effect": "涌吐痰涎，截疟",
+    "component": "常山碱、挥发油、黄酮",
+    "dosage": "5-9g"
+  },
+  {
+    "name": "胆矾",
+    "category": "涌吐药",
+    "meridian": "肝经",
+    "effect": "涌吐痰涎，解毒收湿",
+    "component": "硫酸铜、微量元素",
+    "dosage": "0.3-0.6g"
+  },
+  {
+    "name": "藜芦",
+    "category": "涌吐药",
+    "meridian": "肺胃肝经",
+    "effect": "涌吐风痰，杀虫",
+    "component": "藜芦碱、挥发油、黄酮",
+    "dosage": "0.3-0.6g"
+  },
+  {
+    "name": "松针",
+    "category": "舒筋活络药",
+    "meridian": "心脾经",
+    "effect": "祛风活血，明目，安神，解毒",
+    "component": "松针挥发油、松针苷、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "路路通",
+    "category": "舒筋活络药",
+    "meridian": "肝经",
+    "effect": "祛风活络，利水，通经",
+    "component": "路路通苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "伸筋草",
+    "category": "舒筋活络药",
+    "meridian": "肝脾肾经",
+    "effect": "祛风除湿，舒筋活络",
+    "component": "伸筋草苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "合欢皮",
+    "category": "安神药",
+    "meridian": "心肝经",
+    "effect": "解郁安神，活血消肿",
+    "component": "合欢皮苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "远志",
+    "category": "安神药",
+    "meridian": "心肾肺经",
+    "effect": "安神益智，交通心肾，祛痰，消肿",
+    "component": "远志皂苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "酸枣仁",
+    "category": "安神药",
+    "meridian": "肝心经",
+    "effect": "养心益肝，安神，敛汗",
+    "component": "酸枣仁皂苷、挥发油、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "柏子仁",
+    "category": "安神药",
+    "meridian": "心肾经",
+    "effect": "养心安神，润肠通便",
+    "component": "柏子仁皂苷、挥发油、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "茯神",
+    "category": "安神药",
+    "meridian": "心脾肾经",
+    "effect": "宁心安神",
+    "component": "茯神多糖、茯神酸、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "夜交藤",
+    "category": "安神药",
+    "meridian": "心肝经",
+    "effect": "养心安神，祛风通络",
+    "component": "夜交藤苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "秫米",
+    "category": "消食药",
+    "meridian": "肺大肠经",
+    "effect": "健脾益气，和胃安眠",
+    "component": "秫米蛋白、挥发油、氨基酸",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "神曲",
+    "category": "消食药",
+    "meridian": "脾胃经",
+    "effect": "消食和中，健脾开胃",
+    "component": "神曲酶、挥发油、氨基酸",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "麦芽",
+    "category": "消食药",
+    "meridian": "脾胃肝经",
+    "effect": "行气消食，健脾开胃，退乳消胀",
+    "component": "麦芽酶、挥发油、氨基酸",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "谷芽",
+    "category": "消食药",
+    "meridian": "脾胃经",
+    "effect": "消食和中，健脾开胃",
+    "component": "谷芽酶、挥发油、氨基酸",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "莱菔子",
+    "category": "消食药",
+    "meridian": "肺脾胃经",
+    "effect": "消食除胀，降气化痰",
+    "component": "莱菔子苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "鸡内金",
+    "category": "消食药",
+    "meridian": "脾胃膀胱经",
+    "effect": "消食健胃，涩精止遗",
+    "component": "鸡内金蛋白、氨基酸、微量元素",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "鸡矢藤",
+    "category": "消食药",
+    "meridian": "脾胃肺经",
+    "effect": "消食健胃，化痰止咳，清热解毒",
+    "component": "鸡矢藤苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "隔山消",
+    "category": "消食药",
+    "meridian": "脾胃经",
+    "effect": "消食健胃，理气止痛",
+    "component": "隔山消苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "大腹皮",
+    "category": "理气药",
+    "meridian": "脾胃大肠经",
+    "effect": "行气宽中，利水消肿",
+    "component": "大腹皮苷、挥发油、黄酮",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "甘松",
+    "category": "理气药",
+    "meridian": "肝脾胃经",
+    "effect": "行气止痛，开郁醒脾",
+    "component": "甘松挥发油、甘松苷、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "檀香",
+    "category": "理气药",
+    "meridian": "脾胃经",
+    "effect": "行气温中，开胃止痛",
+    "component": "檀香挥发油、檀香苷、黄酮",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "降香",
+    "category": "理气药",
+    "meridian": "心肝经",
+    "effect": "行气化瘀，止血定痛",
+    "component": "降香挥发油、降香苷、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "川楝子",
+    "category": "理气药",
+    "meridian": "肝脾胃小肠经",
+    "effect": "行气止痛，疏肝理气，杀虫",
+    "component": "川楝子苷、挥发油、黄酮",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "柿蒂",
+    "category": "理气药",
+    "meridian": "胃经",
+    "effect": "降逆止呃",
+    "component": "柿蒂苷、挥发油、黄酮",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "刀豆",
+    "category": "理气药",
+    "meridian": "胃肾经",
+    "effect": "降气止呃，温肾助阳",
+    "component": "刀豆苷、挥发油、黄酮",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "益智仁",
+    "category": "补阳药",
+    "meridian": "脾肾经",
+    "effect": "温脾止泻摄涎，暖肾缩尿固精",
+    "component": "益智仁挥发油、益智仁苷、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "沙苑子",
+    "category": "补阳药",
+    "meridian": "肝肾经",
+    "effect": "补肾壮阳，固精缩尿，养肝明目",
+    "component": "沙苑子苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "菟丝子",
+    "category": "补阳药",
+    "meridian": "肝脾肾经",
+    "effect": "补益肝肾，固精缩尿，安胎，明目，止泻",
+    "component": "菟丝子苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "沙棘",
+    "category": "补阳药",
+    "meridian": "脾肺肝经",
+    "effect": "健脾消食，止咳祛痰，活血散瘀",
+    "component": "沙棘黄酮、挥发油、氨基酸",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "冬虫夏草",
+    "category": "补阳药",
+    "meridian": "肺肾经",
+    "effect": "补肺益肾，止血化痰",
+    "component": "虫草素、虫草多糖、氨基酸",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "淫羊藿",
+    "category": "补阳药",
+    "meridian": "肝肾经",
+    "effect": "补肾阳，强筋骨，祛风湿",
+    "component": "淫羊藿苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "巴戟肉",
+    "category": "补阳药",
+    "meridian": "肾肝经",
+    "effect": "补肾阳，强筋骨，祛风湿",
+    "component": "巴戟天苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "肉苁蓉",
+    "category": "补阳药",
+    "meridian": "肾大肠经",
+    "effect": "补肾阳，益精血，润肠通便",
+    "component": "肉苁蓉苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "锁阳",
+    "category": "补阳药",
+    "meridian": "肝大肠经",
+    "effect": "补肾阳，强筋骨，润肠通便",
+    "component": "锁阳苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "补骨脂",
+    "category": "补阳药",
+    "meridian": "肾脾经",
+    "effect": "补肾壮阳，固精缩尿，温脾止泻，纳气平喘",
+    "component": "补骨脂素、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "杜仲",
+    "category": "补阳药",
+    "meridian": "肝肾虚经",
+    "effect": "补肝肾，强筋骨，安胎",
+    "component": "杜仲苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "鹿茸",
+    "category": "补阳药",
+    "meridian": "肾肝经",
+    "effect": "补肾阳，益精血，强筋骨，调冲任，托疮毒",
+    "component": "鹿茸蛋白、氨基酸、微量元素",
+    "dosage": "1-5g"
+  },
+  {
+    "name": "鹿角胶",
+    "category": "补阳药",
+    "meridian": "肝肾经",
+    "effect": "温补肝肾，益精养血",
+    "component": "鹿角胶蛋白、氨基酸、微量元素",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "紫河车",
+    "category": "补阳药",
+    "meridian": "心肝肾经",
+    "effect": "温肾补精，益气养血",
+    "component": "紫河车蛋白、氨基酸、微量元素",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "海狗肾",
+    "category": "补阳药",
+    "meridian": "肾经",
+    "effect": "补肾壮阳，益精填髓",
+    "component": "海狗肾蛋白、氨基酸、微量元素",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "蛤粉",
+    "category": "补阳药",
+    "meridian": "肺肾经",
+    "effect": "补肺益肾，纳气定喘",
+    "component": "蛤粉蛋白、氨基酸、微量元素",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "莲子心",
+    "category": "收涩药",
+    "meridian": "心肾经",
+    "effect": "清心安神，交通心肾，涩精止血",
+    "component": "莲子心碱、挥发油、黄酮",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "莲肉",
+    "category": "收涩药",
+    "meridian": "脾心肾经",
+    "effect": "补脾止泻，益肾涩精，养心安神",
+    "component": "莲肉蛋白、挥发油、氨基酸",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "芡实",
+    "category": "收涩药",
+    "meridian": "脾肾经",
+    "effect": "益肾固精，补脾止泻，祛湿止带",
+    "component": "芡实苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "金樱子",
+    "category": "收涩药",
+    "meridian": "脾肾膀胱经",
+    "effect": "固精缩尿，固崩止带，涩肠止泻",
+    "component": "金樱子苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "覆盆子",
+    "category": "收涩药",
+    "meridian": "肝肾经",
+    "effect": "益肾固精缩尿，养肝明目",
+    "component": "覆盆子苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "浮小麦",
+    "category": "收涩药",
+    "meridian": "心经",
+    "effect": "固表止汗，益气，除热",
+    "component": "浮小麦蛋白、挥发油、氨基酸",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "五味子",
+    "category": "收涩药",
+    "meridian": "肺心肾经",
+    "effect": "收敛固涩，益气生津，补肾宁心",
+    "component": "五味子素、挥发油、有机酸",
+    "dosage": "2-6g"
+  },
+  {
+    "name": "乌梅",
+    "category": "收涩药",
+    "meridian": "肝脾肾经",
+    "effect": "敛肺，涩肠，生津，安蛔",
+    "component": "乌梅酸、挥发油、氨基酸",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "五倍子",
+    "category": "收涩药",
+    "meridian": "肺大肠胃经",
+    "effect": "敛肺降火，涩肠止泻，敛汗止血，收湿敛疮",
+    "component": "五倍子鞣质、挥发油、氨基酸",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "诃子",
+    "category": "收涩药",
+    "meridian": "肺大肠经",
+    "effect": "敛肺止咳，涩肠止泻，降火利咽",
+    "component": "诃子苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "石榴皮",
+    "category": "收涩药",
+    "meridian": "胃大肠经",
+    "effect": "涩肠止泻，止血，驱虫",
+    "component": "石榴皮碱、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "肉豆蔻",
+    "category": "收涩药",
+    "meridian": "脾胃大肠经",
+    "effect": "温中行气，涩肠止泻",
+    "component": "肉豆蔻挥发油、肉豆蔻苷、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "赤石脂",
+    "category": "收涩药",
+    "meridian": "胃大肠经",
+    "effect": "涩肠止泻，止血，生肌敛疮",
+    "component": "赤石脂、微量元素",
+    "dosage": "9-12g"
+  },
+  {
+    "name": "禹余粮",
+    "category": "收涩药",
+    "meridian": "胃大肠经",
+    "effect": "涩肠止泻，收敛止血",
+    "component": "禹余粮、微量元素",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "罂粟壳",
+    "category": "收涩药",
+    "meridian": "肺胃大肠经",
+    "effect": "敛肺，涩肠，止痛",
+    "component": "罂粟碱、挥发油、氨基酸",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "麻黄根",
+    "category": "收涩药",
+    "meridian": "肺经",
+    "effect": "固表止汗",
+    "component": "麻黄根碱、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "糯稻根",
+    "category": "收涩药",
+    "meridian": "胃经",
+    "effect": "固表止汗，退虚热",
+    "component": "糯稻根蛋白、挥发油、氨基酸",
+    "dosage": "30-60g"
+  },
+  {
+    "name": "穞豆衣",
+    "category": "收涩药",
+    "meridian": "肝经",
+    "effect": "滋阴养血，平肝潜阳",
+    "component": "穞豆衣蛋白、挥发油、氨基酸",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "山茱萸",
+    "category": "收涩药",
+    "meridian": "肝肾经",
+    "effect": "补益肝肾，收敛固涩",
+    "component": "山茱萸苷、熊果酸、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "桑螵蛸",
+    "category": "收涩药",
+    "meridian": "肝肾经",
+    "effect": "补肾固涩，固精缩尿",
+    "component": "桑螵蛸蛋白、氨基酸、微量元素",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "海螵蛸",
+    "category": "收涩药",
+    "meridian": "肝肾经",
+    "effect": "制酸止痛，止血敛疮，固精止带",
+    "component": "碳酸钙、海螵蛸蛋白、微量元素",
+    "dosage": "9-12g"
+  },
+  {
+    "name": "白果",
+    "category": "收涩药",
+    "meridian": "肺经",
+    "effect": "敛肺平喘，收涩止带",
+    "component": "白果苷、白果内酯、挥发油",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "银杏叶",
+    "category": "收涩药",
+    "meridian": "肺经",
+    "effect": "敛肺平喘，活血化瘀",
+    "component": "银杏黄酮、萜内酯、挥发油",
+    "dosage": "9-12g"
+  },
+  {
+    "name": "柏叶",
+    "category": "收涩药",
+    "meridian": "肺肝大肠经",
+    "effect": "凉血止血，敛肺止咳",
+    "component": "柏叶苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "皂角刺",
+    "category": "收涩药",
+    "meridian": "肝胃经",
+    "effect": "消肿排脓，祛风杀虫",
+    "component": "皂角刺苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "巴豆",
+    "category": "泻下药",
+    "meridian": "胃大肠经",
+    "effect": "峻下冷积，逐水退肿，豁痰利咽",
+    "component": "巴豆油、巴豆苷、氨基酸",
+    "dosage": "0.1-0.3g"
+  },
+  {
+    "name": "千金子",
+    "category": "泻下药",
+    "meridian": "肝肾经",
+    "effect": "逐水消肿，破血通经",
+    "component": "千金子苷、挥发油、黄酮",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "甘遂",
+    "category": "泻下药",
+    "meridian": "肺肾大肠经",
+    "effect": "泻水逐饮，消肿散结",
+    "component": "甘遂苷、挥发油、黄酮",
+    "dosage": "0.5-1g"
+  },
+  {
+    "name": "京大戟",
+    "category": "泻下药",
+    "meridian": "肺脾肾经",
+    "effect": "泻水逐饮，消肿散结",
+    "component": "京大戟苷、挥发油、黄酮",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "芫花",
+    "category": "泻下药",
+    "meridian": "肺肾经",
+    "effect": "泻水逐饮，外用杀虫",
+    "component": "芫花苷、挥发油、黄酮",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "商陆",
+    "category": "泻下药",
+    "meridian": "肺脾肾大肠经",
+    "effect": "逐水消肿，通利二便；外用解毒散结",
+    "component": "商陆苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "牵牛子",
+    "category": "泻下药",
+    "meridian": "肺肾大肠经",
+    "effect": "泻水通便，消痰涤饮；外用杀虫攻积",
+    "component": "牵牛子苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "蓖麻子",
+    "category": "泻下药",
+    "meridian": "大肠经",
+    "effect": "泻下通滞，消肿拔毒",
+    "component": "蓖麻油、蓖麻毒素、挥发油",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "番泻叶",
+    "category": "泻下药",
+    "meridian": "大肠经",
+    "effect": "泻下导滞",
+    "component": "番泻叶苷、挥发油、黄酮",
+    "dosage": "2-6g"
+  },
+  {
+    "name": "大黄",
+    "category": "泻下药",
+    "meridian": "脾胃大肠肝心经",
+    "effect": "泻下攻积，清热泻火，凉血解毒，逐瘀通经，利湿退黄",
+    "component": "大黄素、大黄酸、挥发油",
+    "dosage": "3-15g"
+  },
+  {
+    "name": "芒硝",
+    "category": "泻下药",
+    "meridian": "胃大肠经",
+    "effect": "泻下通便，润燥软坚，清火消肿",
+    "component": "硫酸钠、微量元素",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "玄明粉",
+    "category": "泻下药",
+    "meridian": "胃大肠经",
+    "effect": "泻下通便，润燥软坚，清火消肿",
+    "component": "硫酸钠、微量元素",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "生地黄",
+    "category": "清热凉血药",
+    "meridian": "心肝经",
+    "effect": "清热凉血，养阴生津",
+    "component": "地黄苷、挥发油、氨基酸",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "熟地黄",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "补血滋阴，益精填髓",
+    "component": "地黄苷、梓醇、挥发油",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "鲜地黄",
+    "category": "清热凉血药",
+    "meridian": "心肝经",
+    "effect": "清热凉血，生津止渴",
+    "component": "地黄苷、挥发油、氨基酸",
+    "dosage": "12-30g"
+  },
+  {
+    "name": "牡丹皮",
+    "category": "清热凉血药",
+    "meridian": "心肝肾经",
+    "effect": "清热凉血，活血化瘀",
+    "component": "牡丹皮苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "赤芍",
+    "category": "清热凉血药",
+    "meridian": "肝经",
+    "effect": "清热凉血，散瘀止痛",
+    "component": "赤芍苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "紫草",
+    "category": "清热凉血药",
+    "meridian": "心肝经",
+    "effect": "清热凉血，活血，解毒透疹",
+    "component": "紫草素、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "水牛角",
+    "category": "清热凉血药",
+    "meridian": "心肝经",
+    "effect": "清热凉血，解毒，定惊",
+    "component": "水牛角蛋白、氨基酸、微量元素",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "玳瑁",
+    "category": "清热凉血药",
+    "meridian": "心肝经",
+    "effect": "清热凉血，解毒定惊",
+    "component": "玳瑁蛋白、氨基酸、微量元素",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "槐花",
+    "category": "止血药",
+    "meridian": "肝大肠经",
+    "effect": "凉血止血，清肝泻火",
+    "component": "槐花苷、芦丁、挥发油",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "槐角",
+    "category": "止血药",
+    "meridian": "肝大肠经",
+    "effect": "凉血止血，清热泻火，燥湿敛疮",
+    "component": "槐角苷、芦丁、挥发油",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "地榆",
+    "category": "止血药",
+    "meridian": "肝大肠经",
+    "effect": "凉血止血，解毒敛疮",
+    "component": "地榆苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "侧柏叶",
+    "category": "止血药",
+    "meridian": "肺肝大肠经",
+    "effect": "凉血止血，化痰止咳，生发乌发",
+    "component": "侧柏叶苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "白茅根",
+    "category": "止血药",
+    "meridian": "肺胃膀胱经",
+    "effect": "凉血止血，清热利尿",
+    "component": "白茅根苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "苎麻根",
+    "category": "止血药",
+    "meridian": "心肝经",
+    "effect": "凉血止血，清热安胎，利尿解毒",
+    "component": "苎麻根苷、挥发油、黄酮",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "紫珠草",
+    "category": "止血药",
+    "meridian": "肺肝胃经",
+    "effect": "凉血止血，散瘀消肿",
+    "component": "紫珠草苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "棕榈炭",
+    "category": "止血药",
+    "meridian": "肝肺大肠经",
+    "effect": "收敛止血",
+    "component": "棕榈炭蛋白、挥发油、氨基酸",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "血余炭",
+    "category": "止血药",
+    "meridian": "肝胃经",
+    "effect": "收敛止血，化瘀利尿",
+    "component": "血余炭蛋白、氨基酸、微量元素",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "藕节炭",
+    "category": "止血药",
+    "meridian": "肝肺胃经",
+    "effect": "收敛止血，化瘀",
+    "component": "藕节炭蛋白、挥发油、氨基酸",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "仙鹤草",
+    "category": "止血药",
+    "meridian": "心肝经",
+    "effect": "收敛止血，截疟，止痢，解毒，杀虫",
+    "component": "仙鹤草苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "鸡冠花",
+    "category": "止血药",
+    "meridian": "肝大肠经",
+    "effect": "收敛止血，止痢，止带",
+    "component": "鸡冠花苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "山茶花",
+    "category": "止血药",
+    "meridian": "肝肺经",
+    "effect": "收敛止血，凉血，散瘀",
+    "component": "山茶花苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "墨旱莲",
+    "category": "止血药",
+    "meridian": "肝肾经",
+    "effect": "收敛止血，补肾阴",
+    "component": "墨旱莲苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "冬青叶",
+    "category": "止血药",
+    "meridian": "肝心经",
+    "effect": "凉血止血，清热解毒",
+    "component": "冬青叶苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "马蓝叶",
+    "category": "清热药",
+    "meridian": "肝肺经",
+    "effect": "清热凉血，解毒散瘀",
+    "component": "马蓝叶苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "大青叶",
+    "category": "清热药",
+    "meridian": "肝肺胃经",
+    "effect": "清热解毒，凉血消斑",
+    "component": "大青叶苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "板蓝根",
+    "category": "清热药",
+    "meridian": "肝胃经",
+    "effect": "清热解毒，凉血利咽",
+    "component": "板蓝根苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "青黛",
+    "category": "清热药",
+    "meridian": "肝肺经",
+    "effect": "清热解毒，凉血消斑，泻火定惊",
+    "component": "靛玉红、靛蓝、挥发油",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "贯众",
+    "category": "清热药",
+    "meridian": "肝胃经",
+    "effect": "清热解毒，驱虫",
+    "component": "贯众苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "蒲公英",
+    "category": "清热药",
+    "meridian": "肝胃经",
+    "effect": "清热解毒，消肿散结，利湿通淋",
+    "component": "蒲公英苷、挥发油、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "紫花地丁",
+    "category": "清热药",
+    "meridian": "心肝经",
+    "effect": "清热解毒，凉血消肿",
+    "component": "紫花地丁苷、挥发油、黄酮",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "野菊花",
+    "category": "清热药",
+    "meridian": "肝肺经",
+    "effect": "清热解毒，消肿",
+    "component": "野菊花苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "重楼",
+    "category": "清热药",
+    "meridian": "肝经",
+    "effect": "清热解毒，消肿止痛，凉肝定惊",
+    "component": "重楼苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "拳参",
+    "category": "清热药",
+    "meridian": "肝经",
+    "effect": "清热解毒，消肿，止血",
+    "component": "拳参苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "银柴胡",
+    "category": "清虚热药",
+    "meridian": "肝经",
+    "effect": "清虚热，除疳热",
+    "component": "银柴胡苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "胡黄连",
+    "category": "清虚热药",
+    "meridian": "肝胃大肠经",
+    "effect": "清虚热，除疳热",
+    "component": "胡黄连苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "地骨皮",
+    "category": "清虚热药",
+    "meridian": "肺肾经",
+    "effect": "清虚热，凉血除蒸，清肺降火",
+    "component": "地骨皮苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "白薇",
+    "category": "清虚热药",
+    "meridian": "肝胃经",
+    "effect": "清虚热，凉血，利尿通淋，解毒疗疮",
+    "component": "白薇苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "青蒿",
+    "category": "清虚热药",
+    "meridian": "肝胆经",
+    "effect": "清虚热，凉血除蒸，解暑，截疟",
+    "component": "青蒿素、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "使君子",
+    "category": "驱虫药",
+    "meridian": "脾胃经",
+    "effect": "驱虫，疗癣",
+    "component": "使君子氨酸、挥发油、黄酮",
+    "dosage": "9-12g"
+  },
+  {
+    "name": "苦楝皮",
+    "category": "驱虫药",
+    "meridian": "肝脾胃经",
+    "effect": "驱虫，疗癣",
+    "component": "苦楝皮苷、挥发油、黄酮",
+    "dosage": "4.5-9g"
+  },
+  {
+    "name": "槟榔",
+    "category": "驱虫药",
+    "meridian": "胃大肠经",
+    "effect": "驱虫，破气，消积，行水",
+    "component": "槟榔碱、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "南瓜子",
+    "category": "驱虫药",
+    "meridian": "胃大肠经",
+    "effect": "驱虫",
+    "component": "南瓜子蛋白、氨基酸、微量元素",
+    "dosage": "60-120g"
+  },
+  {
+    "name": "鹤虱",
+    "category": "驱虫药",
+    "meridian": "脾胃经",
+    "effect": "驱虫",
+    "component": "鹤虱苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "雷丸",
+    "category": "驱虫药",
+    "meridian": "胃大肠经",
+    "effect": "驱虫",
+    "component": "雷丸蛋白、氨基酸、微量元素",
+    "dosage": "15-21g"
+  },
+  {
+    "name": "榧子",
+    "category": "驱虫药",
+    "meridian": "肺胃大肠经",
+    "effect": "驱虫，润肠通便",
+    "component": "榧子蛋白、氨基酸、微量元素",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "芜荑",
+    "category": "驱虫药",
+    "meridian": "脾胃经",
+    "effect": "驱虫，消积",
+    "component": "芜荑苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "石榴皮",
+    "category": "驱虫药",
+    "meridian": "胃大肠经",
+    "effect": "涩肠止泻，止血，驱虫",
+    "component": "石榴皮碱、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "常山",
+    "category": "涌吐药",
+    "meridian": "肺心肝经",
+    "effect": "涌吐痰涎，截疟",
+    "component": "常山碱、挥发油、黄酮",
+    "dosage": "5-9g"
+  },
+  {
+    "name": "苏合香",
+    "category": "开窍药",
+    "meridian": "心脾经",
+    "effect": "开窍醒神，辟秽，止痛",
+    "component": "苏合香挥发油、苏合香苷、黄酮",
+    "dosage": "0.3-1g"
+  },
+  {
+    "name": "安息香",
+    "category": "开窍药",
+    "meridian": "心脾经",
+    "effect": "开窍醒神，辟秽，止痛",
+    "component": "安息香挥发油、安息香苷、黄酮",
+    "dosage": "0.3-1g"
+  },
+  {
+    "name": "石菖蒲",
+    "category": "开窍药",
+    "meridian": "心胃经",
+    "effect": "开窍醒神，化湿和胃，宁神益智",
+    "component": "石菖蒲挥发油、石菖蒲苷、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "水菖蒲",
+    "category": "开窍药",
+    "meridian": "心胃经",
+    "effect": "开窍醒神，化湿和胃",
+    "component": "水菖蒲挥发油、水菖蒲苷、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "蟾酥",
+    "category": "开窍药",
+    "meridian": "心胃经",
+    "effect": "开窍醒神，解毒，止痛",
+    "component": "蟾酥蛋白、蟾酥碱、微量元素",
+    "dosage": "0.015-0.03g"
+  },
+  {
+    "name": "樟脑",
+    "category": "开窍药",
+    "meridian": "心脾经",
+    "effect": "通关窍，利滞气，辟秽浊，杀虫止痒",
+    "component": "樟脑、挥发油",
+    "dosage": "0.1-0.2g"
+  },
+  {
+    "name": "麝香",
+    "category": "开窍药",
+    "meridian": "心脾经",
+    "effect": "开窍醒神，活血通经，消肿止痛",
+    "component": "麝香酮、麝香蛋白、氨基酸",
+    "dosage": "0.03-0.1g"
+  },
+  {
+    "name": "冰片",
+    "category": "开窍药",
+    "meridian": "心脾肺经",
+    "effect": "开窍醒神，清热止痛",
+    "component": "冰片、龙脑、挥发油",
+    "dosage": "0.05-0.1g"
+  },
+  {
+    "name": "苏合香丸",
+    "category": "开窍药",
+    "meridian": "心脾经",
+    "effect": "开窍醒神，辟秽，止痛",
+    "component": "苏合香挥发油、苏合香苷、黄酮",
+    "dosage": "0.3-1g"
+  },
+  {
+    "name": "藿香",
+    "category": "芳香化湿药",
+    "meridian": "脾胃经",
+    "effect": "化湿，解暑，止呕",
+    "component": "藿香挥发油、藿香苷、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "佩兰",
+    "category": "芳香化湿药",
+    "meridian": "脾胃经",
+    "effect": "化湿，解暑",
+    "component": "佩兰挥发油、佩兰苷、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "砂仁",
+    "category": "芳香化湿药",
+    "meridian": "脾胃经",
+    "effect": "化湿行气，温中止泻，安胎",
+    "component": "砂仁挥发油、砂仁苷、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "白豆蔻",
+    "category": "芳香化湿药",
+    "meridian": "脾胃经",
+    "effect": "化湿行气，温中止呕",
+    "component": "白豆蔻挥发油、白豆蔻苷、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "草豆蔻",
+    "category": "芳香化湿药",
+    "meridian": "脾胃经",
+    "effect": "燥湿行气，温中止呕",
+    "component": "草豆蔻挥发油、草豆蔻苷、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "厚朴",
+    "category": "芳香化湿药",
+    "meridian": "脾胃大肠经",
+    "effect": "燥湿消痰，下气除满",
+    "component": "厚朴挥发油、厚朴苷、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "附子",
+    "category": "温里药",
+    "meridian": "心肾脾经",
+    "effect": "回阳救逆，补火助阳，散寒止痛",
+    "component": "附子碱、挥发油、氨基酸",
+    "dosage": "3-15g"
+  },
+  {
+    "name": "干姜",
+    "category": "温里药",
+    "meridian": "脾胃肾经",
+    "effect": "温中散寒，回阳通脉，温肺化饮",
+    "component": "干姜挥发油、干姜苷、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "肉桂",
+    "category": "温里药",
+    "meridian": "心肾肝脾经",
+    "effect": "补火助阳，引火归元，散寒止痛，温通经脉",
+    "component": "肉桂挥发油、肉桂苷、黄酮",
+    "dosage": "1-5g"
+  },
+  {
+    "name": "桂枝",
+    "category": "温里药",
+    "meridian": "心肺膀胱经",
+    "effect": "发汗解肌，温通经脉，助阳化气，平冲降逆",
+    "component": "桂枝挥发油、桂枝苷、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "吴茱萸",
+    "category": "温里药",
+    "meridian": "肝脾胃肾经",
+    "effect": "散寒止痛，降逆止呕，助阳止泻",
+    "component": "吴茱萸碱、挥发油、黄酮",
+    "dosage": "1.5-6g"
+  },
+  {
+    "name": "小茴香",
+    "category": "温里药",
+    "meridian": "肝胃经",
+    "effect": "散寒止痛，理气和胃",
+    "component": "小茴香挥发油、小茴香苷、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "八角茴香",
+    "category": "温里药",
+    "meridian": "肝胃经",
+    "effect": "散寒止痛，理气和胃",
+    "component": "八角挥发油、八角苷、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "花椒",
+    "category": "温里药",
+    "meridian": "脾胃经",
+    "effect": "温中止痛，杀虫止痒",
+    "component": "花椒挥发油、花椒苷、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "荜茇",
+    "category": "温里药",
+    "meridian": "脾胃经",
+    "effect": "温中散寒，行气止痛",
+    "component": "荜茇挥发油、荜茇苷、黄酮",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "荜澄茄",
+    "category": "温里药",
+    "meridian": "脾胃肾膀胱经",
+    "effect": "温中散寒，行气止痛",
+    "component": "荜澄茄挥发油、荜澄茄苷、黄酮",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "山柰",
+    "category": "温里药",
+    "meridian": "胃经",
+    "effect": "行气温中，消食，止痛",
+    "component": "山柰挥发油、山柰苷、黄酮",
+    "dosage": "6-9g"
+  },
+  {
+    "name": "高良姜",
+    "category": "温里药",
+    "meridian": "脾胃经",
+    "effect": "温胃止呕，散寒止痛",
+    "component": "高良姜挥发油、高良姜苷、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "红豆蔻",
+    "category": "温里药",
+    "meridian": "脾胃经",
+    "effect": "温中散寒，行气止痛",
+    "component": "红豆蔻挥发油、红豆蔻苷、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "蓝布正",
+    "category": "安神药",
+    "meridian": "肝脾肾经",
+    "effect": "补肝肾，益气血，安神",
+    "component": "蓝布正苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "酸枣仁",
+    "category": "安神药",
+    "meridian": "肝心经",
+    "effect": "养心益肝，安神，敛汗",
+    "component": "酸枣仁皂苷、挥发油、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "党参",
+    "category": "补虚药",
+    "meridian": "脾肺经",
+    "effect": "补中益气，生津养血",
+    "component": "党参苷、挥发油、黄酮",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "大枣",
+    "category": "补虚药",
+    "meridian": "脾胃经",
+    "effect": "补中益气，养血安神",
+    "component": "大枣皂苷、挥发油、氨基酸",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "蜂蜜",
+    "category": "补虚药",
+    "meridian": "脾胃大肠经",
+    "effect": "补中，润燥，止痛，解毒",
+    "component": "葡萄糖、果糖、挥发油",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "饴糖",
+    "category": "补虚药",
+    "meridian": "脾胃经",
+    "effect": "补中益气，缓急止痛，润肺止咳",
+    "component": "麦芽糖、挥发油、氨基酸",
+    "dosage": "30-60g"
+  },
+  {
+    "name": "何首乌",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "制首乌：补肝肾，益精血；生首乌：截疟解毒，润肠通便",
+    "component": "何首乌苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "当归",
+    "category": "补虚药",
+    "meridian": "肝心脾经",
+    "effect": "补血活血，调经止痛，润肠通便",
+    "component": "当归挥发油、当归苷、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "白芍",
+    "category": "补虚药",
+    "meridian": "肝脾经",
+    "effect": "养血调经，敛阴止汗，柔肝止痛，平抑肝阳",
+    "component": "白芍苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "阿胶",
+    "category": "补虚药",
+    "meridian": "肺肝肾经",
+    "effect": "补血滋阴，润燥，止血",
+    "component": "阿胶蛋白、氨基酸、微量元素",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "枸杞子",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "滋补肝肾，益精明目",
+    "component": "枸杞多糖、甜菜碱、胡萝卜素",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "玉竹",
+    "category": "补虚药",
+    "meridian": "肺胃经",
+    "effect": "养阴润燥，生津止渴",
+    "component": "玉竹苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "麦冬",
+    "category": "补虚药",
+    "meridian": "心肺胃经",
+    "effect": "养阴生津，润肺清心",
+    "component": "麦冬皂苷、挥发油、氨基酸",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "天冬",
+    "category": "补虚药",
+    "meridian": "肺肾经",
+    "effect": "养阴润燥，清肺生津",
+    "component": "天冬苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "墨旱莲",
+    "category": "补虚药",
+    "meridian": "肝肾经",
+    "effect": "滋补肝肾，凉血止血",
+    "component": "墨旱莲苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "菊花",
+    "category": "解表药",
+    "meridian": "肺肝经",
+    "effect": "散风清热，平肝明目，清热解毒",
+    "component": "菊花挥发油、菊花苷、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "葛根",
+    "category": "解表药",
+    "meridian": "脾胃经",
+    "effect": "解肌退热，生津止渴，透疹，升阳止泻，通经活络，解酒毒",
+    "component": "葛根素、葛根苷、挥发油",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "淡豆豉",
+    "category": "解表药",
+    "meridian": "肺胃经",
+    "effect": "解表，除烦，宣发郁热",
+    "component": "淡豆豉苷、挥发油、氨基酸",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "浮萍",
+    "category": "解表药",
+    "meridian": "肺膀胱经",
+    "effect": "宣散风热，透疹，利尿",
+    "component": "浮萍苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "柽柳",
+    "category": "解表药",
+    "meridian": "肺胃心经",
+    "effect": "疏风解表，透疹解毒",
+    "component": "柽柳挥发油、柽柳苷、黄酮",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "绿豆",
+    "category": "清热药",
+    "meridian": "心胃经",
+    "effect": "清热解暑，解毒",
+    "component": "绿豆蛋白、氨基酸、微量元素",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "桃仁",
+    "category": "活血化瘀药",
+    "meridian": "心肝大肠经",
+    "effect": "活血祛瘀，润肠通便，止咳平喘",
+    "component": "桃仁苷、挥发油、氨基酸",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "红花",
+    "category": "活血化瘀药",
+    "meridian": "心肝经",
+    "effect": "活血通经，散瘀止痛",
+    "component": "红花苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "苏木",
+    "category": "活血化瘀药",
+    "meridian": "心肝经",
+    "effect": "活血祛瘀，消肿止痛",
+    "component": "苏木素、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "姜黄",
+    "category": "活血化瘀药",
+    "meridian": "脾肝经",
+    "effect": "破血行气，通经止痛",
+    "component": "姜黄挥发油、姜黄素、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "郁金",
+    "category": "活血化瘀药",
+    "meridian": "心肝肺经",
+    "effect": "活血止痛，行气解郁，清心凉血，利胆退黄",
+    "component": "郁金挥发油、郁金苷、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "延胡索",
+    "category": "活血化瘀药",
+    "meridian": "肝脾经",
+    "effect": "活血，行气，止痛",
+    "component": "延胡索碱、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "川芎",
+    "category": "活血化瘀药",
+    "meridian": "肝胆心包经",
+    "effect": "活血行气，祛风止痛",
+    "component": "川芎挥发油、川芎苷、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "丹参",
+    "category": "活血化瘀药",
+    "meridian": "心包心经",
+    "effect": "活血祛瘀，通经止痛，清心除烦，凉血消痈",
+    "component": "丹参酮、丹参苷、黄酮",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "益母草",
+    "category": "活血化瘀药",
+    "meridian": "心肝膀胱经",
+    "effect": "活血调经，利尿消肿，清热解毒",
+    "component": "益母草碱、挥发油、黄酮",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "泽兰",
+    "category": "活血化瘀药",
+    "meridian": "肝脾经",
+    "effect": "活血调经，祛瘀消痈，利水消肿",
+    "component": "泽兰挥发油、泽兰苷、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "王不留行",
+    "category": "活血化瘀药",
+    "meridian": "肝胃经",
+    "effect": "活血通经，下乳消痈，利尿通淋",
+    "component": "王不留行苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "牛膝",
+    "category": "活血化瘀药",
+    "meridian": "肝肾经",
+    "effect": "逐瘀通经，补肝肾，强筋骨，利尿通淋，引血下行",
+    "component": "牛膝苷、挥发油、黄酮",
+    "dosage": "5-12g"
+  },
+  {
+    "name": "川牛膝",
+    "category": "活血化瘀药",
+    "meridian": "肝肾经",
+    "effect": "逐瘀通经，利关节，利尿通淋",
+    "component": "川牛膝苷、挥发油、黄酮",
+    "dosage": "5-12g"
+  },
+  {
+    "name": "血竭",
+    "category": "活血化瘀药",
+    "meridian": "心肝经",
+    "effect": "活血定痛，化瘀止血，生肌敛疮",
+    "component": "血竭素、血竭苷、黄酮",
+    "dosage": "1-2g"
+  },
+  {
+    "name": "骨碎补",
+    "category": "活血化瘀药",
+    "meridian": "肝肾经",
+    "effect": "补肾强骨，续伤止痛",
+    "component": "骨碎补苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "续断",
+    "category": "活血化瘀药",
+    "meridian": "肝肾经",
+    "effect": "补肝肾，强筋骨，续折伤，止崩漏",
+    "component": "续断苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "马钱子",
+    "category": "活血化瘀药",
+    "meridian": "肝脾经",
+    "effect": "通络止痛，散结消肿",
+    "component": "马钱子碱、挥发油、黄酮",
+    "dosage": "0.3-0.6g"
+  },
+  {
+    "name": "自然铜",
+    "category": "活血化瘀药",
+    "meridian": "肝经",
+    "effect": "散瘀止痛，接骨疗伤",
+    "component": "硫化铁、微量元素",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "乳香",
+    "category": "活血化瘀药",
+    "meridian": "心肝脾经",
+    "effect": "活血定痛，消肿生肌",
+    "component": "乳香挥发油、乳香苷、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "没药",
+    "category": "活血化瘀药",
+    "meridian": "心肝脾经",
+    "effect": "散瘀定痛，消肿生肌",
+    "component": "没药挥发油、没药苷、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "穿山甲",
+    "category": "活血化瘀药",
+    "meridian": "肝胃经",
+    "effect": "活血消癥，通经下乳，消肿排脓，搜风通络",
+    "component": "穿山甲蛋白、氨基酸、微量元素",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "水蛭",
+    "category": "活血化瘀药",
+    "meridian": "肝经",
+    "effect": "破血通经，逐瘀消癥",
+    "component": "水蛭素、水蛭蛋白、氨基酸",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "虻虫",
+    "category": "活血化瘀药",
+    "meridian": "肝经",
+    "effect": "破血逐瘀，散积消癥",
+    "component": "虻虫蛋白、氨基酸、微量元素",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "斑蝥",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝胃经",
+    "effect": "破血逐瘀，散结消癥，攻毒蚀疮",
+    "component": "斑蝥素、斑蝥蛋白、氨基酸",
+    "dosage": "0.03-0.06g"
+  },
+  {
+    "name": "红娘子",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝经",
+    "effect": "破血逐瘀，攻毒散结",
+    "component": "红娘子蛋白、氨基酸、微量元素",
+    "dosage": "0.03-0.06g"
+  },
+  {
+    "name": "蜣螂",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "肝经",
+    "effect": "破血逐瘀，攻毒散结，通便",
+    "component": "蜣螂蛋白、氨基酸、微量元素",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "半夏",
+    "category": "化痰止咳平喘药",
+    "meridian": "脾胃肺经",
+    "effect": "燥湿化痰，降逆止呕，消痞散结",
+    "component": "半夏蛋白、挥发油、氨基酸",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "桔梗",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "宣肺，利咽，祛痰，排脓",
+    "component": "桔梗皂苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "前胡",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "降气化痰，散风清热",
+    "component": "前胡挥发油、前胡苷、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "白前",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "降气化痰，止咳",
+    "component": "白前挥发油、白前苷、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "橘红",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺脾经",
+    "effect": "理气宽中，燥湿化痰，消食",
+    "component": "橘红挥发油、橘红苷、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "瓜蒌",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺胃大肠经",
+    "effect": "清热涤痰，宽胸散结，润燥滑肠",
+    "component": "瓜蒌苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "贝母",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "清热润肺，化痰止咳，散结消痈",
+    "component": "贝母皂苷、挥发油、生物碱",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "浙贝母",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺心经",
+    "effect": "清热化痰止咳，解毒散结消痈",
+    "component": "浙贝母皂苷、挥发油、生物碱",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "枇杷叶",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺胃经",
+    "effect": "清肺止咳，降逆止呕",
+    "component": "枇杷叶皂苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "苦杏仁",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺大肠经",
+    "effect": "降气止咳平喘，润肠通便",
+    "component": "苦杏仁苷、挥发油、氨基酸",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "紫苏子",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺大肠经",
+    "effect": "降气化痰，止咳平喘，润肠通便",
+    "component": "紫苏子挥发油、紫苏子苷、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "桑白皮",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "泻肺平喘，利水消肿",
+    "component": "桑白皮苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "葶苈子",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺膀胱经",
+    "effect": "泻肺平喘，行水消肿",
+    "component": "葶苈子苷、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "紫菀",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "润肺下气，化痰止咳",
+    "component": "紫菀苷、挥发油、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "款冬花",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "润肺下气，止咳化痰",
+    "component": "款冬花挥发油、款冬花苷、黄酮",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "百部",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "润肺下气止咳，杀虫灭虱",
+    "component": "百部碱、挥发油、黄酮",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "白及",
+    "category": "止血药",
+    "meridian": "肺肝胃经",
+    "effect": "收敛止血，消肿生肌",
+    "component": "白及苷、挥发油、黄酮",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "仙鹤草",
+    "category": "止血药",
+    "meridian": "心肝经",
+    "effect": "收敛止血，截疟止痢，解毒杀虫",
+    "component": "仙鹤草苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "棕榈炭",
+    "category": "止血药",
+    "meridian": "肝肺大肠经",
+    "effect": "收敛止血",
+    "component": "棕榈炭蛋白、挥发油、氨基酸",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "血余炭",
+    "category": "止血药",
+    "meridian": "肝胃经",
+    "effect": "收敛止血，化瘀利尿",
+    "component": "血余炭蛋白、氨基酸、微量元素",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "合欢皮",
+    "category": "安神药",
+    "meridian": "心肝经",
+    "effect": "解郁安神，活血消肿",
+    "component": "合欢皮苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "远志",
+    "category": "安神药",
+    "meridian": "心肾脾经",
+    "effect": "安神益智，交通心肾，祛痰，消肿",
+    "component": "远志皂苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "柏子仁",
+    "category": "安神药",
+    "meridian": "心肾经",
+    "effect": "养心安神，润肠通便，止汗",
+    "component": "柏子仁挥发油、柏子仁苷、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "夜交藤",
+    "category": "安神药",
+    "meridian": "心肝经",
+    "effect": "养心安神，祛风通络",
+    "component": "夜交藤苷、挥发油、黄酮",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "茯神",
+    "category": "安神药",
+    "meridian": "心脾经",
+    "effect": "宁心安神",
+    "component": "茯神多糖、挥发油、氨基酸",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "朱砂",
+    "category": "安神药",
+    "meridian": "心经",
+    "effect": "清心解毒，安神定惊，明目",
+    "component": "硫化汞、微量元素",
+    "dosage": "0.1-0.5g"
+  },
+  {
+    "name": "磁石",
+    "category": "安神药",
+    "meridian": "肝肾经",
+    "effect": "平肝潜阳，聪耳明目，镇惊安神，纳气平喘",
+    "component": "磁铁矿、微量元素",
+    "dosage": "9-30g"
+  },
+  {
+    "name": "琥珀",
+    "category": "安神药",
+    "meridian": "心肝膀胱经",
+    "effect": "镇惊安神，散瘀止血，利水通淋",
+    "component": "琥珀树脂、挥发油、微量元素",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "珍珠",
+    "category": "安神药",
+    "meridian": "心肝经",
+    "effect": "安神定惊，明目消翳，解毒生肌",
+    "component": "珍珠蛋白、氨基酸、微量元素",
+    "dosage": "0.1-0.3g"
+  },
+  {
+    "name": "龙齿",
+    "category": "安神药",
+    "meridian": "心肝经",
+    "effect": "镇惊安神，平肝潜阳，收敛固涩",
+    "component": "龙齿化石、微量元素",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "钩藤",
+    "category": "平肝熄风药",
+    "meridian": "肝心包经",
+    "effect": "清热平肝，息风止痉",
+    "component": "钩藤碱、挥发油、黄酮",
+    "dosage": "3-12g"
+  },
+  {
+    "name": "石决明",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "平肝潜阳，清肝明目",
+    "component": "鲍鱼壳、微量元素",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "珍珠母",
+    "category": "平肝熄风药",
+    "meridian": "肝心经",
+    "effect": "平肝潜阳，安神定惊，明目退翳",
+    "component": "珍珠母蛋白、氨基酸、微量元素",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "代赭石",
+    "category": "平肝熄风药",
+    "meridian": "肝心经",
+    "effect": "平肝潜阳，降逆止呕，重镇降逆，止血",
+    "component": "赭石、微量元素",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "刺蒺藜",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "平肝解郁，活血祛风，明目，止痒",
+    "component": "蒺藜苷、挥发油、黄酮",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "罗布麻",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "平肝安神，清热利水",
+    "component": "罗布麻苷、挥发油、黄酮",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "天麻",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "息风止痉，平抑肝阳，祛风通络",
+    "component": "天麻苷、挥发油、黄酮",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "蜈蚣",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "息风止痉，通络止痛，攻毒散结",
+    "component": "蜈蚣蛋白、氨基酸、微量元素",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "全蝎",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "息风止痉，通络止痛，攻毒散结",
+    "component": "全蝎蛋白、氨基酸、微量元素",
+    "dosage": "2-5g"
+  },
+  {
+    "name": "地龙",
+    "category": "平肝熄风药",
+    "meridian": "肝脾膀胱经",
+    "effect": "清热定惊，通络，平喘，利尿",
+    "component": "地龙蛋白、氨基酸、微量元素",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "僵蚕",
+    "category": "平肝熄风药",
+    "meridian": "肝肺胃经",
+    "effect": "息风止痉，祛风止痛，化痰散结",
+    "component": "僵蚕蛋白、氨基酸、微量元素",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "细辛",
+    "category": "解表药",
+    "meridian": "心肺肾经",
+    "effect": "解表散寒，祛风止痛，通窍，温肺化饮",
+    "component": "细辛挥发油、甲基丁香酚、细辛素",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "藁本",
+    "category": "解表药",
+    "meridian": "膀胱经",
+    "effect": "祛风散寒，除湿止痛",
+    "component": "藁本挥发油、阿魏酸、藁本酚",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "苍耳子",
+    "category": "解表药",
+    "meridian": "肺经",
+    "effect": "散风除湿，通鼻窍",
+    "component": "苍耳子苷、苍耳醇、树脂",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "辛夷",
+    "category": "解表药",
+    "meridian": "肺胃经",
+    "effect": "散风寒，通鼻窍",
+    "component": "辛夷挥发油、桉叶素、丁香酚",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "鹅不食草",
+    "category": "解表药",
+    "meridian": "肺肝经",
+    "effect": "发散风寒，通鼻窍，止咳",
+    "component": "蒲公英甾醇、挥发油、三萜皂苷",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "柴胡",
+    "category": "解表药",
+    "meridian": "肝胆经",
+    "effect": "和解表里，疏肝解郁，升阳举陷",
+    "component": "柴胡皂苷、挥发油、柴胡多糖",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "升麻",
+    "category": "解表药",
+    "meridian": "肺脾胃大肠经",
+    "effect": "发表透疹，清热解毒，升举阳气",
+    "component": "升麻素、阿魏酸、异阿魏酸",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "葛花",
+    "category": "解表药",
+    "meridian": "脾胃经",
+    "effect": "解酒醒脾，清热除烦",
+    "component": "葛花异黄酮、葛花皂苷",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "知母",
+    "category": "清热药",
+    "meridian": "肺胃肾经",
+    "effect": "清热泻火，滋阴润燥",
+    "component": "知母皂苷、芒果苷、知母多糖",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "芦根",
+    "category": "清热药",
+    "meridian": "肺胃经",
+    "effect": "清热泻火，生津止渴，除烦止呕",
+    "component": "天门冬酰胺、薏苡素、苜蓿素",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "天花粉",
+    "category": "清热药",
+    "meridian": "肺胃经",
+    "effect": "清热泻火，生津止渴，消肿排脓",
+    "component": "天花粉蛋白、天花粉多糖、皂苷",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "竹叶",
+    "category": "清热药",
+    "meridian": "心胃小肠经",
+    "effect": "清热除烦，生津利尿",
+    "component": "竹叶黄酮、竹叶多糖、挥发油",
+    "dosage": "6-15g"
+  },
+  {
+    "name": "黄柏",
+    "category": "清热药",
+    "meridian": "肾膀胱经",
+    "effect": "清热燥湿，泻火除蒸，解毒疗疮",
+    "component": "小檗碱、黄柏碱、巴马汀",
+    "dosage": "3-12g"
+  },
+  {
+    "name": "苦地丁",
+    "category": "清热药",
+    "meridian": "心肝大肠经",
+    "effect": "清热解毒，消痈肿",
+    "component": "苦地丁素、香豆精、甾体化合物",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "四季青",
+    "category": "清热药",
+    "meridian": "肺心经",
+    "effect": "清热解毒，消肿祛瘀",
+    "component": "四季青素、原儿茶酸、熊果酸",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "虎杖",
+    "category": "清热药",
+    "meridian": "肝胆肺经",
+    "effect": "清热解毒，利胆退黄，祛风除湿，活血散瘀",
+    "component": "大黄素、虎杖苷、白藜芦醇",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "蚕沙",
+    "category": "祛风湿药",
+    "meridian": "肝脾胃经",
+    "effect": "祛风除湿，和胃化浊",
+    "component": "蚕沙叶绿素、植物醇、胡萝卜素",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "寻骨风",
+    "category": "祛风湿药",
+    "meridian": "肝经",
+    "effect": "祛风除湿，通络止痛",
+    "component": "马兜铃酸、马兜铃内酰胺、挥发油",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "昆明山海棠",
+    "category": "祛风湿药",
+    "meridian": "肝脾肾经",
+    "effect": "祛风除湿，活血止痛，续筋接骨",
+    "component": "雷公藤次碱、山海棠素、生物碱",
+    "dosage": "6-12g"
+  },
+  {
+    "name": "胡椒",
+    "category": "温里药",
+    "meridian": "胃大肠经",
+    "effect": "温中散寒，下气消痰",
+    "component": "胡椒碱、胡椒脂碱、挥发油",
+    "dosage": "1-3g"
+  },
+  {
+    "name": "青木香",
+    "category": "理气药",
+    "meridian": "肝胃经",
+    "effect": "行气止痛，解毒消肿",
+    "component": "马兜铃酸、木兰花碱、挥发油",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "天仙藤",
+    "category": "理气药",
+    "meridian": "肝脾胃经",
+    "effect": "行气活血，利水消肿",
+    "component": "马兜铃酸、生物碱、挥发油",
+    "dosage": "3-6g"
+  },
+  {
+    "name": "鹤草芽",
+    "category": "驱虫药",
+    "meridian": "小肠大肠经",
+    "effect": "杀虫驱绦",
+    "component": "鹤草酚、仙鹤草内酯、鞣质",
+    "dosage": "研粉服30-50g"
+  },
+  {
+    "name": "阿魏",
+    "category": "消食药",
+    "meridian": "脾胃肝经",
+    "effect": "消积散痞，杀虫",
+    "component": "阿魏树脂、挥发油、阿魏酸",
+    "dosage": "1-1.5g"
+  },
+  {
+    "name": "番木瓜",
+    "category": "消食药",
+    "meridian": "脾胃经",
+    "effect": "消食驱虫，清热祛风",
+    "component": "木瓜蛋白酶、木瓜凝乳蛋白酶、维生素C",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "茜草",
+    "category": "止血药",
+    "meridian": "肝经",
+    "effect": "凉血止血，化瘀通经",
+    "component": "茜草素、羟基茜草素、茜草多糖",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "蒲黄",
+    "category": "止血药",
+    "meridian": "肝心包经",
+    "effect": "止血，化瘀，通淋",
+    "component": "香蒲黄酮、柚皮素、β-谷甾醇",
+    "dosage": "5-10g"
+  },
+  {
+    "name": "花蕊石",
+    "category": "止血药",
+    "meridian": "肝经",
+    "effect": "化瘀止血",
+    "component": "碳酸钙、磷酸钙、镁离子",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "紫珠",
+    "category": "止血药",
+    "meridian": "肝肺胃经",
+    "effect": "凉血收敛止血，清热解毒",
+    "component": "紫珠草素、黄酮类、鞣质",
+    "dosage": "10-15g"
+  },
+  {
+    "name": "皂荚",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺大肠经",
+    "effect": "祛顽痰，通窍开闭，杀虫止痒",
+    "component": "皂荚皂苷、皂荚碱、多糖",
+    "dosage": "1.5-3g"
+  },
+  {
+    "name": "竹沥",
+    "category": "化痰止咳平喘药",
+    "meridian": "心肝肺经",
+    "effect": "清热豁痰，定惊利窍",
+    "component": "竹沥多糖、氨基酸、微量元素",
+    "dosage": "15-30ml"
+  },
+  {
+    "name": "天竺黄",
+    "category": "化痰止咳平喘药",
+    "meridian": "心肝经",
+    "effect": "清热豁痰，凉心定惊",
+    "component": "硅酸盐、氨基酸、胆碱",
+    "dosage": "3-9g"
+  },
+  {
+    "name": "浮海石",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺经",
+    "effect": "清肺化痰，软坚散结",
+    "component": "碳酸钙、磷酸钙、硅酸盐",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "礞石",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺心肝经",
+    "effect": "坠痰下气，平肝镇惊",
+    "component": "硅酸盐、铁镁铝离子、碳酸钙",
+    "dosage": "6-10g"
+  },
+  {
+    "name": "矮地茶",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺肝经",
+    "effect": "止咳平喘，清利湿热，活血化瘀",
+    "component": "岩白菜素、槲皮素、挥发油",
+    "dosage": "15-30g"
+  },
+  {
+    "name": "洋金花",
+    "category": "化痰止咳平喘药",
+    "meridian": "肺肝经",
+    "effect": "平喘止咳，镇痛止痉",
+    "component": "东莨菪碱、莨菪碱、阿托品",
+    "dosage": "0.3-0.6g"
+  },
+  {
+    "name": "夜明砂",
+    "category": "平肝熄风药",
+    "meridian": "肝经",
+    "effect": "清热明目，散血消积",
+    "component": "尿素、胆固醇、胆酸类",
+    "dosage": "3-10g"
+  },
+  {
+    "name": "朱砂根",
+    "category": "清热药",
+    "meridian": "肺肝经",
+    "effect": "清热解毒，活血止痛",
+    "component": "朱砂根苷、香豆素、三萜皂苷",
+    "dosage": "9-15g"
+  },
+  {
+    "name": "木槿皮",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "大肠肝脾经",
+    "effect": "清热利湿，杀虫止痒",
+    "component": "鞣质、黏液质、皂苷",
+    "dosage": "外用适量"
+  },
+  {
+    "name": "铅丹",
+    "category": "攻毒杀虫止痒药",
+    "meridian": "心肝经",
+    "effect": "拔毒生肌，杀虫止痒",
+    "component": "四氧化三铅",
+    "dosage": "外用适量"
+  }
+]
