@@ -44,11 +44,15 @@ class ConsultationStartIn(BaseModel):
         default_factory=list, description="孕妇 / 哺乳期 / 儿童 / 慢性病患者"
     )
     top_n: int = 6
+    enable_recipe: bool = Field(
+        False, description="是否启用 Agent3 药膳生成节点（P3，默认关闭）"
+    )
 
 
 class ConsultationAnswerIn(BaseModel):
     answer: str = Field(..., description="用户对追问的回答")
     top_n: int = 6
+    enable_recipe: bool = False
 
 
 class ConsultationOut(BaseModel):
@@ -62,9 +66,11 @@ class ConsultationOut(BaseModel):
     constitution: dict[str, Any] | None = None
     recommend: dict[str, Any] | None = None
     interpretation: str = ""
+    recipe: dict[str, Any] | None = None
     special_groups: list[str] = Field(default_factory=list)
     safety: dict[str, Any] | None = None
     disclaimer: str = ""
+    trace: list[dict[str, Any]] = Field(default_factory=list)
 
 
 # ---------------- 安全自检（论文实验 / 答辩演示用） ----------------

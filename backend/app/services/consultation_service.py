@@ -1,134 +1,57 @@
 # -*- coding: utf-8 -*-
-"""BC2 问诊会话服务 —— P1 核心闭环
+"""BC2 问诊会话服务 —— P2 版本：LangGraph 状态机驱动
 
-流水线：
-    输入 → ①输入侧安全闸（急症拦截）
-         → ②信息充分性判断（确定性引擎）
-         → 不足 → LLM 生成追问（≤3 问 / ≤2 轮）
-         → 充分 → ③体质判定（确定性，非 LLM）
-                → ④药材匹配（仅 106 白名单）
-                → ⑤输出侧安全闸（术语过滤 + 免责声明注入）
-                → ⑥落库（consultations / messages / safety_logs）
+职责划分（ADR-002 / ADR-006）：
+    service 层  —— 数据库读写、事务、异常语义（抛 Geschäft 异常）
+    orchestration —— 状态推进（BC3/BC4/安全节点由 LangGraph 图编排）
 
-职责划分（ADR-002）：
-    LLM 只做两件事 —— ① 生成追问 ② 通俗化转述。
-    判定、过滤、安全一律走规则，失败不影响主流程（LLM 不可用时降级为模板话术）。
+    两者之间只传 dict，**service 不手写流水线**。
+
+流水线（graph.py 中的图，二者必须保持一致）：
+    START → ①collect_symptoms（症状采集 + 输入侧安全闸）
+          → ②constitution_engine（GB/T 46939—2025 确定性判定，非 LLM）
+          → 信息不足 → ③follow_up（Agent1 追问，≤2 轮）→ END 等待用户
+          → 信息充足 → ④herb_match（Agent2，候选限定 106 白名单）
+          → ⑤safety_check（交叉复核 + 输出侧过滤）
+          → ⑥food_recipe（Agent3，P3 开关）→ ⑦present → END
+
+LLM 只做两件事：追问生成、结果通俗化。判定/过滤/安全一律走规则；
+任何 LLM 失败都降级为模板，不允许中断主流程。
 """
 from __future__ import annotations
 
 import json
 import uuid
 from dataclasses import dataclass, field
-from datetime import datetime
-from typing import Any, Sequence
+from typing import Any, Iterator, Sequence
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.agents.base import LLMError, Message
-from app.agents.llm_client import get_llm_client
-from app.agents.prompts import build_follow_up_messages, build_interpret_messages
 from app.core.config import get_settings
 from app.core.logging import get_logger
 from app.core.responses import EmergencyBlocked, NotFoundException
 from app.domain.constitution import engine as ce
 from app.domain.constitution.questionnaire import (
-    ALL_QUESTIONS,
     CONSTITUTION_INFO,
     NINE_CONSTITUTIONS,
-    PINGHE,
-    QUESTIONNAIRE,
-    SCORE_LABELS,
 )
-from app.domain.recommendation import matcher as hm
 from app.domain.safety import guard as sg
 from app.models.entities import Consultation, Message as MessageRow, SafetyLog
+from app.orchestration.nodes import NODE_LABELS
+from app.orchestration.runner import run_consultation, stream_consultation
+from app.orchestration.state import FINAL_NODE, MAX_FOLLOWUP_ROUNDS, new_state
 from app.services import data_loader
+from app.services.symptom_extraction import (  # 向后兼容：旧引用路径仍可用
+    FREE_TEXT_HINTS,
+    TEMPLATE_FOLLOWUP,
+    answered_summary,
+    extract_answers_from_text,
+    missing_dimensions,
+)
 
 logger = get_logger("services.consultation")
 settings = get_settings()
-
-MAX_FOLLOWUP_ROUNDS = 2
-
-
-# ===========================================================================
-# 自由文本 → 问卷结构化答案（关键词启发）
-#   说明：这是规则层的确定性抽取，保证无 LLM 也能推进；
-#        未来可替换为 LLM 抽取 + 规则校验（LLM 负责语言理解，规则负责兜底）
-# ===========================================================================
-FREE_TEXT_HINTS: dict[str, dict[str, int]] = {
-    # 阳虚
-    "怕冷": {"阳虚质_1": 5, "阳虚质_3": 4},
-    "手脚冰凉": {"阳虚质_1": 5},
-    "手脚发凉": {"阳虚质_1": 5},
-    "四肢不温": {"阳虚质_1": 4},
-    "腰膝酸冷": {"阳虚质_2": 4},
-    "喜热饮": {"阳虚质_1": 4},
-    # 气虚
-    "没力气": {"气虚质_1": 5},
-    "容易累": {"气虚质_1": 5},
-    "疲乏": {"气虚质_1": 5},
-    "乏力": {"气虚质_1": 5},
-    "气短": {"气虚质_2": 5},
-    "出虚汗": {"气虚质_3": 5},
-    "易感冒": {"气虚质_1": 4},
-    # 阴虚
-    "五心烦热": {"阴虚质_1": 5},
-    "手脚心热": {"阴虚质_1": 5},
-    "口干": {"阴虚质_2": 4},
-    "咽燥": {"阴虚质_2": 4},
-    "盗汗": {"阴虚质_3": 5},
-    "眼干": {"阴虚质_2": 4},
-    # 痰湿
-    "腹胀": {"痰湿质_1": 4},
-    "胸闷": {"痰湿质_1": 4},
-    "身体沉重": {"痰湿质_2": 5},
-    "痰多": {"痰湿质_3": 5},
-    "肥胖": {"痰湿质_2": 4},
-    "大便黏": {"痰湿质_3": 4},
-    "舌苔厚腻": {"痰湿质_3": 4},
-    # 湿热
-    "出油": {"湿热质_1": 5},
-    "油光": {"湿热质_1": 5},
-    "痤疮": {"湿热质_2": 5},
-    "长痘": {"湿热质_2": 5},
-    "口苦": {"湿热质_3": 5},
-    "口臭": {"湿热质_3": 5},
-    # 血瘀
-    "瘀斑": {"血瘀质_1": 5},
-    "淤青": {"血瘀质_1": 5},
-    "面色晦暗": {"血瘀质_2": 5},
-    "嘴唇发暗": {"血瘀质_3": 5},
-    "痛经": {"血瘀质_2": 4},
-    # 气郁
-    "心情低落": {"气郁质_1": 5},
-    "情绪低落": {"气郁质_1": 5},
-    "压力大": {"气郁质_2": 4},
-    "焦虑": {"气郁质_2": 4},
-    "爱叹气": {"气郁质_2": 4},
-    "易受惊": {"气郁质_3": 4},
-    # 特禀
-    "过敏": {"特禀质_1": 5},
-    "荨麻疹": {"特禀质_2": 5},
-    "鼻炎": {"特禀质_3": 4},
-    "打喷嚏": {"特禀质_3": 4},
-    # 平和（正向条目的弱化表达）
-    "精力充沛": {"平和质_1": 5},
-    "很少生病": {"平和质_3": 5},
-    "睡眠好": {"平和质_3": 5},
-}
-
-
-def extract_answers_from_text(text: str) -> dict[str, int]:
-    """从自由文本抽取结构化答案（取同类关键词中的最高分）"""
-    found: dict[str, int] = {}
-    if not text:
-        return found
-    for kw, mapping in FREE_TEXT_HINTS.items():
-        if kw in text:
-            for qid, score in mapping.items():
-                found[qid] = max(found.get(qid, 0), score)
-    return found
 
 
 # ===========================================================================
@@ -142,15 +65,17 @@ class ConsultationOutcome:
     phase: str                       # follow_up | completed | blocked
     status: str
     follow_up_questions: list[str] = field(default_factory=list)
-    follow_up_source: str = ""       # llm | template
+    follow_up_source: str = ""       # llm:<provider>:<model> | template
     follow_up_round: int = 0
     message: str = ""
     constitution: dict | None = None
     recommend: dict | None = None
     interpretation: str = ""
+    recipe: dict | None = None
     special_groups: list[str] = field(default_factory=list)
     safety: dict | None = None
     disclaimer: str = ""
+    trace: list[dict] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return {
@@ -164,9 +89,11 @@ class ConsultationOutcome:
             "constitution": self.constitution,
             "recommend": self.recommend,
             "interpretation": self.interpretation,
+            "recipe": self.recipe,
             "special_groups": self.special_groups,
             "safety": self.safety,
             "disclaimer": self.disclaimer,
+            "trace": self.trace,
         }
 
 
@@ -184,19 +111,23 @@ def _dump(obj: Any) -> str:
         return ""
     if isinstance(obj, str):
         return obj
-    if hasattr(obj, "to_dict"):
-        return json.dumps(obj.to_dict(), ensure_ascii=False)
     if isinstance(obj, (dict, list)):
         return json.dumps(obj, ensure_ascii=False)
     return str(obj)
 
 
-def _load_questionnaire(raw: str) -> dict[str, int]:
+def _safe_json(raw: str) -> Any:
+    if not raw:
+        return None
     try:
-        data = json.loads(raw or "{}")
-        return data if isinstance(data, dict) else {}
+        return json.loads(raw)
     except json.JSONDecodeError:
-        return {}
+        return raw
+
+
+def _load_questionnaire(raw: str) -> dict[str, int]:
+    data = _safe_json(raw)
+    return data if isinstance(data, dict) else {}
 
 
 def _add_message(db: Session, cid: str, role: str, content: str, round_no: int = 0) -> None:
@@ -213,111 +144,29 @@ def _log_safety(db: Session, cid: str, triggers: Sequence[sg.Trigger]) -> None:
         ))
 
 
-def _missing_dimensions(answers: dict[str, int]) -> list[str]:
-    missing = []
-    for dim_key, dim in QUESTIONNAIRE.items():
-        if not any(q.id in answers for q in dim.questions):
-            missing.append(dim_key)
-    return missing
+def _log_safety_dicts(db: Session, cid: str, flags: Sequence[dict]) -> None:
+    """记录交叉复核 / 输出侧的 flag（已经 to_dict 过的）"""
+    for f in flags:
+        db.add(SafetyLog(
+            consultation_id=cid,
+            rule=str(f.get("rule", "")),
+            matched=str(f.get("matched", "")),
+            action=str(f.get("action", "")),
+            replacement=str(f.get("replacement", "")),
+            detail=str(f.get("detail", f.get("dropped", "") or ""))[:2000],
+        ))
 
 
-def _answered_summary(answers: dict[str, int]) -> str:
-    lines = []
-    for qid, score in sorted(answers.items()):
-        q = ALL_QUESTIONS.get(qid)
-        if q and score >= 3:
-            lines.append(f"- {q.text}：{SCORE_LABELS.get(score, score)}")
-    return "\n".join(lines)
+def _normalize_groups(groups: Sequence[str], text: str = "") -> list[str]:
+    merged = list(groups or []) + sg.detect_special_groups(text)
+    return sorted(set(sg.assert_groups_valid(merged)))
 
 
-TEMPLATE_FOLLOWUP: dict[str, str] = {
-    "气虚质": "你平时容易疲乏、爬楼或走路快了就气短吗？",
-    "阳虚质": "你平时手脚发凉、比别人更怕冷吗？",
-    "阴虚质": "你常感到口干咽燥，或手心脚心发热、夜间出汗吗？",
-    "痰湿质": "你常感觉身体沉重、腹部胀满、痰多或口中黏腻吗？",
-    "湿热质": "你面部容易出油、长痘，或有口苦口臭的情况吗？",
-    "血瘀质": "你的皮肤容易出现青紫瘀斑，或面色、口唇偏暗吗？",
-    "气郁质": "你最近情绪低落、压力大、爱叹气的情况多吗？",
-    "特禀质": "你容易对食物、药物、花粉等过敏，或常鼻塞打喷嚏吗？",
-    "平和质": "你精力充沛、睡眠质量好、很少生病吗？",
+STATUS_BY_PHASE = {
+    "follow_up": "follow_up",
+    "completed": "completed",
+    "blocked": "blocked_safety",
 }
-
-
-def _generate_follow_up(
-    result: ce.ConstitutionResult,
-    answers: dict[str, int],
-    chief_complaint: str,
-    missing: list[str],
-    special_groups: list[str],
-    round_no: int,
-) -> tuple[list[str], str, str]:
-    """返回 (问题列表, 来源 llm|template, 开场白)"""
-    # 优先用 LLM 生成自然的追问；任何异常都降级为模板，保证流程不中断
-    try:
-        client = get_llm_client()
-        msgs = [
-            Message(role=m["role"], content=m["content"])
-            for m in build_follow_up_messages(
-                chief_complaint, _answered_summary(answers), missing,
-                special_groups, round_no,
-            )
-        ]
-        resp = client.chat(msgs, key_step=True)
-        questions = [ln.strip() for ln in resp.text.splitlines() if ln.strip()][:3]
-        if questions:
-            intro = "根据你描述的情况，我还想再确认几个细节："
-            return questions, f"llm:{resp.provider}:{resp.model}", intro
-    except LLMError as e:
-        logger.warning("追问生成失败，降级为模板", extra={"extra_fields": {"error": str(e)[:120]}})
-    except Exception as e:  # noqa: BLE001 兜底，任何异常都不能中断问诊
-        logger.warning("追问生成异常，降级为模板",
-                       extra={"extra_fields": {"error": str(e)[:120]}})
-
-    # 模板兜底：question_id 无关，按缺失维度给最高优先级的问题
-    ordered_dims = [d for d in missing if d != PINGHE][:3] or missing[:3]
-    questions = [
-        f"{i}. {TEMPLATE_FOLLOWUP[d]}" for i, d in enumerate(ordered_dims, 1)
-    ]
-    return questions, "template", "还想再了解几点，帮你把体质判断得更准一些："
-
-
-def _interpret_with_llm(result: ce.ConstitutionResult) -> tuple[str, str]:
-    """通俗化。返回 (文本, 来源 llm|rule)"""
-    try:
-        client = get_llm_client()
-        msgs = [
-            Message(role=m["role"], content=m["content"])
-            for m in build_interpret_messages(
-                result.primary, result.secondary, result.evidence, result.primary_label,
-            )
-        ]
-        resp = client.chat(msgs, key_step=True)
-        if resp.text.strip():
-            return resp.text.strip(), f"llm:{resp.provider}:{resp.model}"
-    except Exception as e:  # noqa: BLE001
-        logger.warning("通俗化失败，使用规则表述",
-                       extra={"extra_fields": {"error": str(e)[:120]}})
-    return ce.interpret_to_words(result), "rule"
-
-
-def _explain_herbs_with_llm(result: ce.ConstitutionResult, candidates: list[dict],
-                            special_groups: list[str]) -> str:
-    from app.agents.prompts import build_herb_explain_messages
-
-    try:
-        client = get_llm_client()
-        msgs = [
-            Message(role=m["role"], content=m["content"])
-            for m in build_herb_explain_messages(candidates, result.primary, special_groups)
-        ]
-        resp = client.chat(msgs)
-        if resp.text.strip():
-            return resp.text.strip()
-    except Exception as e:  # noqa: BLE001
-        logger.warning("药材解读失败，降级为规则文本",
-                       extra={"extra_fields": {"error": str(e)[:120]}})
-    lines = [f"{c['name']}（{c.get('dosage','')}）：{c.get('reason','')}" for c in candidates]
-    return "\n".join(lines)
 
 
 # ===========================================================================
@@ -333,27 +182,21 @@ def start_consultation(
     special_groups: list[str] | None = None,
     user_id: int | None = None,
     top_n: int = 6,
+    enable_recipe: bool = False,
 ) -> ConsultationOutcome:
     cid = _new_id()
-    answers: dict[str, int] = dict(questionnaire or {})
+    groups = _normalize_groups(list(special_groups or []), chief_complaint)
 
-    # 主诉中的关键词并入问卷（让一句话起手也能跑通）
-    if chief_complaint:
-        for qid, score in extract_answers_from_text(chief_complaint).items():
-            answers.setdefault(qid, score)
-
-    groups = list(special_groups or [])
-    groups += sg.detect_special_groups(chief_complaint)
-    groups = sorted(set(sg.assert_groups_valid(groups)))
-
-    # ---- ① 输入侧安全闸 ----
+    # 图之前先做一次输入侧安全判定：决定是否落 blocked 状态的记录行
+    # （与 collect_symptoms_node 调用同一个 sg.check_input，结果必然一致）
     input_verdict = sg.check_input(chief_complaint)
+
     consultation = Consultation(
         id=cid, user_id=user_id,
         status="blocked_emergency" if input_verdict.blocked else "in_progress",
         chief_complaint=chief_complaint,
         special_groups=_dump(groups),
-        questionnaire=_dump(answers),
+        questionnaire=_dump(dict(questionnaire or {})),
         safety_verdict=_dump(input_verdict),
     )
     db.add(consultation)
@@ -365,17 +208,27 @@ def start_consultation(
         db.commit()
         raise EmergencyBlocked(
             sg.EMERGENCY_ADVICE,
-            data={
-                "consultation_id": cid,
-                "verdict": input_verdict.to_dict(),
-            },
+            data={"consultation_id": cid, "verdict": input_verdict.to_dict()},
         )
 
-    return _advance(db, consultation, answers, groups, top_n=top_n, round_no=0)
+    state = new_state(
+        cid,
+        user_input=chief_complaint,
+        questionnaire=questionnaire,
+        special_groups=groups,
+        user_id=user_id,
+        top_n=top_n,
+        enable_recipe=enable_recipe,
+        follow_up_rounds=0,
+        chief_complaint=chief_complaint,
+    )
+    final = run_consultation(state, thread_id=cid)
+    return _persist_and_build(db, consultation, final)
 
 
 def answer_consultation(
-    db: Session, *, consultation_id: str, answer: str, top_n: int = 6
+    db: Session, *, consultation_id: str, answer: str,
+    top_n: int = 6, enable_recipe: bool = False,
 ) -> ConsultationOutcome:
     consultation = db.get(Consultation, consultation_id)
     if consultation is None:
@@ -383,123 +236,262 @@ def answer_consultation(
     if consultation.status.startswith("blocked"):
         raise EmergencyBlocked("该问诊已被安全策略终止，请重新开始一次问诊")
 
-    answers = _load_questionnaire(consultation.questionnaire)
-    for qid, score in extract_answers_from_text(answer).items():
-        answers[qid] = max(answers.get(qid, 0), score)
-
     round_no = consultation.follow_up_rounds
     _add_message(db, consultation.id, "user", answer, round_no=round_no)
-    consultation.chief_complaint = (
-        f"{consultation.chief_complaint}\n用户补充：{answer}".strip()
-    )
-    groups = json.loads(consultation.special_groups or "[]")
     db.flush()
-    return _advance(db, consultation, answers, groups, top_n=top_n, round_no=round_no + 1)
 
-
-def _advance(
-    db: Session,
-    consultation: Consultation,
-    answers: dict[str, int],
-    groups: list[str],
-    *,
-    top_n: int,
-    round_no: int,
-) -> ConsultationOutcome:
-    # ---- ② 确定性体质判定 ----
-    result = ce.score(answers, rule_table_version=settings.rule_table_version)
-    consultation.questionnaire = _dump(answers)
-    consultation.constitution = _dump(result)
-    consultation.follow_up_rounds = round_no
-
-    missing = _missing_dimensions(answers)
-
-    # ---- 信息不足 → 追问（≤2 轮）----
-    if result.needs_follow_up and round_no < MAX_FOLLOWUP_ROUNDS:
-        questions, source, intro = _generate_follow_up(
-            result, answers, consultation.chief_complaint, missing, groups, round_no + 1
-        )
-        consultation.status = "follow_up"
-        _add_message(db, consultation.id, "ai", "\n".join(questions), round_no=round_no + 1)
-        db.commit()
-        return ConsultationOutcome(
-            consultation_id=consultation.id,
-            phase="follow_up",
-            status="follow_up",
-            follow_up_questions=questions,
-            follow_up_source=source,
-            follow_up_round=round_no + 1,
-            message=intro,
-            constitution=_preview_constitution(result),
-            special_groups=groups,
-            disclaimer=sg.DISCLAIMER,
-        )
-
-    # ---- ③④ 药材匹配（仅 106 白名单）----
-    checker = data_loader.get_whitelist_checker()
-    index = data_loader.get_whitelist_index()
-    match = hm.match_herbs(
-        result, checker, whitelist_index=index,
-        chief_complaint=consultation.chief_complaint,
-        special_groups=groups, top_n=top_n,
+    state = new_state(
+        consultation.id,
+        user_input=answer,
+        questionnaire=_load_questionnaire(consultation.questionnaire),
+        special_groups=_safe_json(consultation.special_groups) or [],
+        top_n=top_n,
+        enable_recipe=enable_recipe,
+        follow_up_rounds=round_no,
+        chief_complaint=consultation.chief_complaint or "",
     )
-    consultation.herbal_match = _dump(match)
+    final = run_consultation(state, thread_id=consultation.id)
 
-    # ---- ⑤ 输出侧安全闸 ----
-    interpretation, _src = _interpret_with_llm(result)
-    interpretation, out_verdict = sg.check_output(interpretation)
-    _log_safety(db, consultation.id, out_verdict.triggers)
+    # 追问答案里出现急症表述 → 中途阻断（图已把 block_kind 标好）
+    if final.get("blocked") and final.get("block_kind") == "emergency":
+        consultation.status = "blocked_emergency"
+        consultation.safety_verdict = _dump(final.get("input_verdict"))
+        _log_safety_dicts(db, consultation.id, [{"rule": "急诊-追问轮", "action": "block"}])
+        db.commit()
+        raise EmergencyBlocked(
+            sg.EMERGENCY_ADVICE,
+            data={"consultation_id": consultation.id,
+                  "verdict": final.get("input_verdict")},
+        )
 
-    candidates = [c.to_dict() for c in match.candidates]
-    explanation = _explain_herbs_with_llm(result, candidates, groups)
-    explanation, _ = sg.check_output(explanation, with_recipe_disclaimer=True)
+    return _persist_and_build(db, consultation, final)
 
-    final_verdict = match.safety or sg.SafetyVerdict()
+
+def _persist_and_build(
+    db: Session, consultation: Consultation, final: dict
+) -> ConsultationOutcome:
+    """把图终态落库 + 组装 API 输出 —— service 层唯一的写库出口"""
+    cid = consultation.id
+    phase = final.get("phase") or ("completed" if final.get("completed") else "follow_up")
+    rounds = int(final.get("follow_up_rounds") or 0)
+    constitution = final.get("constitution")
+    herbs = final.get("herbs") or {}
+    groups = list(final.get("special_groups") or [])
+
+    consultation.chief_complaint = final.get("chief_complaint", consultation.chief_complaint)
+    consultation.questionnaire = _dump(final.get("questionnaire") or {})
+    consultation.special_groups = _dump(groups)
+    consultation.constitution = _dump(constitution)
+    consultation.herbal_match = _dump(herbs)
+    consultation.recipe = _dump(final.get("recipe"))
+    consultation.follow_up_rounds = rounds
     consultation.safety_verdict = _dump({
-        "match": final_verdict.to_dict(),
-        "output": out_verdict.to_dict(),
+        "input": final.get("input_verdict"),
+        "cross": final.get("safety_flags") or [],
     })
-    consultation.status = "completed"
-    _add_message(db, consultation.id, "ai", interpretation, round_no=round_no)
+    consultation.status = STATUS_BY_PHASE.get(phase, "in_progress")
+
+    _log_safety_dicts(db, cid, final.get("safety_flags") or [])
+
+    ai_text = _ai_text(phase, final)
+    _add_message(db, cid, "ai", ai_text, round_no=rounds)
     db.commit()
 
+    if phase == "follow_up":
+        return ConsultationOutcome(
+            consultation_id=cid, phase=phase, status=consultation.status,
+            follow_up_questions=list(final.get("follow_up_questions") or []),
+            follow_up_source=final.get("follow_up_source", ""),
+            follow_up_round=rounds,
+            message="还想再了解几点，帮你把体质判断得更准一些：",
+            constitution=_preview_constitution(final.get("constitution") or {}),
+            special_groups=groups,
+            disclaimer=sg.DISCLAIMER,
+            trace=list(final.get("trace") or []),
+        )
+
+    if phase == "blocked":
+        return ConsultationOutcome(
+            consultation_id=cid, phase=phase, status=consultation.status,
+            message=final.get("block_reason", "已触发安全策略"),
+            follow_up_round=rounds,
+            special_groups=groups,
+            disclaimer=sg.DISCLAIMER,
+            trace=list(final.get("trace") or []),
+        )
+
     return ConsultationOutcome(
-        consultation_id=consultation.id,
-        phase="completed",
-        status="completed",
-        follow_up_round=round_no,
+        consultation_id=cid, phase="completed", status=consultation.status,
+        follow_up_round=rounds,
         message="已完成体质辨识与药膳方向推荐",
-        constitution=result.to_dict(),
-        recommend={
-            "herbs": candidates,
-            "rejected": [r.to_dict() for r in match.rejected],
-            "explanation": explanation,
-            "rule_table_version": match.rule_table_version,
-            "evidence": [
-                data_loader.get_whitelist_retriever().get(c["name"]).to_dict()
-                for c in candidates
-                if data_loader.get_whitelist_retriever().get(c["name"])
-            ],
-        },
-        interpretation=interpretation,
+        constitution=constitution,
+        recommend=_build_recommend(herbs, final),
+        interpretation=final.get("interpretation", ""),
+        recipe=final.get("recipe"),
         special_groups=groups,
-        safety=final_verdict.to_dict(),
+        safety=(herbs or {}).get("safety"),
         disclaimer=sg.DISCLAIMER,
+        trace=list(final.get("trace") or []),
     )
 
 
-def _preview_constitution(result: ce.ConstitutionResult) -> dict:
+def _ai_text(phase: str, final: dict) -> str:
+    if phase == "follow_up":
+        return "\n".join(final.get("follow_up_questions") or [])
+    if phase == "blocked":
+        return final.get("block_reason", "")
+    return final.get("interpretation", "") or final.get("herb_explanation", "")
+
+
+def _build_recommend(herbs: dict, final: dict) -> dict:
+    retriever = data_loader.get_whitelist_retriever()
+    candidates = list(herbs.get("candidates") or [])
+    return {
+        "herbs": candidates,
+        "rejected": list(herbs.get("rejected") or []),
+        "explanation": final.get("herb_explanation", ""),
+        "rule_table_version": herbs.get("rule_table_version", settings.rule_table_version),
+        "cross_checked": bool(herbs.get("cross_checked")),
+        "evidence": [
+            retriever.get(c["name"]).to_dict()
+            for c in candidates
+            if retriever.get(c["name"])
+        ],
+    }
+
+
+def _preview_constitution(const: dict) -> dict:
     """追问阶段也返回当前倾向（不强行辨证，标记为不置信）"""
     return {
-        "primary": result.primary,
+        "primary": const.get("primary") or "平和质",
         "primary_label": "暂未判定（信息不足）",
         "secondary": [],
-        "scores": result.scores,
+        "scores": const.get("scores") or {},
         "deterministic": True,
         "insufficient_info": True,
-        "answered_total": result.answered_total,
-        "evidence": result.evidence,
+        "answered_total": const.get("answered_total", 0),
+        "evidence": const.get("evidence") or [],
     }
+
+
+# ===========================================================================
+# SSE 流式：节点级 meta 事件（系统架构设计 8.2 / 3.4.8）
+# ===========================================================================
+
+
+def start_consultation_stream(
+    db: Session,
+    *,
+    chief_complaint: str = "",
+    questionnaire: dict[str, int] | None = None,
+    special_groups: list[str] | None = None,
+    user_id: int | None = None,
+    top_n: int = 6,
+    enable_recipe: bool = False,
+) -> Iterator[dict]:
+    """边跑图边产出 SSE 事件
+
+    事件类型：
+        event: node   {"node","label",...}   节点开始/完成（trade_trace）
+        event: meta   {"provider","model"}   LLM 来源
+        event: delta  {"text"}               最终结论分段播放
+        event: done   {...}                  终态摘要
+        event: error  {"code","message"}
+    """
+    cid = _new_id()
+    groups = _normalize_groups(list(special_groups or []), chief_complaint)
+    input_verdict = sg.check_input(chief_complaint)
+
+    consultation = Consultation(
+        id=cid, user_id=user_id,
+        status="blocked_emergency" if input_verdict.blocked else "in_progress",
+        chief_complaint=chief_complaint,
+        special_groups=_dump(groups),
+        questionnaire=_dump(dict(questionnaire or {})),
+        safety_verdict=_dump(input_verdict),
+    )
+    db.add(consultation)
+    _add_message(db, cid, "user", chief_complaint or "（开始问诊）")
+    db.flush()
+    _log_safety(db, cid, input_verdict.triggers)
+
+    if input_verdict.blocked:
+        db.commit()
+        yield {"event": "error", "data": {"code": "EMERGENCY_BLOCKED",
+                                          "message": sg.EMERGENCY_ADVICE,
+                                          "consultation_id": cid}}
+        return
+
+    state = new_state(
+        cid, user_input=chief_complaint, questionnaire=questionnaire,
+        special_groups=groups, user_id=user_id, top_n=top_n,
+        enable_recipe=enable_recipe, follow_up_rounds=0,
+        chief_complaint=chief_complaint,
+    )
+
+    final: dict = {}
+    for node_name, patch in stream_consultation(state, thread_id=cid):
+        if node_name == FINAL_NODE:
+            final = patch
+            continue
+        yield {
+            "event": "node",
+            "data": {
+                "node": node_name,
+                "label": NODE_LABELS.get(node_name, node_name),
+                "summary": _patch_summary(patch),
+            },
+        }
+        source = patch.get("follow_up_source") or patch.get("interpretation_source")
+        if source:
+            parts = source.split(":")
+            yield {"event": "meta", "data": {
+                "provider": parts[1] if len(parts) > 1 else source,
+                "model": parts[2] if len(parts) > 2 else "",
+            }}
+
+    outcome = _persist_and_build(db, consultation, final)
+
+    text = outcome.interpretation or outcome.message
+    for piece in _chunk(text, 48):
+        yield {"event": "delta", "data": {"text": piece}}
+    if outcome.follow_up_questions:
+        for q in outcome.follow_up_questions:
+            yield {"event": "question", "data": {"text": q}}
+    yield {"event": "done", "data": {
+        "consultation_id": cid,
+        "phase": outcome.phase,
+        "primary": (outcome.constitution or {}).get("primary", ""),
+        "herbs": [h["name"] for h in (outcome.recommend or {}).get("herbs", [])],
+    }}
+
+
+def _patch_summary(patch: dict) -> dict:
+    """把 node 写回的状态压成可展示的摘要（不含长文本）
+
+    节点把细节放在 trace 条目的 extra 字段里，这里取出来给前端做进度条。
+    """
+    out: dict = {}
+    for key in ("primary", "source", "needs_follow_up", "blocked", "phase"):
+        if key in patch:
+            out[key] = patch[key]
+
+    trace = patch.get("trace") or []
+    if trace:
+        entry = trace[-1]
+        for key in ("answered", "missing", "candidates", "rejected", "kept",
+                    "dropped", "count", "source", "primary", "needs_follow_up"):
+            if key in entry:
+                out[key] = entry[key]
+        if entry.get("label2"):
+            out["primary_label"] = entry["label2"]
+    return out
+
+
+def _chunk(text: str, size: int) -> Iterator[str]:
+    text = text or ""
+    for i in range(0, len(text), size):
+        yield text[i:i + size]
 
 
 # ===========================================================================
@@ -525,8 +517,8 @@ def consultation_detail(db: Session, consultation_id: str) -> dict:
         "status": c.status,
         "chief_complaint": c.chief_complaint,
         "created_at": c.created_at.strftime("%Y-%m-%d %H:%M:%S"),
-        "special_groups": json.loads(c.special_groups or "[]"),
-        "questionnaire": json.loads(c.questionnaire or "{}"),
+        "special_groups": _safe_json(c.special_groups) or [],
+        "questionnaire": _load_questionnaire(c.questionnaire),
         "constitution": _safe_json(c.constitution),
         "recommend": _safe_json(c.herbal_match),
         "recipe": _safe_json(c.recipe),
@@ -537,15 +529,6 @@ def consultation_detail(db: Session, consultation_id: str) -> dict:
             for m in msgs
         ],
     }
-
-
-def _safe_json(raw: str) -> Any:
-    if not raw:
-        return None
-    try:
-        return json.loads(raw)
-    except json.JSONDecodeError:
-        return raw
 
 
 def list_history(db: Session, *, limit: int = 20, user_id: int | None = None) -> list[dict]:
@@ -561,7 +544,7 @@ def list_history(db: Session, *, limit: int = 20, user_id: int | None = None) ->
             "status": c.status,
             "created_at": c.created_at.strftime("%Y-%m-%d %H:%M:%S"),
             "primary": const.get("primary") or "未判定",
-            "chief_complaint": c.chief_complaint[:80],
+            "chief_complaint": (c.chief_complaint or "")[:80],
         })
     return out
 
@@ -589,4 +572,22 @@ def constitution_trend(db: Session, *, limit: int = 20) -> list[dict]:
 
 def constitution_summary() -> dict:
     """九种体质说明（前端结果页 / Trend 图例用）"""
-    return {k: v for k, v in CONSTITUTION_INFO.items()}
+    return dict(CONSTITUTION_INFO)
+
+
+__all__ = [
+    "ConsultationOutcome",
+    "MAX_FOLLOWUP_ROUNDS",
+    "FREE_TEXT_HINTS",
+    "TEMPLATE_FOLLOWUP",
+    "extract_answers_from_text",
+    "missing_dimensions",
+    "answered_summary",
+    "start_consultation",
+    "answer_consultation",
+    "start_consultation_stream",
+    "consultation_detail",
+    "list_history",
+    "constitution_trend",
+    "constitution_summary",
+]

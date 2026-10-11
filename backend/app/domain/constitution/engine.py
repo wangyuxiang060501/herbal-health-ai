@@ -77,10 +77,15 @@ class ConstitutionResult:
     def to_dict(self) -> dict:
         return asdict(self)
 
+    @classmethod
+    def from_dict(cls, raw: dict) -> "ConstitutionResult":
+        """从持久化/跨层传递的 dict 还原（未知键忽略，缺失键取默认值）
 
-# ===========================================================================
-# 计分核心
-# ===========================================================================
+        用途：LangGraph Checkpointer 落盘后重放、以及编排层从 ConsultationState
+        中取出 constitution 交给下游匹配器。保持「领域对象不进状态」的约束。
+        """
+        valid = {f for f in cls.__dataclass_fields__}  # type: ignore[attr-defined]
+        return cls(**{k: v for k, v in (raw or {}).items() if k in valid})
 
 
 def _normalize_answers(answers: Mapping[str, Any]) -> dict[str, int]:

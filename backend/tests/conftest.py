@@ -17,6 +17,9 @@ os.environ.setdefault("LLM_PROVIDER", "mock")     # 测试绝不联网
 os.environ.setdefault("LLM_FALLBACK_CHAIN", "mock")
 os.environ.setdefault("DATABASE_URL", f"sqlite:///{BACKEND_ROOT / 'tests' / '_test.db'}")
 os.environ.setdefault("MONTHLY_BUDGET_CNY", "200")
+# LangGraph Checkpointer 也落测试目录，避免污染开发库 /var/app.db
+os.environ.setdefault("CHECKPOINT_DB_PATH",
+                      str(BACKEND_ROOT / "tests" / "_langgraph_ckpt.sqlite"))
 
 import pytest  # noqa: E402
 from sqlalchemy import text  # noqa: E402

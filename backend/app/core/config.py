@@ -31,6 +31,8 @@ class Settings(BaseSettings):
 
     # ---------------- 数据库 ----------------
     database_url: str = "sqlite:///D:/herbal/var/app.db"
+    # LangGraph Checkpointer 快照库（会话中断恢复，3.6.3）
+    checkpoint_db_path: str = "D:/herbal/var/langgraph_ckpt.sqlite"
 
     # ---------------- LLM provider ----------------
     llm_provider: str = "ollama"

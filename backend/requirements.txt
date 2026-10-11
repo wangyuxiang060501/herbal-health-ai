@@ -1,7 +1,7 @@
 # 仅本项目运行必需的依赖（已实测安装通过）
 # 安装：pip install -r requirements.txt
 #
-# 后续阶段（LangGraph / Chroma / 嵌入模型）依赖较重且本机尚未安装，
+# 后续阶段（Chroma / 嵌入模型 / JWT）依赖较重且本机尚未安装，
 # 见 requirements-full.txt，非本阶段交付范围。
 
 # --- Web 框架 ---
@@ -20,6 +20,10 @@ alembic>=1.13,<2.0
 
 # --- HTTP 客户端（LLM provider 调用，走 OpenAI 兼容协议） ---
 httpx>=0.27,<1.0
+
+# --- 多智能体编排（P2：LangGraph 状态机 + SQLite 检查点） ---
+langgraph>=1.2,<2.0
+langgraph-checkpoint-sqlite>=3.0,<4.0
 
 # --- 测试 ---
 pytest>=8.0,<9.0

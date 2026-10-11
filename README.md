@@ -1,7 +1,7 @@
 # 中医药智慧康养系统
 
 > 题目：**基于多智能体协同与检索增强生成的中医药智慧康养系统的设计与实现**
-> 当前阶段：**P0 地基 + P1 核心闭环（后端）已完成**，前端与多智能体编排待 P2–P4
+> 当前阶段：**P0 地基 + P1 核心闭环 + P2 多智能体编排（后端）已完成**，前端待 P4
 
 系统定位一句话：**把"需要专业中医师才能做的事"变成"手机上 5 分钟就能做的事"**，
 且严格守住两条红线——**不做疾病诊断**、**推荐的药材必须全部属于国家 106 种药食同源目录**。
@@ -19,10 +19,15 @@
 | 安全合规层 | ✅ | 急症拦截 · 黑名单替换 · 白名单硬校验 · 十八反十九畏 · 特殊人群 · 术语过滤 · 免责声明 |
 | 体质判定引擎 | ✅ | GB/T 46939—2025 等级计分，**确定性纯函数**，可复现可单测 |
 | 药材匹配推荐 | ✅ | 体质→药材规则表（9 体质 × 10 味）+ 主诉症状加成，**强制过安全层** |
+| **LangGraph 多智能体编排** | ✅ | 集中式状态机：7 业务节点 + 3 条条件边 + SQLite Checkpointer |
+| 会话快照 / 中断恢复 | ✅ | 同一 session 可续跑，DB 问卷快照为第二道保险 |
+| 节点级 SSE | ✅ | `node / meta / delta / question / done / error` 事件 |
+| 状态图可视化 | ✅ | `GET /api/v1/consultation/graph` —— 论文配图由代码导出 |
 | 问诊闭环 | ✅ | 问卷 → 追问（≤2 轮）→ 判定 → 推荐 → 落库 → SSE 流式 |
-| 测试 | ✅ | **97 个用例全绿**（含「附子必拒」架构验收测试） |
+| 测试 | ✅ | **135 个用例全绿**（含「附子必拒」「追问有上界」架构验收测试） |
 
-详细内容见 [`docs/阶段性开发报告_P0P1.md`](docs/阶段性开发报告_P0P1.md)。
+详细内容见 [`docs/阶段性开发报告_P0P1.md`](docs/阶段性开发报告_P0P1.md)
+与 [`docs/阶段性开发报告_P2.md`](docs/阶段性开发报告_P2.md)。
 
 ---
 
@@ -56,7 +61,13 @@ python scripts/demo_consultation.py --provider mock   # 完全离线
 跑测试：
 
 ```bash
-cd backend && python -m pytest tests -q        # 97 passed
+cd backend && python -m pytest tests -q        # 135 passed
+```
+
+看状态图：
+
+```bash
+curl "http://127.0.0.1:8000/api/v1/consultation/graph?format=mermaid"
 ```
 
 ---
@@ -106,22 +117,28 @@ tests/test_constitution_engine.py::TestScoring::test_转化分公式正确
 herb-health-ai/
 ├── backend/
 │   ├── app/
-│   │   ├── domain/          ★ 领域层：零框架依赖（循环目标是这里的兄弟目录）
+│   │   ├── domain/          ★ 领域层：零框架依赖（AST 测试会强制检查）
 │   │   │   ├── constitution/    体质判定引擎 + 27 题问卷
 │   │   │   ├── recommendation/  体质→药材规则表 + 匹配器
 │   │   │   └── safety/          三道安全闸 + 规则常量
+│   │   ├── orchestration/   ★ P2 编排层：LangGraph 状态机
+│   │   │   ├── state.py         ConsultationState（TypedDict + 归约器）
+│   │   │   ├── nodes.py         7 业务节点（②③⑤ 规则 / ③④⑥ LLM）
+│   │   │   ├── edges.py         3 条条件路由（纯函数）
+│   │   │   ├── graph.py         装配 + Checkpointer + mermaid 导出
+│   │   │   └── runner.py        service 层唯一入口
 │   │   ├── agents/          LLM 网关（多 provider + 重试降级 + 用量计费）
 │   │   │   └── prompts/     Agent1/2/3 Prompt 模板（集中管理）
 │   │   ├── api/v1/          REST + SSE 路由
-│   │   ├── services/        业务服务
+│   │   ├── services/        业务服务（只做数据库读写，不写流水线）
 │   │   ├── models/          ORM（herbs / whitelist / consultations / safety_logs / usage_logs）
 │   │   ├── rag/             检索端口（阶段一：结构化精确检索）
 │   │   └── core/            配置 / 数据库 / 日志 / 统一响应
 │   ├── data/                双层数据集（含溯源标注）
 │   ├── scripts/             数据体检 / 去重 / 导入 / 演示
-│   └── tests/               97 个用例
+│   └── tests/               135 个用例
 ├── frontend/                P4 阶段开工（接口均已就绪）
-├── docs/                    体检报告 · 去重报告 · 阶段性开发报告
+├── docs/                    体检报告 · 去重报告 · 阶段性开发报告 · 状态图
 └── _ref/                    参考仓库（.gitignore 已排除）
 ```
 

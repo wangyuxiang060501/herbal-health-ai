@@ -34,6 +34,7 @@ from app.domain.recommendation import matcher as hm  # noqa: E402
 from app.domain.safety import guard as sg  # noqa: E402
 from app.models.entities import Herb, SafetyLog  # noqa: E402
 from app.services import data_loader, herb_service  # noqa: E402
+from app.services import consultation_service as cs  # noqa: E402
 
 LINE = "─" * 76
 
@@ -153,6 +154,60 @@ def demo_d_audit(db) -> None:
     print(f"   查询层入库 {herbs_total} 味，其中高危药材 {len(black)} 味（可查不可荐）")
 
 
+def demo_e_orchestration(db) -> None:
+    """P2：LangGraph 多智能体编排"""
+    hr("E. P2 多智能体编排（LangGraph 状态图）")
+
+    from app.orchestration import graph as og
+    from app.orchestration.edges import (
+        route_after_collect,
+        route_after_constitution,
+        route_after_safety,
+    )
+    from app.orchestration.nodes import NODE_LABELS
+
+    print(f"① 状态图拓扑（LangGraph 可用={og.LANGGRAPH_AVAILABLE}）—— 论文配图来自代码导出")
+    for name, label in NODE_LABELS.items():
+        print(f"   {name:<20} {label}")
+
+    print("\n② 一次完整问诊的节点执行轨迹")
+    outcome = cs.start_consultation(
+        db, chief_complaint="我怕冷、手脚冰凉，容易累",
+        questionnaire=YANG_XU_ANSWERS,
+    )
+    for t in outcome.trace:
+        print(f"   [{t['at']}] {t['node']:<20} {t['label']}")
+    print(f"   终态 phase={outcome.phase}｜主体质={outcome.constitution['primary']}")
+
+    print("\n③ 条件路由分支覆盖演示")
+    cases = [
+        ("急症命中 → 中止", route_after_collect({"blocked": True})),
+        ("正常输入 → 判定", route_after_collect({"blocked": False})),
+        ("信息不足+轮次未满 → 追问",
+         route_after_constitution({"constitution": {"needs_follow_up": True},
+                                   "follow_up_rounds": 0})),
+        ("信息不足但轮次用尽 → 匹配",
+         route_after_constitution({"constitution": {"needs_follow_up": True},
+                                   "follow_up_rounds": 2})),
+        ("候选不足+可重配 → 重配",
+         route_after_safety({"herbs": {"candidates": []}, "safety_recheck": 0})),
+        ("候选不足但次数用尽 → 出结果",
+         route_after_safety({"herbs": {"candidates": []}, "safety_recheck": 2})),
+    ]
+    for desc, branch in cases:
+        print(f"   {desc:<28} → {branch}")
+
+    print("\n④ SSE 节点级事件流（前端可直接消费）")
+    for ev in cs.start_consultation_stream(db, chief_complaint="最近总感觉累"):
+        kind, data = ev["event"], ev["data"]
+        if kind == "node":
+            print(f"   event:node   {data['node']:<20} {data['label']}")
+        elif kind == "question":
+            print(f"   event:q      {data['text'][:36]}")
+        elif kind == "done":
+            print(f"   event:done   phase={data['phase']}｜session={data['consultation_id'][:8]}")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--provider", default=os.getenv("LLM_PROVIDER", "ollama"),
@@ -169,6 +224,7 @@ def main():
         demo_b_safety(db)
         demo_c_loop(db)
         demo_d_audit(db)
+        demo_e_orchestration(db)
         hr("演示结束")
         print("  下一步：uvicorn app.main:app --reload --port 8000，打开 http://127.0.0.1:8000/docs")
     finally:

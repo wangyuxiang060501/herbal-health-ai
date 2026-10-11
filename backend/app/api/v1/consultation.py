@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-"""BC2 问诊接口 —— P1 闭环
+"""BC2 问诊接口 —— P2：LangGraph 多智能体编排
 
  POST /api/v1/consultation/start              开始问诊（问卷 + 主诉）
+ POST /api/v1/consultation/stream             SSE 边跑图边推（节点级 meta 事件）
  POST /api/v1/consultation/{id}/answer        提交追问回答
  GET  /api/v1/consultation/{id}               问诊详情
- GET  /api/v1/consultation/{id}/stream        SSE 流式（P1：流式播放通俗化结论）
+ GET  /api/v1/consultation/{id}/stream        SSE 流式（事后播放结论）
+ GET  /api/v1/consultation/graph              状态图结构与 mermaid
  GET  /api/v1/user/history                    问诊历史
  GET  /api/v1/user/trend                      体质趋势
 """
@@ -43,6 +45,44 @@ def start(payload: ConsultationStartIn, db: Session = Depends(get_db)):
     return ok(outcome.to_dict())
 
 
+@router.post("/stream", summary="SSE：边跑状态图边推送（节点级事件）")
+def stream_start(payload: ConsultationStartIn, db: Session = Depends(get_db)):
+    """节点级 meta 事件（`系统架构设计.md` 8.2 / 清单 3.4.8）
+
+        event: node    {"node","label","summary"}   节点执行（可画进度条）
+        event: meta    {"provider","model"}         LLM 实际来源
+        event: delta   {"text"}                     结论分段播放
+        event: question{"text"}                     追问问题
+        event: done    {"consultation_id","phase","primary","herbs"}
+        event: error   {"code","message"}
+    """
+    def gen():
+        for ev in cs.start_consultation_stream(
+            db,
+            chief_complaint=payload.chief_complaint,
+            questionnaire=payload.questionnaire,
+            special_groups=payload.special_groups,
+            top_n=min(payload.top_n, MAX_SIZE_CANDIDATE),
+            enable_recipe=getattr(payload, "enable_recipe", False),
+        ):
+            yield (f"event: {ev['event']}\n"
+                   f"data: {json.dumps(ev['data'], ensure_ascii=False)}\n\n")
+
+    return StreamingResponse(gen(), media_type="text/event-stream")
+
+
+@router.get("/graph", summary="问诊状态图（LangGraph 拓扑可视化）")
+def graph(format: str = Query("json", pattern="^(json|mermaid)$")):
+    """返回状态图结构与 mermaid 源码 —— 论文第四章配图的唯一来源"""
+    from app.orchestration import graph as og
+
+    structure = og.graph_structure()
+    if format == "mermaid":
+        return ok({**structure, "mermaid": og.mermaid(),
+                   "langgraph_mermaid": og.langgraph_mermaid()})
+    return ok(structure)
+
+
 @router.post("/{consultation_id}/answer", summary="提交追问回答")
 def answer(
     consultation_id: str, payload: ConsultationAnswerIn, db: Session = Depends(get_db)
@@ -50,6 +90,7 @@ def answer(
     outcome = cs.answer_consultation(
         db, consultation_id=consultation_id, answer=payload.answer,
         top_n=min(payload.top_n, MAX_SIZE_CANDIDATE),
+        enable_recipe=payload.enable_recipe,
     )
     return ok(outcome.to_dict())
 
