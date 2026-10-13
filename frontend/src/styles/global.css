@@ -1,0 +1,102 @@
+/* 全局变量与基础样式 */
+:root {
+  --c-primary: #0d8050;      /* 中药青 */
+  --c-primary-light: #e8f5ee;
+  --c-accent: #c8553d;       /* 朱砂红 */
+  --c-warn: #e6a23c;
+  --c-danger: #d9534f;
+  --c-text: #1f2329;
+  --c-text-sub: #6b7280;
+  --c-bg: #f5f7f5;
+  --c-card: #ffffff;
+  --c-border: #ebedf0;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue',
+    'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 页面容器：顶部导航 + 内容 + 底部 TabBar */
+.page {
+  min-height: 100vh;
+  padding-bottom: 62px;
+}
+
+.page--no-tab {
+  padding-bottom: 16px;
+}
+
+.card {
+  background: var(--c-card);
+  border-radius: 12px;
+  padding: 14px;
+  margin: 10px 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.section-title::before {
+  content: '';
+  width: 3px;
+  height: 14px;
+  background: var(--c-primary);
+  border-radius: 2px;
+}
+
+.muted {
+  color: var(--c-text-sub);
+  font-size: 12px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.disclaimer-bar {
+  margin: 10px 12px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #fff8e6;
+  border: 1px solid #ffe0a3;
+  color: #8a5a00;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* 安全区底部 */
+.safe-bottom {
+  height: calc(50px + var(--safe-bottom));
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.18s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}

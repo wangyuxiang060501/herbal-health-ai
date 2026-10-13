@@ -1,7 +1,7 @@
 # 中医药智慧康养系统
 
 > 题目：**基于多智能体协同与检索增强生成的中医药智慧康养系统的设计与实现**
-> 当前阶段：**P0 地基 + P1 核心闭环 + P2 多智能体编排（后端）已完成**，前端待 P4
+> 当前阶段：**P0 地基 + P1 核心闭环 + P2 多智能体编排 + P4 前端 H5 已完成**；P3（RAG 检索增强）待开发
 
 系统定位一句话：**把"需要专业中医师才能做的事"变成"手机上 5 分钟就能做的事"**，
 且严格守住两条红线——**不做疾病诊断**、**推荐的药材必须全部属于国家 106 种药食同源目录**。
@@ -24,10 +24,12 @@
 | 节点级 SSE | ✅ | `node / meta / delta / question / done / error` 事件 |
 | 状态图可视化 | ✅ | `GET /api/v1/consultation/graph` —— 论文配图由代码导出 |
 | 问诊闭环 | ✅ | 问卷 → 追问（≤2 轮）→ 判定 → 推荐 → 落库 → SSE 流式 |
-| 测试 | ✅ | **135 个用例全绿**（含「附子必拒」「追问有上界」架构验收测试） |
+| **前端 H5** | ✅ | Vue 3 + Vant 4，**10 个页面 + 6 个组件**，移动端适配，SSE 打字机 + 九维雷达图 |
+| 测试 | ✅ | 后端 **135** + 前端 **23** = **158 个用例全绿** |
 
-详细内容见 [`docs/阶段性开发报告_P0P1.md`](docs/阶段性开发报告_P0P1.md)
-与 [`docs/阶段性开发报告_P2.md`](docs/阶段性开发报告_P2.md)。
+详细内容见 [`docs/阶段性开发报告_P0P1.md`](docs/阶段性开发报告_P0P1.md)、
+[`docs/阶段性开发报告_P2.md`](docs/阶段性开发报告_P2.md)、
+[`docs/阶段性开发报告_P4.md`](docs/阶段性开发报告_P4.md)。
 
 ---
 
@@ -48,7 +50,15 @@ cd backend && python scripts/import_data.py --reset
 # 4) 启动服务
 uvicorn app.main:app --reload --port 8000
 # → 打开 http://127.0.0.1:8000/docs
+
+# 5) 启动前端 H5（另开一个终端）
+cd ../frontend && npm install && npm run dev
+# → 打开 http://localhost:5173
 ```
+
+> ⚠️ 本机构建/测试 esbuild 会因 `Access is denied` 无法删除系统 TEMP 文件，
+> 需先 `mkdir -p .tmp` 并把 `TMP`/`TEMP` 指向 `frontend/.tmp` 再执行 `npm run build` / `npm test`。
+> 详见 [`frontend/README.md`](frontend/README.md)。
 
 不想开服务？直接跑端到端演示脚本：
 
@@ -62,6 +72,7 @@ python scripts/demo_consultation.py --provider mock   # 完全离线
 
 ```bash
 cd backend && python -m pytest tests -q        # 135 passed
+cd ../frontend && npm test                     # 23 passed
 ```
 
 看状态图：
@@ -137,7 +148,13 @@ herb-health-ai/
 │   ├── data/                双层数据集（含溯源标注）
 │   ├── scripts/             数据体检 / 去重 / 导入 / 演示
 │   └── tests/               135 个用例
-├── frontend/                P4 阶段开工（接口均已就绪）
+├── frontend/                ★ P4 前端 H5（Vue 3 + Vant 4）
+│   └── src/
+│       ├── views/           10 个页面（首页/药材库/详情/测试/结果/药膳/我的/记录/登录/关于）
+│       ├── components/      6 个组件（TabBar/Disclaimer/HerbCard/RecipeCard/StreamChat/LoadingState）
+│       ├── composables/     useSSE（POST 型 SSE，原生 EventSource 不支持 POST）
+│       ├── stores/          user（本地身份）/ consult（问卷草稿）
+│       └── api/             统一请求层 + 业务码常量
 ├── docs/                    体检报告 · 去重报告 · 阶段性开发报告 · 状态图
 └── _ref/                    参考仓库（.gitignore 已排除）
 ```

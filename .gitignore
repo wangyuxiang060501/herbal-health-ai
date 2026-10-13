@@ -48,6 +48,8 @@ node_modules/
 frontend/dist/
 dist/
 .vite/
+# esbuild 临时目录（本机 TEMP 不可删，构建时需重定向到此）
+.tmp/
 npm-debug.log*
 yarn-error.log*
 pnpm-debug.log*
