@@ -9,13 +9,14 @@
 from __future__ import annotations
 
 import json
+import re
 from functools import lru_cache
 from pathlib import Path
 
 from app.core.config import get_settings
 from app.core.logging import get_logger
 from app.domain.safety.constants import BLACKLIST_HERBS
-from app.domain.safety.guard import WhitelistChecker
+from app.domain.safety.guard import WhitelistChecker, _paren_tokens
 from app.rag.retriever import WhitelistRetriever
 
 logger = get_logger("services.data")
@@ -49,8 +50,33 @@ def load_whitelist_records() -> list[dict]:
 
 
 @lru_cache
+def build_whitelist_aliases() -> dict[str, str]:
+    """别名 → 规范名
+
+    数据来源有两条，且必须区分对待（详见 WhitelistChecker 文档）：
+      1. 记录的 alias 字段（35 条有值，人工整理，权威）
+      2. 仅当 alias 字段非空时，才把「姜（生姜、干姜）」括号内的词也当别名
+         —— 因为「杏仁（甜、苦）」「肉苁蓉（荒漠）」的括号是规格限定，不是别名
+    """
+    aliases: dict[str, str] = {}
+    for r in load_whitelist_records():
+        name = r["name"]
+        raw = (r.get("alias") or "").strip()
+        if not raw:
+            continue
+        tokens = [t.strip() for t in re.split(r"[、,，/]", raw)]
+        if "（" in name:
+            tokens += _paren_tokens(name)
+        for t in tokens:
+            if len(t) >= 2:
+                aliases.setdefault(t, name)
+    return aliases
+
+
+@lru_cache
 def get_whitelist_checker() -> WhitelistChecker:
-    return WhitelistChecker(r["name"] for r in load_whitelist_records())
+    return WhitelistChecker((r["name"] for r in load_whitelist_records()),
+                            build_whitelist_aliases())
 
 
 @lru_cache

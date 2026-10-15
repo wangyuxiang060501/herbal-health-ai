@@ -1,7 +1,8 @@
 # 中医药智慧康养系统
 
 > 题目：**基于多智能体协同与检索增强生成的中医药智慧康养系统的设计与实现**
-> 当前阶段：**P0 地基 + P1 核心闭环 + P2 多智能体编排 + P4 前端 H5 已完成**；P3（RAG 检索增强）待开发
+> 当前阶段：**P0 地基 + P1 核心闭环 + P2 多智能体编排 + P3 RAG 检索增强 + P4 前端 H5 已完成**
+> 清单进度：**108 / 157**；剩余整块内容为第六阶段（测试与优化 / 部署）
 
 系统定位一句话：**把"需要专业中医师才能做的事"变成"手机上 5 分钟就能做的事"**，
 且严格守住两条红线——**不做疾病诊断**、**推荐的药材必须全部属于国家 106 种药食同源目录**。
@@ -25,11 +26,16 @@
 | 状态图可视化 | ✅ | `GET /api/v1/consultation/graph` —— 论文配图由代码导出 |
 | 问诊闭环 | ✅ | 问卷 → 追问（≤2 轮）→ 判定 → 推荐 → 落库 → SSE 流式 |
 | **前端 H5** | ✅ | Vue 3 + Vant 4，**10 个页面 + 6 个组件**，移动端适配，SSE 打字机 + 九维雷达图 |
-| 测试 | ✅ | 后端 **135** + 前端 **23** = **158 个用例全绿** |
+| **RAG 知识库** | ✅ | **734 片**切片（药材 604 / 药食同源 106 / 体质 9 / 症状 11 / 安全规则 4） |
+| **RAG 检索** | ✅ | 语义（hashing-bigram，512 维）+ BM25 关键词，**RRF(k=60) 融合**，同义词扩展；自检 **7/7** |
+| **引用回溯** | ✅ | Prompt 强制 `[n]` 标注，`rag_citations` 落库并回传前端，结果页「知识依据」卡片可点跳转 |
+| 测试 | ✅ | 后端 **177** + 前端 **23** = **200 个用例** |
 
 详细内容见 [`docs/阶段性开发报告_P0P1.md`](docs/阶段性开发报告_P0P1.md)、
 [`docs/阶段性开发报告_P2.md`](docs/阶段性开发报告_P2.md)、
+[`docs/阶段性开发报告_P3.md`](docs/阶段性开发报告_P3.md)、
 [`docs/阶段性开发报告_P4.md`](docs/阶段性开发报告_P4.md)。
+有/无 RAG 的真实对比实验见 [`docs/RAG_有无对比.md`](docs/RAG_有无对比.md)。
 
 ---
 
@@ -47,11 +53,15 @@ cp .env.example .env        # 默认 LLM_PROVIDER=ollama（本机需已启动 ol
 # 3) 导入双层数据
 cd backend && python scripts/import_data.py --reset
 
-# 4) 启动服务
+# 4) 构建 RAG 知识库与向量索引（P3）
+python scripts/build_kb.py            # 生成 data/kb/chunks.jsonl（734 片）
+python scripts/build_index.py --verify   # 建索引并跑 7 条检索自检
+
+# 5) 启动服务
 uvicorn app.main:app --reload --port 8000
 # → 打开 http://127.0.0.1:8000/docs
 
-# 5) 启动前端 H5（另开一个终端）
+# 6) 启动前端 H5（另开一个终端）
 cd ../frontend && npm install && npm run dev
 # → 打开 http://localhost:5173
 ```
@@ -71,14 +81,16 @@ python scripts/demo_consultation.py --provider mock   # 完全离线
 跑测试：
 
 ```bash
-cd backend && python -m pytest tests -q        # 135 passed
+cd backend && python -m pytest tests -q        # 177 passed
 cd ../frontend && npm test                     # 23 passed
 ```
 
-看状态图：
+看状态图 / 检索诊断：
 
 ```bash
 curl "http://127.0.0.1:8000/api/v1/consultation/graph?format=mermaid"
+curl "http://127.0.0.1:8000/api/v1/rag/status"                    # 当前用的哪档 embedder / 向量库
+curl "http://127.0.0.1:8000/api/v1/rag/explain?query=怕冷手脚冰凉"  # 语义 / 关键词 / 融合三路对比
 ```
 
 ---
@@ -143,11 +155,17 @@ herb-health-ai/
 │   │   ├── api/v1/          REST + SSE 路由
 │   │   ├── services/        业务服务（只做数据库读写，不写流水线）
 │   │   ├── models/          ORM（herbs / whitelist / consultations / safety_logs / usage_logs）
-│   │   ├── rag/             检索端口（阶段一：结构化精确检索）
+│   │   ├── rag/             ★ P3 检索层
+│   │   │   ├── retriever.py    Retriever 协议 / Evidence / WhitelistRetriever
+│   │   │   ├── embedder.py     三档 embedder（sentence-onnx / tfidf / hashing）+ 降级链
+│   │   │   ├── vector_store.py Chroma / Memory 两档向量库 + 降级
+│   │   │   ├── hybrid.py       同义词扩展 + BM25 + RRF 混合检索
+│   │   │   ├── indexer.py      索引构建 / 持久化 / 状态 / 降级
+│   │   │   └── context.py      上下文拼装 + 引用指令（强制 [n] 标注）
 │   │   └── core/            配置 / 数据库 / 日志 / 统一响应
-│   ├── data/                双层数据集（含溯源标注）
-│   ├── scripts/             数据体检 / 去重 / 导入 / 演示
-│   └── tests/               135 个用例
+│   ├── data/                双层数据集（含溯源标注）+ kb/ 知识库切片
+│   ├── scripts/             数据体检 / 去重 / 导入 / 建库 / 建索引 / A-B 对比 / 演示
+│   └── tests/               177 个用例
 ├── frontend/                ★ P4 前端 H5（Vue 3 + Vant 4）
 │   └── src/
 │       ├── views/           10 个页面（首页/药材库/详情/测试/结果/药膳/我的/记录/登录/关于）
@@ -173,3 +191,8 @@ herb-health-ai/
    （`起步路线.md` 1.4：106 × 9 = 954 个格子，这是论文第四章含金量最高的部分）。
 3. **GB/T 46939—2025 标准原文尚未获取**，问卷题面按九种体质通行表述编写，取得原文后只需替换
    `app/domain/constitution/questionnaire.py` 的 `QUESTIONNAIRE`，计分算法无需改动。
+4. **RAG 默认跑在降级档**（`hashing-bigram` + Chroma）。要上真语义检索，需另装
+   `scikit-learn`（`tfidf-char`）或下载 ONNX 句向量模型并把 `RAG_MODEL_PATH` 指过去
+   （见 `backend/requirements-full.txt`）。**`hashing` 是字面相似而非语义相似**，
+   「怕冷→畏寒」这类同义全靠 BM25 关键词通道兜底，这个取舍在论文里要讲清楚。
+5. **论文里不要写「828 味药材知识库」**：知识库是 604 味唯一药材切片 + 106 药食同源，共 734 片。

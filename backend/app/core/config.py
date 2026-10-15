@@ -68,6 +68,19 @@ class Settings(BaseSettings):
     whitelist_path: str = "data/food_medicine_106.json"
     rule_table_version: str = "v0.1-draft"
 
+    # ---------------- RAG 检索增强（P3） ----------------
+    rag_enabled: bool = True
+    rag_kb_path: str = "data/kb/chunks.jsonl"          # 切片产物（build_kb.py 产出）
+    rag_embedder: str = "auto"                          # auto|sentence|tfidf|hashing
+    rag_vector_store: str = "auto"                      # auto|chroma|memory
+    rag_index_path: str = "D:/herbal/var/rag_index.jsonl"
+    rag_chroma_dir: str = "D:/herbal/var/chroma"
+    rag_collection: str = "tcm_kb"
+    rag_model_path: str = "D:/herbal/var/models/bge-small-zh"
+    rag_top_k: int = 5
+    # 注入 Agent Prompt 的上下文片段数（过大易超 token 预算）
+    rag_context_chunks: int = 4
+
     # ---------------- 安全 ----------------
     persist_blocked_consultation: bool = True
     app_secret_key: str = "change-me-in-production"

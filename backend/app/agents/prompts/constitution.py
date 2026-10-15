@@ -25,20 +25,24 @@ def build_follow_up_messages(
     missing_dimensions: list[str],
     special_groups: list[str],
     round_no: int,
+    context: str = "",
 ) -> list[dict[str, str]]:
     special = f"用户对特殊人群标记：{'、'.join(special_groups)}。" if special_groups else ""
+    kb_block = f"\n【知识库检索结果】\n{context}\n" if context.strip() else ""
+    kb_hint = ("- 可参考知识库条目中该体质的常见表现来提问，但问题要用生活化口语\n"
+               if context.strip() else "")
     user = f"""用户的初始描述：{chief_complaint or '（无）'}
 
 用户已回答的要点：
 {answered_summary or '（暂无）'}
-
+{kb_block}
 目前信息不足，需要你补充了解。请以如下维度为线索生成 1-3 个追问问题：
 {'、'.join(missing_dimensions) or '一般生活习惯'}
 
 要求：
 - 这是第 {round_no} 轮追问，语气自然，不要在问题里暴露「维度」这个词
 - 每个问题占一行，用「1. 2. 3.」编号
-- {special}
+{kb_hint}- {special}
 - 只输出问题本身，不要寒暄，不要给出任何结论"""
     return [
         {"role": "system", "content": SYSTEM_PROMPT},
@@ -52,8 +56,18 @@ def build_interpret_messages(
     evidence: list[str],
     primary_label: str,
     standard: str = "GB/T 46939—2025",
+    context: str = "",
 ) -> list[dict[str, str]]:
+    """通俗化结论
+
+    `context` 为 RAG 检索到的知识条目（已带编号与 chunk_id，见 `rag/context.py`）。
+    注入后要求 LLM **按编号引用**，这样回答里每一句都能追到知识库条目——
+    这是 4.5.2「验证回答引用了知识库而非编造」的抓手。
+    """
     evidence_text = "\n".join(f"- {e}" for e in evidence) or "（无明显条目）"
+    kb_block = f"\n【知识库检索结果】\n{context}\n" if context.strip() else ""
+    cite_hint = ("- 描述体质表现时，请优先使用知识库条目中的表述，并在句末标注条目编号\n"
+                 if context.strip() else "")
     user = f"""规则引擎已给出体质判定结论，请把它转述成普通人读得懂的话。
 
 【判定结论】（不可更改）
@@ -63,12 +77,12 @@ def build_interpret_messages(
 
 【用户问卷中指向该结论的回答】
 {evidence_text}
-
+{kb_block}
 输出要求（严格按顺序，控制在 200 字以内）：
 1. 用「你的体质倾向于……」开头，禁止使用「你就是XX体质」
 2. 说明这个体质的日常典型表现（2-3 句，通俗描述，不用术语堆砌）
 3. 给出 2-3 条日常起居/饮食方向的建议（方向性，不说具体用量）
-4. 结尾必须原样附带这句免责声明：
+{cite_hint}4. 结尾必须原样附带这句免责声明：
 「本结论仅基于中医体质理论做日常食疗方向参考，不属于疾病诊断，不能替代执业医师诊疗。」"""
     return [
         {"role": "system", "content": SYSTEM_PROMPT},

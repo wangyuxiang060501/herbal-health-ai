@@ -150,6 +150,43 @@ class TestOutput:
         assert len(EMERGENCY_KEYWORDS) == len(set(EMERGENCY_KEYWORDS))
 
 
+class TestWhitelistAlias:
+    """别名匹配 —— 防「误杀合法药材」（安全闸的假阴性）
+
+    目录里「枣（大枣、酸枣、黑枣）」「姜（生姜、干姜）」这类条目，
+    如果只按括号前主名匹配，用户/模型说「大枣」「干姜」会被判为
+    「非药食同源品种」而拦掉。这不是安全，是漏推荐。
+    """
+
+    def test_括号内别名可命中(self, whitelist):
+        for alias, expect_base in [("大枣", "枣"), ("酸枣", "枣"), ("黑枣", "枣"),
+                                   ("生姜", "姜"), ("干姜", "姜"), ("桂圆", "龙眼肉")]:
+            assert whitelist.contains(alias), f"{alias} 应可命中"
+            assert whitelist.canonical(alias).startswith(expect_base)
+
+    def test_别名字段可命中(self, whitelist):
+        """如「代代花」别名「枳壳花」、「薏苡仁」别名「薏米」"""
+        for alias, canon in [("枳壳花", "代代花"), ("薏米", "薏苡仁"),
+                             ("枸杞", "枸杞子"), ("薯蓣", "山药")]:
+            assert whitelist.contains(alias), f"{alias} 应可命中"
+            assert whitelist.canonical(alias) == canon
+
+    def test_规格限定词不得被当成别名(self, whitelist):
+        """「杏仁（甜、苦）」「肉苁蓉（荒漠）」的括号是规格，不是别名"""
+        for token in ["荒漠", "甜", "苦"]:
+            assert not whitelist.contains(token), f"「{token}」是规格限定词，不应入白名单"
+
+    def test_别名不放松安全边界(self, whitelist):
+        """扩别名的前提：黑名单与 828 普通药材仍必须被拒"""
+        for bad in ["附子", "川乌", "半夏", "朱砂", "柴胡", "麻黄"]:
+            assert not whitelist.contains(bad), f"{bad} 不应在白名单内"
+
+    def test_别名表不含规范名自身(self, whitelist):
+        aliases = whitelist.aliases
+        assert not (set(aliases) & whitelist.names), "别名表里混入了规范名"
+        assert len(aliases) >= 40, f"别名条数偏少：{len(aliases)}"
+
+
 class TestWhitelistData:
     """白名单数据本身的自检"""
 

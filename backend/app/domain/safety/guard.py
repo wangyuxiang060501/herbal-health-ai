@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import re
 import uuid
+from typing import Mapping
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Iterable, Sequence
@@ -144,20 +145,52 @@ def find_incompatibility(names: Sequence[str]) -> tuple[str, str, str] | None:
     return None
 
 
+_PAREN_RE = re.compile(r"[（(]([^）)]*)[）)]")
+
+
+def _paren_tokens(name: str) -> list[str]:
+    """剥出括号内的候选别名（仅兜底用；要求 ≥2 字，避免「甜/苦」这类单字规格）"""
+    out: list[str] = []
+    for m in _PAREN_RE.finditer(name):
+        for tok in re.split(r"[、,，/]", m.group(1)):
+            tok = tok.strip()
+            if len(tok) >= 2:
+                out.append(tok)
+    return out
+
+
 class WhitelistChecker:
     """106 种白名单校验器 —— 推荐层的唯一合法来源
 
     不变量：**任何进入推荐结果的药材，in_whitelist 必须恒为 True。**
+
+    别名问题（2026-10 修）：目录里存在两类括号，语义完全不同——
+      别名型：「姜（生姜、干姜）」「枣（大枣、酸枣、黑枣）」「龙眼肉（桂圆）」
+      限定型：「杏仁（甜、苦）」「肉苁蓉（荒漠）」——括号里是规格而非别名
+    只按「取括号前主名」匹配的话，用户或模型说「大枣」「干姜」会被误判为
+    「不在药食同源目录」而拦掉，属于安全闸的**假阴性**（误杀合法药材）。
+    所以别名必须由数据源显式给出（aliases 参数），括号一律不自动猜；
+    只有在调用方不传 aliases 时才退化解析括号作为兜底。
     """
 
-    def __init__(self, names: Iterable[str]):
+    def __init__(self, names: Iterable[str],
+                 aliases: Mapping[str, str] | None = None):
         self._names: set[str] = {n.strip() for n in names if n and n.strip()}
-        # 主名表（用于「龙眼肉（桂圆）」这类带括号条目的兼容匹配）
+        # 主名 / 别名 → 规范名
         self._base: dict[str, str] = {}
         for n in self._names:
             base = n.split("（")[0].strip()
             self._base.setdefault(base, n)
             self._base.setdefault(n, n)
+        if aliases is None:
+            for n in self._names:
+                for tok in _paren_tokens(n):
+                    self._base.setdefault(tok, n)
+        else:
+            for alias, canonical in aliases.items():
+                a = alias.strip()
+                if a and len(a) >= 2:
+                    self._base.setdefault(a, canonical.strip() or alias)
 
     def __len__(self) -> int:
         return len(self._names)
@@ -165,6 +198,11 @@ class WhitelistChecker:
     @property
     def names(self) -> set[str]:
         return set(self._names)
+
+    @property
+    def aliases(self) -> dict[str, str]:
+        """别名 → 规范名（不含规范名自身），供调试与论文展示"""
+        return {k: v for k, v in self._base.items() if k not in self._names}
 
     def contains(self, name: str) -> bool:
         n = name.strip()

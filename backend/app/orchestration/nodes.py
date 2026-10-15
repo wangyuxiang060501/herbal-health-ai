@@ -41,6 +41,7 @@ from app.orchestration.state import (
     ConsultationState,
     trace_entry,
 )
+from app.rag.context import build_context, context_block, retrieve_evidence
 from app.services import data_loader
 from app.services import symptom_extraction as se
 
@@ -149,10 +150,20 @@ def constitution_engine_node(state: ConsultationState) -> dict:
 # ===========================================================================
 
 
-def _llm_follow_up(state: ConsultationState, missing: list[str]) -> tuple[list[str], str]:
-    """返回 (问题列表, 来源)。任何异常都降级为模板"""
+def _llm_follow_up(state: ConsultationState,
+                   missing: list[str]) -> tuple[list[str], str, list[dict]]:
+    """返回 (问题列表, 来源, RAG 引用)。任何异常都降级为模板
+
+    注入症状条目，让追问问到点子上（问该体质真正典型的表现，
+    而不是泛泛地问"还有哪里不舒服"）。
+    """
+    citations: list[dict] = []
     try:
         client = get_llm_client()
+        ctx, citations = build_context(
+            f"{state.get('chief_complaint', '')} {'、'.join(missing)} 常见表现",
+            doc_types=["symptom", "constitution"], top_k=3,
+        )
         msgs = [
             Message(role=m["role"], content=m["content"])
             for m in build_follow_up_messages(
@@ -161,25 +172,27 @@ def _llm_follow_up(state: ConsultationState, missing: list[str]) -> tuple[list[s
                 missing,
                 state.get("special_groups") or [],
                 int(state.get("follow_up_rounds") or 0) + 1,
+                context=context_block(ctx),
             )
         ]
         resp = client.chat(msgs, key_step=True)
         questions = [ln.strip() for ln in resp.text.splitlines() if ln.strip()][:3]
         if questions:
-            return questions, f"llm:{resp.provider}:{resp.model}"
+            return questions, f"llm:{resp.provider}:{resp.model}", citations
     except LLMError as e:
         logger.warning("追问生成失败，降级模板", extra={"extra_fields": {"error": str(e)[:120]}})
     except Exception as e:  # noqa: BLE001
         logger.warning("追问生成异常，降级模板", extra={"extra_fields": {"error": str(e)[:120]}})
-    return se.template_questions(missing), "template"
+    return se.template_questions(missing), "template", citations
 
 
 def follow_up_node(state: ConsultationState) -> dict:
     missing = list(state.get("missing_dimensions") or [])
-    questions, source = _llm_follow_up(state, missing)
+    questions, source, cites = _llm_follow_up(state, missing)
     return {
         "follow_up_questions": questions,
         "follow_up_source": source,
+        "rag_citations": cites,
         "asked_questions": questions,
         "follow_up_rounds": int(state.get("follow_up_rounds") or 0) + 1,
         "phase": "follow_up",
@@ -218,34 +231,47 @@ def herb_match_node(state: ConsultationState) -> dict:
 
     # LLM 解读（失败降级为规则文本）
     candidates = [c.to_dict() for c in match.candidates]
-    explanation = _explain_herbs(result, candidates, state.get("special_groups") or [])
+    explanation, herb_cites = _explain_herbs(
+        result, candidates, state.get("special_groups") or []
+    )
 
     return {
         "herbs": match.to_dict(),
         "herb_explanation": explanation,
+        "rag_citations": herb_cites,
         "trace": [_t("herb_match", candidates=len(candidates),
                      rejected=len(match.rejected))],
     }
 
 
 def _explain_herbs(result: ce.ConstitutionResult, candidates: list[dict],
-                   groups: list[str]) -> str:
+                   groups: list[str]) -> tuple[str, list[dict]]:
+    """Agent2 药材解读（RAG 增强）
+
+    注入知识库中的药材条目，并要求 LLM 按编号引用，
+    使「为什么适合他」有据可查，而不是模型自由发挥。
+    """
+    citations: list[dict] = []
     try:
         client = get_llm_client()
+        query = "、".join(c["name"] for c in candidates) + f" {result.primary} 功效 食养"
+        ctx, citations = build_context(query, doc_types=["food_medicine", "herb"], top_k=4)
         msgs = [
             Message(role=m["role"], content=m["content"])
-            for m in build_herb_explain_messages(candidates, result.primary, groups)
+            for m in build_herb_explain_messages(
+                candidates, result.primary, groups, context=context_block(ctx)
+            )
         ]
         resp = client.chat(msgs)
         if resp.text.strip():
-            return resp.text.strip()
+            return resp.text.strip(), citations
     except Exception as e:  # noqa: BLE001
         logger.warning("药材解读失败，降级规则文本",
                        extra={"extra_fields": {"error": str(e)[:120]}})
-    return "\n".join(
+    return ("\n".join(
         f"{c['name']}（{c.get('dosage', '')}）：{c.get('reason', '')}"
         for c in candidates
-    )
+    ), citations)
 
 
 # ===========================================================================
@@ -299,7 +325,7 @@ def safety_check_node(state: ConsultationState) -> dict:
 
     # --- 4) 输出侧：术语过滤 + 免责注入 ---
     result = _as_constitution_result(state.get("constitution"))
-    interpretation, itp_src = _interpret(result)
+    interpretation, itp_src, itp_cites = _interpret(result)
     interpretation, out_verdict = sg.check_output(interpretation)
     explanation, _ = sg.check_output(
         state.get("herb_explanation", ""), with_recipe_disclaimer=True
@@ -327,6 +353,7 @@ def safety_check_node(state: ConsultationState) -> dict:
         "interpretation": interpretation,
         "interpretation_source": itp_src,
         "herb_explanation": explanation,
+        "rag_citations": itp_cites,
         "safety_flags": flags,
         "safety_verdict": (state.get("input_verdict") or {}),
         "trace": [_t("safety_check", kept=len(kept), dropped=len(dropped))],
@@ -338,23 +365,32 @@ def safety_check_node(state: ConsultationState) -> dict:
     return patch
 
 
-def _interpret(result: ce.ConstitutionResult) -> tuple[str, str]:
-    """通俗化：LLM 优先，失败降级为规则表述"""
+def _interpret(result: ce.ConstitutionResult) -> tuple[str, str, list[dict]]:
+    """通俗化（Agent1 · RAG 增强）：LLM 优先，失败降级为规则表述
+
+    注入体质与症状条目，让"这个体质日常有什么表现"来自知识库而非模型记忆。
+    """
+    citations: list[dict] = []
     try:
         client = get_llm_client()
+        ctx, citations = build_context(
+            f"{result.primary} {'、'.join(result.secondary or [])} 日常表现 调养建议",
+            doc_types=["constitution", "symptom"], top_k=3,
+        )
         msgs = [
             Message(role=m["role"], content=m["content"])
             for m in build_interpret_messages(
-                result.primary, result.secondary, result.evidence, result.primary_label
+                result.primary, result.secondary, result.evidence, result.primary_label,
+                context=context_block(ctx),
             )
         ]
         resp = client.chat(msgs, key_step=True)
         if resp.text.strip():
-            return resp.text.strip(), f"llm:{resp.provider}:{resp.model}"
+            return resp.text.strip(), f"llm:{resp.provider}:{resp.model}", citations
     except Exception as e:  # noqa: BLE001
         logger.warning("通俗化失败，使用规则表述",
                        extra={"extra_fields": {"error": str(e)[:120]}})
-    return ce.interpret_to_words(result), "rule"
+    return ce.interpret_to_words(result), "rule", citations
 
 
 # ===========================================================================
@@ -370,12 +406,26 @@ def food_recipe_node(state: ConsultationState) -> dict:
 
     recipe_text = ""
     source = "rule"
+    citations: list[dict] = []
     try:
         client = get_llm_client()
+        # RAG：药膳相关的药材条目与安全/配伍规则，供 Agent3 引用
+        rag_items = [
+            {"chunk_id": e.chunk_id, "text": e.text}
+            for e in retrieve_evidence(
+                "、".join(str(c.get("name", "")) for c in candidates)
+                + f" {result.primary} 药膳 做法 配伍 禁忌",
+                doc_types=["food_medicine", "safety"], top_k=4,
+            )
+        ]
+        citations = [{"chunk_id": it["chunk_id"], "title": "",
+                      "doc_type": "recipe_context", "source": "", "score": 0.0}
+                     for it in rag_items]
         msgs = [
             Message(role=m["role"], content=m["content"])
             for m in build_recipe_messages(
-                candidates, result.primary, evidence, state.get("special_groups") or []
+                candidates, result.primary, rag_items or evidence,
+                state.get("special_groups") or [],
             )
         ]
         resp = client.chat(msgs, key_step=True)
@@ -388,6 +438,7 @@ def food_recipe_node(state: ConsultationState) -> dict:
     return {
         "recipe": {"plan": recipe_text, "source": source,
                    "enabled": bool(state.get("enable_recipe"))},
+        "rag_citations": citations,
         "trace": [_t("food_recipe", source=source, chars=len(recipe_text))],
     }
 

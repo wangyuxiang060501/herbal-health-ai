@@ -8,7 +8,15 @@
         <div class="result-hero">
           <div class="badge">{{ data.constitution?.primary || '—' }}</div>
           <div class="judged">{{ data.constitution?.primary_label || '' }}</div>
-          <p class="interp">{{ data.interpretation }}</p>
+          <!-- 用 v-html 会把 LLM 输出原样当 HTML 执行，这里改成按 [n] 切片渲染 -->
+          <p class="interp">
+            <template v-for="(seg, i) in interpParts" :key="i">
+              <span v-if="seg.type === 'cite'" class="cite" @click="scrollToCite(seg.value)">
+                [{{ seg.value }}]
+              </span>
+              <span v-else>{{ seg.value }}</span>
+            </template>
+          </p>
         </div>
 
         <!-- 兼夹体质 -->
@@ -55,6 +63,41 @@
             <span>{{ ev.detail || ev.text || ev }}</span>
           </div>
           <p v-if="!evidence.length" class="muted">本次判定由计分引擎直接给出，无附加证据项。</p>
+        </div>
+
+        <!-- 知识依据：RAG 引用来源（P3） -->
+        <div v-if="citations.length" class="card" id="cite-panel">
+          <h3 class="section-title">
+            知识依据
+            <span class="cite-count">{{ citations.length }} 条</span>
+          </h3>
+          <p class="muted cite-tip">
+            以下片段由 RAG 从知识库检索后注入生成过程。解读中的 [n] 对应此处第 n 条，可逐条核对。
+          </p>
+          <div
+            v-for="(c, i) in citations"
+            :id="`cite-${i + 1}`"
+            :key="c.chunk_id + i"
+            class="cite-row"
+            :class="{ active: activeCite === i + 1 }"
+          >
+            <div class="cite-head">
+              <span class="cite-no">[{{ i + 1 }}]</span>
+              <b>{{ c.title || c.chunk_id }}</b>
+              <van-tag type="primary" size="mini" plain color="#0d8050">
+                {{ sourceLabel(c.source) }}
+              </van-tag>
+              <span v-if="c.score" class="cite-score">{{ c.score.toFixed(4) }}</span>
+            </div>
+            <p class="cite-text">{{ c.text }}</p>
+            <p class="cite-id">{{ c.chunk_id }}</p>
+          </div>
+        </div>
+        <div v-else class="card">
+          <h3 class="section-title">知识依据</h3>
+          <p class="muted">
+            本次未返回引用来源（知识库未就绪或已降级为结构化检索）。体质判定与药材推荐仍由确定性规则给出，不受影响。
+          </p>
         </div>
 
         <!-- 推荐药材 -->
@@ -129,6 +172,45 @@ const evidence = computed(() => data.value?.recommend?.evidence || [])
 const herbs = computed(() => data.value?.recommend?.herbs || [])
 const rejected = computed(() => data.value?.recommend?.rejected || [])
 const trace = computed(() => data.value?.trace || [])
+const citations = computed(() => data.value?.rag_citations || [])
+const activeCite = ref(0)
+
+// 把解读里的 [n] 切成可点击的引用段，避免 v-html 直接执行 LLM 输出
+const interpParts = computed(() => {
+  const raw = data.value?.interpretation || ''
+  const parts = []
+  let last = 0
+  for (const m of raw.matchAll(/\[(\d{1,2})\]/g)) {
+    if (m.index > last) parts.push({ type: 'text', value: raw.slice(last, m.index) })
+    parts.push({ type: 'cite', value: Number(m[1]) })
+    last = m.index + m[0].length
+  }
+  if (last < raw.length) parts.push({ type: 'text', value: raw.slice(last) })
+  return parts
+})
+
+function sourceLabel(src) {
+  return (
+    {
+      food_medicine: '药食同源目录',
+      herb: '药材知识库',
+      constitution: '体质标准',
+      symptom: '症状映射',
+      safety: '安全规则'
+    }[src] || src || '知识库'
+  )
+}
+
+function scrollToCite(n) {
+  activeCite.value = n
+  nextTick(() => {
+    const el = document.getElementById(`cite-${n}`)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      setTimeout(() => (activeCite.value = 0), 1600)
+    }
+  })
+}
 
 function judgeOf(k) {
   return data.value?.constitution?.details?.[k]?.judged || ''
@@ -301,6 +383,68 @@ function goHome() {
 }
 .rep {
   color: var(--c-primary);
+}
+.cite-count {
+  margin-left: 6px;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--c-text-sub);
+}
+.cite-tip {
+  margin: -2px 0 8px;
+  font-size: 11.5px;
+  line-height: 1.6;
+}
+.cite {
+  display: inline-block;
+  margin: 0 1px;
+  padding: 0 3px;
+  font-size: 10.5px;
+  color: #0d8050;
+  background: rgba(13, 128, 80, 0.1);
+  border-radius: 3px;
+  vertical-align: super;
+  cursor: pointer;
+}
+.cite-row {
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  border-left: 3px solid #d9e6de;
+  background: #fafcfb;
+  border-radius: 0 6px 6px 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.cite-row.active {
+  border-left-color: #0d8050;
+  background: rgba(13, 128, 80, 0.08);
+}
+.cite-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 12.5px;
+}
+.cite-no {
+  color: #0d8050;
+  font-weight: 600;
+}
+.cite-score {
+  margin-left: auto;
+  font-size: 10.5px;
+  color: var(--c-text-sub);
+}
+.cite-text {
+  margin: 5px 0 0;
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: #3f4752;
+}
+.cite-id {
+  margin: 3px 0 0;
+  font-size: 10px;
+  color: #9aa4ad;
+  word-break: break-all;
 }
 .actions {
   padding: 12px 16px 24px;

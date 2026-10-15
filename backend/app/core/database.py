@@ -63,8 +63,32 @@ def get_db() -> Iterator[Session]:
         db.close()
 
 
+def _migrate_add_columns() -> None:
+    """轻量补列：`create_all` 不会给已存在的表加新列
+
+    开发期迭代加字段时必然遇到（本次 P3 给 consultations 加 rag_citations）。
+    正式环境应走 Alembic，这里只是避免"升级后老库直接崩"。
+    """
+    from sqlalchemy import inspect, text
+
+    try:
+        insp = inspect(engine)
+        tables = set(insp.get_table_names())
+        if "consultations" not in tables:
+            return
+        cols = {c["name"] for c in insp.get_columns("consultations")}
+        if "rag_citations" not in cols:
+            with engine.begin() as conn:
+                conn.execute(text(
+                    "ALTER TABLE consultations ADD COLUMN rag_citations TEXT DEFAULT '[]'"
+                ))
+    except Exception:  # pragma: no cover - 迁移失败不应阻断启动
+        pass
+
+
 def init_db() -> None:
     """建表（开发期用；正式环境走 Alembic 迁移）"""
     import app.models  # noqa: F401  注册全部模型到 Base.metadata
 
     Base.metadata.create_all(bind=engine)
+    _migrate_add_columns()

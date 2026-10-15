@@ -135,6 +135,9 @@ class Consultation(Base, TimestampMixin):
     herbal_match: Mapped[str] = mapped_column(Text, default="", comment="HerbMatchResult JSON")
     recipe: Mapped[str] = mapped_column(Text, default="", comment="RecipePlan JSON（P3 阶段启用）")
     safety_verdict: Mapped[str] = mapped_column(Text, default="", comment="SafetyVerdict JSON")
+    rag_citations: Mapped[str] = mapped_column(
+        Text, default="[]", comment="RAG 引用来源 JSON（P3，回答依据可溯源）"
+    )
 
     user: Mapped[User | None] = relationship(back_populates="consultations")
     messages: Mapped[list["Message"]] = relationship(

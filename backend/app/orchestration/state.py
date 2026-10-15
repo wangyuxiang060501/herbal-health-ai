@@ -92,6 +92,10 @@ class ConsultationState(TypedDict, total=False):
     interpretation_source: str
     herb_explanation: str
 
+    # --- RAG 引用（P3，各 LLM 节点按需追加，供前端展示"这句依据哪条知识"）---
+    rag_citations: Annotated[list[dict], append_list]
+    rag_available: bool
+
     # --- 安全 ---
     safety_flags: Annotated[list[dict], append_list]
     safety_verdict: dict | None

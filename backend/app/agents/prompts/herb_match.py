@@ -19,7 +19,13 @@ def build_herb_explain_messages(
     candidates: list[dict],
     primary: str,
     special_groups: list[str],
+    context: str = "",
 ) -> list[dict[str, str]]:
+    """`context` 为 RAG 检索到的药材条目（带编号与 chunk_id）。
+
+    注入的意义：LLM 说明「为什么适合他」时，依据来自知识库条目而非模型记忆，
+    并要求按编号标注来源，便于核对是否编造（4.5.2）。
+    """
     lines = []
     for c in candidates:
         contra = "；".join(c.get("contraindications") or []) or "无特殊禁忌"
@@ -32,13 +38,17 @@ def build_herb_explain_messages(
     special = f"用户属于特殊人群：{'、'.join(special_groups)}，请重点说明相关注意事项。" \
         if special_groups else ""
 
+    kb_block = f"\n【知识库检索结果】\n{context}\n" if context.strip() else ""
+    cite_hint = ("- 每味药材的理由请优先采用知识库条目中的功效表述，并在句末标注条目编号\n"
+                 if context.strip() else "")
     user = f"""用户体质倾向：{primary}
 {special}
 
 已选定的药材清单（不可增删）：
 {herb_text}
-
+{kb_block}
 请用 150 字以内，把每味药材「为什么适合他」说清楚，语气平实。
+{cite_hint}- 不得新增、替换药材，不得给出超出清单的用量
 结尾附带：本推荐仅作日常食养方向参考，不属于疾病治疗建议。"""
     return [
         {"role": "system", "content": SYSTEM_PROMPT},

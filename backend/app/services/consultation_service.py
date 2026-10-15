@@ -76,6 +76,7 @@ class ConsultationOutcome:
     safety: dict | None = None
     disclaimer: str = ""
     trace: list[dict] = field(default_factory=list)
+    rag_citations: list[dict] = field(default_factory=list)   # P3：RAG 引用来源
 
     def to_dict(self) -> dict:
         return {
@@ -94,6 +95,7 @@ class ConsultationOutcome:
             "safety": self.safety,
             "disclaimer": self.disclaimer,
             "trace": self.trace,
+            "rag_citations": self.rag_citations,
         }
 
 
@@ -290,6 +292,8 @@ def _persist_and_build(
         "cross": final.get("safety_flags") or [],
     })
     consultation.status = STATUS_BY_PHASE.get(phase, "in_progress")
+    # RAG 引用来源落库：结果页刷新后仍能看到"这句依据哪条知识"
+    consultation.rag_citations = _dump(final.get("rag_citations") or [])
 
     _log_safety_dicts(db, cid, final.get("safety_flags") or [])
 
@@ -308,6 +312,7 @@ def _persist_and_build(
             special_groups=groups,
             disclaimer=sg.DISCLAIMER,
             trace=list(final.get("trace") or []),
+            rag_citations=list(final.get("rag_citations") or []),
         )
 
     if phase == "blocked":
@@ -318,6 +323,7 @@ def _persist_and_build(
             special_groups=groups,
             disclaimer=sg.DISCLAIMER,
             trace=list(final.get("trace") or []),
+            rag_citations=list(final.get("rag_citations") or []),
         )
 
     return ConsultationOutcome(
@@ -332,6 +338,7 @@ def _persist_and_build(
         safety=(herbs or {}).get("safety"),
         disclaimer=sg.DISCLAIMER,
         trace=list(final.get("trace") or []),
+        rag_citations=list(final.get("rag_citations") or []),
     )
 
 
@@ -523,6 +530,8 @@ def consultation_detail(db: Session, consultation_id: str) -> dict:
         "recommend": _safe_json(c.herbal_match),
         "recipe": _safe_json(c.recipe),
         "safety": _safe_json(c.safety_verdict),
+        # 老库可能还没有这一列（见 database._migrate_add_columns），用 getattr 容错
+        "rag_citations": _safe_json(getattr(c, "rag_citations", "") or "[]") or [],
         "messages": [
             {"role": m.role, "content": m.content, "round": m.round_no,
              "created_at": m.created_at.strftime("%Y-%m-%d %H:%M:%S")}

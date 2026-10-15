@@ -1,17 +1,30 @@
-# 后续阶段才需要的重型依赖（第三阶段 LangGraph / 第四阶段 RAG）
-# 本阶段（P0 地基 + P1 核心闭环）不需要安装，先锁定版本口径以免后期返工。
+# 后续阶段才需要的重型依赖（第二阶段 LangGraph / 第三阶段 RAG / 认证）
 #
-# 安装时机：进入 P2（LangGraph 编排）与 P3（RAG 检索）时再装：
+# 安装时机：
 #   pip install -r requirements-full.txt
+#
+# 说明：RAG 的三档 embedder 与两档向量库都是**可选**的，
+# 缺任何一个都只会自动降级，不会导致系统起不来（ADR-005：可降级依赖）。
 
-# --- 多智能体编排（P2） ---
-langgraph>=0.2,<0.3
-langchain-core>=0.3,<0.4
+# --- 多智能体编排（P2，已随 requirements.txt 安装） ---
+langgraph>=1.2,<2.0
+langgraph-checkpoint-sqlite>=3.0,<4.0
+langchain-core>=0.3,<4.0
 
-# --- 向量库与嵌入（P3） ---
-chromadb>=0.5,<0.6
-sentence-transformers>=3.0,<4.0
-torch>=2.2,<3.0
+# --- 向量库（P3，已实测安装 chromadb 1.5.9 + numpy 2.5.4） ---
+chromadb>=1.0,<2.0
+numpy>=1.26,<3.0
+
+# --- 可选：TF-IDF embedder（tfidf-char 档，未安装则跳过该档） ---
+# 未安装时 build_embedder() 自动降级到 hashing-bigram
+scikit-learn>=1.4,<2.0
+
+# --- 可选：真语义 embedder（sentence-onnx 档，需另外下载 ONNX 模型） ---
+# onnxruntime 已随 chromadb 间接安装；sentence-transformers 仅用于导出模型，
+# 运行时不需要，因此不强制安装
+onnxruntime>=1.18,<2.0
+# sentence-transformers>=3.0,<4.0
+# torch>=2.2,<3.0
 
 # --- 认证（用户系统解禁后启用，当前 MVP 为单用户/匿名模式） ---
 # python-jose[cryptography]>=3.3
