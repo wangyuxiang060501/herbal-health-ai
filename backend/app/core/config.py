@@ -83,7 +83,14 @@ class Settings(BaseSettings):
 
     # ---------------- 安全 ----------------
     persist_blocked_consultation: bool = True
-    app_secret_key: str = "change-me-in-production"
+    # HS256 要求密钥 ≥32 字节（RFC 7518 §3.2），默认值仅开发用，生产必须改
+    app_secret_key: str = "dev-only-insecure-secret-change-me-in-production"
+
+    # ---------------- 认证（JWT，5.4.1） ----------------
+    jwt_secret_key: str = ""               # 为空时回落 app_secret_key；生产必须单独配置
+    jwt_algorithm: str = "HS256"
+    jwt_access_expire_minutes: int = 120   # access token 短寿命，泄露窗口小
+    jwt_refresh_expire_days: int = 14      # refresh token 仅用于换新，不能访问业务接口
 
     # ---------------- 派生属性 ----------------
     @property

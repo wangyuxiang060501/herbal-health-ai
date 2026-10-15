@@ -5,7 +5,7 @@
     <div class="brand">
       <van-icon name="flower-o" size="34" color="#0d8050" />
       <h2>药食同源 · 智慧康养</h2>
-      <p class="muted">{{ mode === 'login' ? '登录后查看个人问诊历史与体质趋势' : '创建本地身份，开始你的康养记录' }}</p>
+      <p class="muted">{{ mode === 'login' ? '登录后查看个人问诊历史与体质趋势' : '注册账号，开始你的康养记录' }}</p>
     </div>
 
     <van-tabs v-model:active="mode" color="#0d8050">
@@ -25,24 +25,22 @@
           :rules="[{ pattern: /^1[3-9]\d{9}$/, message: '手机号格式不正确' }]"
         />
         <van-field
-          v-model="code"
-          name="code"
-          label="验证码"
-          maxlength="6"
-          placeholder="演示环境填任意 4-6 位"
-          :rules="[{ required: true, message: '请填写验证码' }]"
-        >
-          <template #button>
-            <van-button size="small" type="primary" color="#0d8050" @click="sendCode">
-              {{ countdown > 0 ? countdown + 's' : '获取验证码' }}
-            </van-button>
-          </template>
-        </van-field>
+          v-model="password"
+          name="password"
+          label="密码"
+          type="password"
+          maxlength="64"
+          :placeholder="mode === 'register' ? '设置密码（至少 6 位）' : '请输入密码'"
+          :rules="[
+            { required: true, message: '请填写密码' },
+            { validator: (v) => mode !== 'register' || v.length >= 6, message: '密码至少 6 位' }
+          ]"
+        />
         <van-field
+          v-if="mode === 'register'"
           v-model="nickname"
           label="昵称"
-          :placeholder="mode === 'register' ? '给自己起个名字（必填）' : '选填'"
-          :rules="mode === 'register' ? [{ required: true, message: '注册请填写昵称' }] : []"
+          placeholder="给自己起个名字（选填）"
         />
 
         <div v-if="mode === 'register'" class="agree">
@@ -57,9 +55,10 @@
             type="primary"
             color="#0d8050"
             native-type="submit"
+            :loading="busy"
             :disabled="mode === 'register' && !agreed"
           >
-            {{ mode === 'register' ? '注册并使用' : '登录' }}
+            {{ mode === 'register' ? '注册并登录' : '登录' }}
           </van-button>
           <van-button block plain @click="onGuest">以游客身份继续</van-button>
         </div>
@@ -67,8 +66,8 @@
     </div>
 
     <div class="disclaimer-bar">
-      说明：后端当前未实现用户认证接口（<code>/api/v1/auth</code> 属后续阶段范围），
-      本页只把身份写入浏览器本地存储，用于区分个人历史记录，不涉及密码与真实短信。
+      说明：账号仅用于区分个人问诊历史与体质趋势（数据按账号隔离）。
+      本系统不提供医疗诊断，问诊结果仅供参考，急症请立即就医。
     </div>
 
     <DisclaimerModal v-model="showDisclaimer" @accept="agreed = true" />
@@ -78,7 +77,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { showToast } from 'vant'
+import { showToast, showFailToast } from 'vant'
 import DisclaimerModal from '@/components/DisclaimerModal.vue'
 import { useUserStore } from '@/stores/user'
 
@@ -87,28 +86,29 @@ const user = useUserStore()
 
 const mode = ref('login')
 const phone = ref(user.phone)
-const code = ref('')
-const nickname = ref(user.nickname)
-const countdown = ref(0)
+const password = ref('')
+const nickname = ref('')
 const agreed = ref(false)
 const showDisclaimer = ref(false)
+const busy = ref(false)
 
-function sendCode() {
-  if (!/^1[3-9]\d{9}$/.test(phone.value)) {
-    showToast('请先填写正确的手机号')
-    return
+async function onSubmit() {
+  if (busy.value) return
+  busy.value = true
+  try {
+    if (mode.value === 'register') {
+      await user.register({ phone: phone.value, password: password.value, nickname: nickname.value })
+      showToast('注册成功')
+    } else {
+      await user.login({ phone: phone.value, password: password.value })
+      showToast('登录成功')
+    }
+    router.back()
+  } catch (e) {
+    showFailToast(e.message || '操作失败，请重试')
+  } finally {
+    busy.value = false
   }
-  showToast('演示环境：验证码已"发送"，可填任意数字')
-  countdown.value = 60
-  const timer = setInterval(() => {
-    if (--countdown.value <= 0) clearInterval(timer)
-  }, 1000)
-}
-
-function onSubmit() {
-  user.login({ phone: phone.value, nickname: nickname.value })
-  showToast(mode.value === 'register' ? '注册成功' : '登录成功')
-  router.back()
 }
 
 function onGuest() {

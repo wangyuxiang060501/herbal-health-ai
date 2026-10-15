@@ -573,10 +573,22 @@ def consultation_detail(db: Session, consultation_id: str) -> dict:
     }
 
 
-def list_history(db: Session, *, limit: int = 20, user_id: int | None = None) -> list[dict]:
+def list_history(
+    db: Session, *,
+    limit: int = 20,
+    user_id: int | None = None,
+    anonymous: bool = False,
+) -> list[dict]:
+    """历史列表。三种口径：
+      user_id 给值 → 该用户的记录；anonymous=True → 匿名记录（user_id 为空）；
+      都不给 → 不过滤（内部调用保留）。
+    5.4.1 认证上线后，接口层总是显式二选一，避免「登录后看到别人/匿名的记录」。
+    """
     stmt = select(Consultation).order_by(Consultation.created_at.desc()).limit(limit)
     if user_id is not None:
         stmt = stmt.where(Consultation.user_id == user_id)
+    elif anonymous:
+        stmt = stmt.where(Consultation.user_id.is_(None))
     rows = db.execute(stmt).scalars().all()
     out = []
     for c in rows:
@@ -591,14 +603,23 @@ def list_history(db: Session, *, limit: int = 20, user_id: int | None = None) ->
     return out
 
 
-def constitution_trend(db: Session, *, limit: int = 20) -> list[dict]:
-    """体质趋势（多期九维转化分）—— ECharts 数据源"""
+def constitution_trend(
+    db: Session, *,
+    limit: int = 20,
+    user_id: int | None = None,
+    anonymous: bool = False,
+) -> list[dict]:
+    """体质趋势（多期九维转化分）—— ECharts 数据源；口径同 list_history"""
     stmt = (
         select(Consultation)
         .where(Consultation.status == "completed")
         .order_by(Consultation.created_at.asc())
         .limit(limit)
     )
+    if user_id is not None:
+        stmt = stmt.where(Consultation.user_id == user_id)
+    elif anonymous:
+        stmt = stmt.where(Consultation.user_id.is_(None))
     rows = db.execute(stmt).scalars().all()
     trend = []
     for c in rows:

@@ -20,10 +20,12 @@ from sqlalchemy.orm import Session
 
 from app.agents.base import Message
 from app.agents.llm_client import get_llm_client
+from app.api.deps import get_optional_user
 from app.core.database import get_db
 from app.core.logging import get_logger
 from app.core.responses import ok
 from app.domain.constitution import engine as ce
+from app.models.entities import User
 from app.schemas import ConsultationAnswerIn, ConsultationStartIn
 from app.services import consultation_service as cs
 
@@ -34,19 +36,28 @@ MAX_SIZE_CANDIDATE = 12
 
 
 @router.post("/start", summary="开始问诊")
-def start(payload: ConsultationStartIn, db: Session = Depends(get_db)):
+def start(
+    payload: ConsultationStartIn,
+    db: Session = Depends(get_db),
+    user: User | None = Depends(get_optional_user),
+):
     outcome = cs.start_consultation(
         db,
         chief_complaint=payload.chief_complaint,
         questionnaire=payload.questionnaire,
         special_groups=payload.special_groups,
+        user_id=user.id if user else None,
         top_n=min(payload.top_n, MAX_SIZE_CANDIDATE),
     )
     return ok(outcome.to_dict())
 
 
 @router.post("/stream", summary="SSE：边跑状态图边推送（节点级事件）")
-def stream_start(payload: ConsultationStartIn, db: Session = Depends(get_db)):
+def stream_start(
+    payload: ConsultationStartIn,
+    db: Session = Depends(get_db),
+    user: User | None = Depends(get_optional_user),
+):
     """节点级 meta 事件（`系统架构设计.md` 8.2 / 清单 3.4.8）
 
         event: node    {"node","label","summary"}   节点执行（可画进度条）
@@ -62,6 +73,7 @@ def stream_start(payload: ConsultationStartIn, db: Session = Depends(get_db)):
             chief_complaint=payload.chief_complaint,
             questionnaire=payload.questionnaire,
             special_groups=payload.special_groups,
+            user_id=user.id if user else None,
             top_n=min(payload.top_n, MAX_SIZE_CANDIDATE),
             enable_recipe=getattr(payload, "enable_recipe", False),
         ):
@@ -153,11 +165,22 @@ def _build_stream_text(detail_data: dict, phase: str) -> str:
 
 @router.get("/user/history", summary="问诊历史")
 def history(
-    limit: int = Query(20, ge=1, le=100), db: Session = Depends(get_db)
+    limit: int = Query(20, ge=1, le=100),
+    db: Session = Depends(get_db),
+    user: User | None = Depends(get_optional_user),
 ):
-    return ok(cs.list_history(db, limit=limit))
+    # 5.4.1 数据隔离：登录看自己的，匿名看匿名记录，互不串
+    if user is not None:
+        return ok(cs.list_history(db, limit=limit, user_id=user.id))
+    return ok(cs.list_history(db, limit=limit, anonymous=True))
 
 
 @router.get("/user/trend", summary="体质变化趋势")
-def trend(limit: int = Query(20, ge=1, le=100), db: Session = Depends(get_db)):
-    return ok(cs.constitution_trend(db, limit=limit))
+def trend(
+    limit: int = Query(20, ge=1, le=100),
+    db: Session = Depends(get_db),
+    user: User | None = Depends(get_optional_user),
+):
+    if user is not None:
+        return ok(cs.constitution_trend(db, limit=limit, user_id=user.id))
+    return ok(cs.constitution_trend(db, limit=limit, anonymous=True))

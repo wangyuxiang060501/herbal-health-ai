@@ -2,13 +2,17 @@
 
 - 标题：中医药智慧康养系统
 - 版本：0.2.0-p2
-- 接口数：29
+- 接口数：33
 
 > 由 `scripts/export_openapi.py` 从代码导出，与实现同步。
 
 | 方法 | 路径 | 说明 | 分组 |
 | --- | --- | --- | --- |
 | GET | `/` | 健康检查 |  |
+| POST | `/api/v1/auth/login` | 登录 | 用户认证（5.4.1） |
+| GET | `/api/v1/auth/profile` | 当前用户资料 | 用户认证（5.4.1） |
+| POST | `/api/v1/auth/refresh` | 刷新令牌 | 用户认证（5.4.1） |
+| POST | `/api/v1/auth/register` | 注册 | 用户认证（5.4.1） |
 | GET | `/api/v1/consultation/graph` | 问诊状态图（LangGraph 拓扑可视化） | 问诊会话（核心闭环） |
 | POST | `/api/v1/consultation/start` | 开始问诊 | 问诊会话（核心闭环） |
 | POST | `/api/v1/consultation/stream` | SSE：边跑状态图边推送（节点级事件） | 问诊会话（核心闭环） |

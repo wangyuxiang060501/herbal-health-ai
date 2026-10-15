@@ -1,8 +1,8 @@
 # 中医药智慧康养系统
 
 > 题目：**基于多智能体协同与检索增强生成的中医药智慧康养系统的设计与实现**
-> 当前阶段：**P0 → P5 全部完成**（地基 / 核心闭环 / 多智能体编排 / RAG 检索增强 / 前端 H5 / 测试优化部署）
-> 清单进度：**127 / 157**；剩余为毕业论文（6.4.5）与三项依赖外部条件的验证（真机、公网部署、备案）
+> 当前阶段：**P0 → P6 全部完成**（地基 / 核心闭环 / 多智能体编排 / RAG 检索增强 / 前端 H5 / 测试优化部署 / 认证与迁移）
+> 清单进度：**130 / 157**；剩余为毕业论文（6.4.5）与三项依赖外部条件的验证（真机、公网部署、备案）
 
 系统定位一句话：**把"需要专业中医师才能做的事"变成"手机上 5 分钟就能做的事"**，
 且严格守住两条红线——**不做疾病诊断**、**推荐的药材必须全部属于国家 106 种药食同源目录**。
@@ -31,14 +31,18 @@
 | **引用回溯** | ✅ | Prompt 强制 `[n]` 标注，`rag_citations` 落库并回传前端，结果页「知识依据」卡片可点跳转 |
 | **安全测试** | ✅ | SQL 注入 / XSS / 提示词注入 / 医疗术语过滤；含「前端不得使用 v-html」架构测试 |
 | **性能与并发** | ✅ | 并发 16×100 成功率 **100%**，p50 **395ms**；已修 SQLite 写锁导致的 3% 500 |
-| 测试 | ✅ | 后端 **226** 个用例全绿，覆盖率 **87%** |
+| 测试 | ✅ | 后端 **241** 个用例全绿，覆盖率 **87%** |
 | **部署配置** | ✅ | 2 Dockerfile + 开发/生产 compose + Nginx 反代 + Let's Encrypt；**公网部署与备案未执行** |
+| **用户认证（P6）** | ✅ | `/api/v1/auth` 注册/登录/刷新/资料：bcrypt + JWT 双令牌（access 2h / refresh 14d 旋转换新）；登录数据隔离、匿名模式向后兼容；前端真实登录注册 + 401 静默刷新重放 |
+| **Alembic 迁移（P6）** | ✅ | 首个迁移 `60a09271bd5b`（7 表 + 17 索引），upgrade→downgrade→upgrade 闭环实测一致 |
+| **论文素材** | ✅ | [`docs/论文素材清单.md`](docs/论文素材清单.md)：章节 × 素材对照 + 硬数字表 + 诚实口径清单 |
 
 详细内容见 [`docs/阶段性开发报告_P0P1.md`](docs/阶段性开发报告_P0P1.md)、
 [`docs/阶段性开发报告_P2.md`](docs/阶段性开发报告_P2.md)、
 [`docs/阶段性开发报告_P3.md`](docs/阶段性开发报告_P3.md)、
 [`docs/阶段性开发报告_P4.md`](docs/阶段性开发报告_P4.md)、
-[`docs/阶段性开发报告_P5.md`](docs/阶段性开发报告_P5.md)。
+[`docs/阶段性开发报告_P5.md`](docs/阶段性开发报告_P5.md)、
+[`docs/阶段性开发报告_P6.md`](docs/阶段性开发报告_P6.md)。
 
 专项文档：
 [数据库设计（含 ER 图）](docs/数据库设计.md) ·
@@ -47,6 +51,7 @@
 [API 速查](docs/API接口速查.md) ·
 [性能测试报告](docs/性能测试报告.md) ·
 [有/无 RAG 对比实验](docs/RAG_有无对比.md) ·
+[论文素材清单](docs/论文素材清单.md) ·
 [系统架构设计（含第十二章实现对照）](系统架构设计.md)
 
 ---
@@ -93,7 +98,7 @@ python scripts/demo_consultation.py --provider mock   # 完全离线
 跑测试：
 
 ```bash
-cd backend && python -m pytest tests -q                    # 226 passed，覆盖率 87%
+cd backend && python -m pytest tests -q                    # 241 passed，覆盖率 87%
 python -m pytest tests -q --cov=app --cov-report=term-missing
 cd ../frontend && npm test                                 # 28 passed
 ```
@@ -191,14 +196,14 @@ herb-health-ai/
 │   │   └── core/            配置 / 数据库 / 日志 / 统一响应
 │   ├── data/                双层数据集（含溯源标注）+ kb/ 知识库切片
 │   ├── scripts/             数据体检 / 去重 / 导入 / 建库 / 建索引 / A-B 对比 / 压测 / 文档导出 / 演示
-│   └── tests/               226 个用例（含集成 / 安全 / 性能护栏）
+│   └── tests/               241 个用例（含集成 / 安全 / 性能护栏 / 认证与隔离）
 ├── frontend/                ★ P4 前端 H5（Vue 3 + Vant 4）
 │   └── src/
 │       ├── views/           10 个页面（首页/药材库/详情/测试/结果/药膳/我的/记录/登录/关于）
 │       ├── components/      6 个组件（TabBar/Disclaimer/HerbCard/RecipeCard/StreamChat/LoadingState）
 │       ├── composables/     useSSE（POST 型 SSE + 空闲超时 + 早期失败重试）
-│       ├── stores/          user（本地身份）/ consult（问卷草稿）
-│       └── api/             统一请求层 + 业务码常量
+│       ├── stores/          user（JWT 登录态 + 游客兼容）/ consult（问卷草稿）
+│       └── api/             统一请求层（401 静默刷新重放）+ 业务码常量
 ├── deploy/                  ★ P5 部署：nginx.conf、init-ssl.sh、部署手册
 ├── docker-compose.yml           开发环境编排（清单 1.4.2）
 ├── docker-compose.prod.yml      生产编排（清单 6.3.1）
@@ -225,7 +230,10 @@ herb-health-ai/
    （见 `backend/requirements-full.txt`）。**`hashing` 是字面相似而非语义相似**，
    「怕冷→畏寒」这类同义全靠 BM25 关键词通道兜底，这个取舍在论文里要讲清楚。
 5. **论文里不要写「828 味药材知识库」**：知识库是 604 味唯一药材切片 + 106 药食同源，共 734 片。
-6. **Alembic 迁移脚本尚未编写**（清单 1.3.3 / 1.3.4）。开发期靠 `create_all` + 自动补列/补索引
-   （`_migrate_add_columns` / `_migrate_add_indexes`）。答辩若要演示"平滑升级"，建议补一版初始 revision。
+6. **Alembic 已配置（P6）**：首个迁移 `60a09271bd5b` 已验证（7 表 + 17 索引，upgrade/downgrade 闭环一致）。
+   存量开发库（var/app.db）由 `init_db()` 的建表/补列/补索引逻辑托管，如需纳入迁移管理执行
+   `alembic stamp head` 对齐版本号即可。新库一律 `alembic upgrade head` 建表。
 7. **公网部署未执行**：Docker 与 Nginx 配置已就绪（`deploy/`），但域名备案与云服务器购买需本人完成，
    步骤见 `deploy/部署手册.md`。答辩可改用本机 `docker compose up` 演示。
+8. **前端 vitest 受本机 esbuild 运行时故障阻塞**（Go 二进制 `winmm.dll` panic，机器级问题）：
+   组件层以 `@vue/compiler-sfc` 编译校验兜底；环境恢复后跑 `npm test`（28 项）。

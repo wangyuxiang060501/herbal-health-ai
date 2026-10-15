@@ -4,9 +4,10 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 
-from . import consultation, herbs, meta, rag, safety, user
+from . import auth, consultation, herbs, meta, rag, safety, user
 
 api_router = APIRouter()
+api_router.include_router(auth.router)
 api_router.include_router(meta.router)
 api_router.include_router(herbs.router)
 api_router.include_router(consultation.router)

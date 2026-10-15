@@ -73,6 +73,22 @@ class ConsultationOut(BaseModel):
     trace: list[dict[str, Any]] = Field(default_factory=list)
 
 
+# ---------------- 认证（5.4.1） ----------------
+class RegisterIn(BaseModel):
+    phone: str = Field(..., pattern=r"^1[3-9]\d{9}$", description="11 位手机号")
+    password: str = Field(..., min_length=6, max_length=64, description="至少 6 位")
+    nickname: str = Field("", max_length=50)
+
+
+class LoginIn(BaseModel):
+    phone: str = Field(..., pattern=r"^1[3-9]\d{9}$")
+    password: str = Field(..., min_length=1, max_length=64)
+
+
+class RefreshIn(BaseModel):
+    refresh_token: str = Field(..., min_length=10)
+
+
 # ---------------- 安全自检（论文实验 / 答辩演示用） ----------------
 class SafetyProbeIn(BaseModel):
     herb_names: list[str] = Field(default_factory=list, description="待校验的候选药材")
