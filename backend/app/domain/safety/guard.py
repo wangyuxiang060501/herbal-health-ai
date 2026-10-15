@@ -296,6 +296,46 @@ def check_herbs(
 # ===========================================================================
 
 
+# ---------------------------------------------------------------------------
+# XSS 剥离（6.1.3）
+#
+# 说明立场：这里**不做全量 HTML 转义**。因为前端统一用 {{ }} 插值（Vue 自带转义），
+# 若后端再转义一遍，用户会看到 "&lt;" 这种双重转义的脏文本。
+# 所以后端只剥离「一旦被当 HTML 渲染就会执行」的三种构造，
+# 把它当作纵深防御；**真正的防线是前端不使用 v-html**，
+# 这条由 tests/test_security.py::TestXss::test_前端不得使用_v_html 锁死。
+# ---------------------------------------------------------------------------
+_RE_SCRIPT = re.compile(r"<\s*script\b.*?<\s*/\s*script\s*>", re.I | re.S)
+_RE_SCRIPT_OPEN = re.compile(r"<\s*script\b[^>]*>", re.I)
+_RE_EVENT = re.compile(r"\bon[a-z]+\s*=", re.I)
+_RE_JS_URL = re.compile(r"\bjavascript\s*:", re.I)
+
+
+def sanitize_html(text: str) -> tuple[str, list[Trigger]]:
+    """剥离可执行片段，返回 (净化后文本, 触发记录)"""
+    if not text:
+        return text, []
+    triggers: list[Trigger] = []
+    out = text
+
+    def _sub(pattern: re.Pattern, rule: str, repl: str = "") -> None:
+        nonlocal out
+        out, n = pattern.subn(repl, out)
+        if n:
+            triggers.append(Trigger(rule=rule, matched=rule, action="strip",
+                                    detail=f"剥离 {n} 处"))
+
+    _sub(_RE_SCRIPT, "脚本块")
+    _sub(_RE_SCRIPT_OPEN, "脚本标签")
+    _sub(_RE_JS_URL, "javascript 协议")
+    # 事件处理器不能整段删（会把标签内容一起吃掉），降级为破坏等号
+    out, n = _RE_EVENT.subn("data-blocked=", out)
+    if n:
+        triggers.append(Trigger(rule="事件处理器", matched="on*=", action="strip",
+                                detail=f"破坏 {n} 处"))
+    return out, triggers
+
+
 def filter_medical_terms(text: str) -> tuple[str, list[Trigger]]:
     """替换诊断性/疗效承诺类表述。返回 (过滤后文本, 触发记录)"""
     if not text:
@@ -316,7 +356,11 @@ def filter_medical_terms(text: str) -> tuple[str, list[Trigger]]:
 def check_output(text: str, with_recipe_disclaimer: bool = False) -> tuple[str, SafetyVerdict]:
     """输出侧校验：术语过滤 + 强制免责声明"""
     v = SafetyVerdict(log_ref=_new_log_ref())
-    clean, triggers = filter_medical_terms(text)
+    safe, xss_triggers = sanitize_html(text)
+    if xss_triggers:
+        v.verdict = "flag"
+        v.triggers.extend(xss_triggers)
+    clean, triggers = filter_medical_terms(safe)
     if triggers:
         v.verdict = "flag"
         v.triggers.extend(triggers)

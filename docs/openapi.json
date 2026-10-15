@@ -1,0 +1,1282 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "中医药智慧康养系统",
+    "summary": "多智能体协同 + RAG 的中医药智慧康养系统",
+    "description": "基于多智能体协同与检索增强生成（RAG）的中医药智慧康养系统。\n\n## 两条不可逾越的红线\n\n1. **不做疾病诊断** —— 输出侧强制过滤诊断性/疗效承诺类表述，并注入不可删除的免责声明；命中急症关键词立即终止问诊并提示就医。\n2. **推荐药材必须 ∈ 国家 106 种药食同源目录** —— 查询层（604 味）与推荐层（106 种）严格隔离，非白名单品种一律不得进入方案。\n\n## 架构速览\n\n`domain`（零框架依赖）← `orchestration`（LangGraph）← `services` ← `api`，`rag` 作为检索端口被编排层调用。领域层禁止依赖任何框架，这条约束由架构测试强制（见 README「依赖方向铁律」）。",
+    "contact": {
+      "name": "毕业设计项目",
+      "url": "http://127.0.0.1:8000/docs"
+    },
+    "license": {
+      "name": "仅供毕业设计与学习使用"
+    },
+    "version": "0.2.0-p2"
+  },
+  "paths": {
+    "/api/v1/meta/dataset": {
+      "get": {
+        "tags": [
+          "元信息"
+        ],
+        "summary": "双层数据集概况",
+        "operationId": "dataset_api_v1_meta_dataset_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/meta/questionnaire": {
+      "get": {
+        "tags": [
+          "元信息"
+        ],
+        "summary": "体质问卷结构",
+        "description": "mode=full 返回 27 题；mode=quick 只返回每维度 1 题（9 题快速版）",
+        "operationId": "questionnaire_api_v1_meta_questionnaire_get",
+        "parameters": [
+          {
+            "name": "mode",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "full",
+              "title": "Mode"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/meta/cache": {
+      "get": {
+        "tags": [
+          "元信息"
+        ],
+        "summary": "热点缓存命中率（6.2.1）",
+        "description": "让「缓存到底有没有生效」可观测 —— 没命中率的缓存等于没加",
+        "operationId": "cache_stats_api_v1_meta_cache_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/meta/constitutions": {
+      "get": {
+        "tags": [
+          "元信息"
+        ],
+        "summary": "九种体质说明",
+        "operationId": "constitutions_api_v1_meta_constitutions_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/meta/llm": {
+      "get": {
+        "tags": [
+          "元信息"
+        ],
+        "summary": "LLM provider 状态与用量",
+        "operationId": "llm_status_api_v1_meta_llm_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/meta/config": {
+      "get": {
+        "tags": [
+          "元信息"
+        ],
+        "summary": "运行期配置摘要（不含密钥）",
+        "operationId": "config_summary_api_v1_meta_config_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/herbs": {
+      "get": {
+        "tags": [
+          "药材知识（查询层）"
+        ],
+        "summary": "药材列表",
+        "operationId": "list_herbs_api_v1_herbs_get",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Size"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "如：补虚药",
+              "title": "Category"
+            },
+            "description": "如：补虚药"
+          },
+          {
+            "name": "meridian",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "如：脾",
+              "title": "Meridian"
+            },
+            "description": "如：脾"
+          },
+          {
+            "name": "only_food_medicine",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "仅返回 106 种药食同源",
+              "default": false,
+              "title": "Only Food Medicine"
+            },
+            "description": "仅返回 106 种药食同源"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/herbs/categories": {
+      "get": {
+        "tags": [
+          "药材知识（查询层）"
+        ],
+        "summary": "药材类别列表",
+        "operationId": "categories_api_v1_herbs_categories_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/herbs/meridians": {
+      "get": {
+        "tags": [
+          "药材知识（查询层）"
+        ],
+        "summary": "归经统计",
+        "operationId": "meridians_api_v1_herbs_meridians_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/herbs/search": {
+      "get": {
+        "tags": [
+          "药材知识（查询层）"
+        ],
+        "summary": "药材搜索",
+        "operationId": "search_api_v1_herbs_search_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "description": "关键词：名称/功效/类别/成分",
+              "title": "Q"
+            },
+            "description": "关键词：名称/功效/类别/成分"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Size"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/herbs/{herb_id}": {
+      "get": {
+        "tags": [
+          "药材知识（查询层）"
+        ],
+        "summary": "药材详情",
+        "operationId": "detail_api_v1_herbs__herb_id__get",
+        "parameters": [
+          {
+            "name": "herb_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Herb Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultation/start": {
+      "post": {
+        "tags": [
+          "问诊会话（核心闭环）"
+        ],
+        "summary": "开始问诊",
+        "operationId": "start_api_v1_consultation_start_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsultationStartIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultation/stream": {
+      "post": {
+        "tags": [
+          "问诊会话（核心闭环）"
+        ],
+        "summary": "SSE：边跑状态图边推送（节点级事件）",
+        "description": "节点级 meta 事件（`系统架构设计.md` 8.2 / 清单 3.4.8）\n\nevent: node    {\"node\",\"label\",\"summary\"}   节点执行（可画进度条）\nevent: meta    {\"provider\",\"model\"}         LLM 实际来源\nevent: delta   {\"text\"}                     结论分段播放\nevent: question{\"text\"}                     追问问题\nevent: done    {\"consultation_id\",\"phase\",\"primary\",\"herbs\"}\nevent: error   {\"code\",\"message\"}",
+        "operationId": "stream_start_api_v1_consultation_stream_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsultationStartIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultation/graph": {
+      "get": {
+        "tags": [
+          "问诊会话（核心闭环）"
+        ],
+        "summary": "问诊状态图（LangGraph 拓扑可视化）",
+        "description": "返回状态图结构与 mermaid 源码 —— 论文第四章配图的唯一来源",
+        "operationId": "graph_api_v1_consultation_graph_get",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^(json|mermaid)$",
+              "default": "json",
+              "title": "Format"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultation/{consultation_id}/answer": {
+      "post": {
+        "tags": [
+          "问诊会话（核心闭环）"
+        ],
+        "summary": "提交追问回答",
+        "operationId": "answer_api_v1_consultation__consultation_id__answer_post",
+        "parameters": [
+          {
+            "name": "consultation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Consultation Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsultationAnswerIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultation/{consultation_id}": {
+      "get": {
+        "tags": [
+          "问诊会话（核心闭环）"
+        ],
+        "summary": "问诊详情",
+        "operationId": "detail_api_v1_consultation__consultation_id__get",
+        "parameters": [
+          {
+            "name": "consultation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Consultation Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultation/{consultation_id}/stream": {
+      "get": {
+        "tags": [
+          "问诊会话（核心闭环）"
+        ],
+        "summary": "SSE 流式输出",
+        "description": "SSE 事件契约（系统架构设计.md 4.5）：\nevent: delta  {\"text\": \"...\"}\nevent: meta   {\"provider\":..., \"tokens\":...}\nevent: done   {\"consultation_id\":...}\nevent: error  {\"code\":..., \"message\":...}",
+        "operationId": "stream_api_v1_consultation__consultation_id__stream_get",
+        "parameters": [
+          {
+            "name": "consultation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Consultation Id"
+            }
+          },
+          {
+            "name": "phase",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^(interpretation|recommend)$",
+              "default": "interpretation",
+              "title": "Phase"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultation/user/history": {
+      "get": {
+        "tags": [
+          "问诊会话（核心闭环）"
+        ],
+        "summary": "问诊历史",
+        "operationId": "history_api_v1_consultation_user_history_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/consultation/user/trend": {
+      "get": {
+        "tags": [
+          "问诊会话（核心闭环）"
+        ],
+        "summary": "体质变化趋势",
+        "operationId": "trend_api_v1_consultation_user_trend_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/history": {
+      "get": {
+        "tags": [
+          "历史档案（BC6）"
+        ],
+        "summary": "问诊历史",
+        "operationId": "history_api_v1_user_history_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/user/trend": {
+      "get": {
+        "tags": [
+          "历史档案（BC6）"
+        ],
+        "summary": "体质变化趋势",
+        "operationId": "trend_api_v1_user_trend_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/safety/probe-herbs": {
+      "post": {
+        "tags": [
+          "安全合规（BC7）"
+        ],
+        "summary": "候选药材安全裁决",
+        "operationId": "probe_herbs_api_v1_safety_probe_herbs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SafetyProbeIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/safety/probe-output": {
+      "post": {
+        "tags": [
+          "安全合规（BC7）"
+        ],
+        "summary": "输出文本安全过滤",
+        "operationId": "probe_output_api_v1_safety_probe_output_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OutputProbeIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/safety/rules": {
+      "get": {
+        "tags": [
+          "安全合规（BC7）"
+        ],
+        "summary": "安全规则摘要",
+        "operationId": "rules_api_v1_safety_rules_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rag/status": {
+      "get": {
+        "tags": [
+          "RAG 知识检索（P3）"
+        ],
+        "summary": "知识库索引状态",
+        "operationId": "status_api_v1_rag_status_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rag/search": {
+      "get": {
+        "tags": [
+          "RAG 知识检索（P3）"
+        ],
+        "summary": "混合检索",
+        "operationId": "search_api_v1_rag_search_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "description": "查询词，可以是症状描述或药材名",
+              "title": "Q"
+            },
+            "description": "查询词，可以是症状描述或药材名"
+          },
+          {
+            "name": "top_k",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 20,
+              "minimum": 1,
+              "default": 5,
+              "title": "Top K"
+            }
+          },
+          {
+            "name": "doc_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "按文档类型过滤：herb/food_medicine/constitution/symptom/safety",
+              "title": "Doc Type"
+            },
+            "description": "按文档类型过滤：herb/food_medicine/constitution/symptom/safety"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rag/explain": {
+      "get": {
+        "tags": [
+          "RAG 知识检索（P3）"
+        ],
+        "summary": "两路召回对比（证明混合检索有效）",
+        "description": "分别给出语义通道、关键词通道与融合结果\n\n论文里\"为什么需要混合检索\"这一节，可以直接贴这里的输出：\n离线降级时语义通道对「怕冷→畏寒」这类同义无能为力，靠关键词通道兜底。",
+        "operationId": "explain_api_v1_rag_explain_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "title": "Q"
+            }
+          },
+          {
+            "name": "top_k",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 20,
+              "minimum": 1,
+              "default": 5,
+              "title": "Top K"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "健康检查",
+        "operationId": "root__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "健康探针",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ConsultationAnswerIn": {
+        "properties": {
+          "answer": {
+            "type": "string",
+            "title": "Answer",
+            "description": "用户对追问的回答"
+          },
+          "top_n": {
+            "type": "integer",
+            "title": "Top N",
+            "default": 6
+          },
+          "enable_recipe": {
+            "type": "boolean",
+            "title": "Enable Recipe",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "answer"
+        ],
+        "title": "ConsultationAnswerIn"
+      },
+      "ConsultationStartIn": {
+        "properties": {
+          "chief_complaint": {
+            "type": "string",
+            "title": "Chief Complaint",
+            "description": "用户自由描述的主诉",
+            "default": ""
+          },
+          "questionnaire": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Questionnaire",
+            "description": "{question_id: 1-5 分}"
+          },
+          "special_groups": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Special Groups",
+            "description": "孕妇 / 哺乳期 / 儿童 / 慢性病患者"
+          },
+          "top_n": {
+            "type": "integer",
+            "title": "Top N",
+            "default": 6
+          },
+          "enable_recipe": {
+            "type": "boolean",
+            "title": "Enable Recipe",
+            "description": "是否启用 Agent3 药膳生成节点（P3，默认关闭）",
+            "default": false
+          }
+        },
+        "type": "object",
+        "title": "ConsultationStartIn"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "OutputProbeIn": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "title": "OutputProbeIn"
+      },
+      "SafetyProbeIn": {
+        "properties": {
+          "herb_names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Herb Names",
+            "description": "待校验的候选药材"
+          },
+          "special_groups": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Special Groups"
+          }
+        },
+        "type": "object",
+        "title": "SafetyProbeIn"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "问诊会话（核心闭环）",
+      "description": "问卷 → 体质判定 → 追问 → 推荐 → 药膳 的完整闭环，由 LangGraph 状态机驱动。\n\n**业务码提示**：急症拦截与安全拦截返回 **HTTP 200** 但 `code=40301 / 40302`，不是 HTTP 错误——前端需要解包 `code` 才能正确提示用户。"
+    },
+    {
+      "name": "药材知识（查询层）",
+      "description": "604 味药材的百科查询。**只读**。\n\n⚠️ 这里的品种**不代表可以入膳**：能否入膳看 `usage_policy`，只有落在 106 种药食同源目录内的才可进推荐方案（ADR-004 数据分层）。"
+    },
+    {
+      "name": "RAG 知识检索（P3）",
+      "description": "734 片知识库的检索接口。`/rag/explain` 会分别给出语义通道、关键词通道与融合结果，用于验证混合检索确实有效。"
+    },
+    {
+      "name": "安全合规（BC7）",
+      "description": "三道安全闸的自查入口：`probe-herbs` 裁决候选药材，`probe-output` 过滤输出文本。\n\n**不变量**：`probe-herbs` 返回的 `passed` 列表中每一项都保证 ∈ 106 白名单。"
+    },
+    {
+      "name": "元信息",
+      "description": "数据集概况、问卷结构、九种体质、LLM 状态、缓存命中率。"
+    },
+    {
+      "name": "历史档案（BC6）",
+      "description": "问诊历史列表与体质变化趋势。"
+    }
+  ]
+}

@@ -5,11 +5,18 @@ from __future__ import annotations
 from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
+from app.core.cache import ttl_cache
 from app.core.logging import get_logger
 from app.domain.safety.constants import BLACKLIST_HERBS
 from app.models.entities import Herb
 
 logger = get_logger("services.herb")
+
+# 6.2.1 缓存策略：只缓存**聚合统计**，不缓存列表与 ORM 实例。
+#  - 类别/归经统计：每次打开药材库筛选面板都要全表 group by / 全字段扫描，最值得缓存
+#  - 列表/搜索：分页参数组合多、命中率低，且已有索引，缓存收益不抵内存占用
+#  - ORM 实例：会话关闭后会 DetachedInstanceError，一律不进缓存
+_CACHE_TTL = 300.0      # 5 分钟；药材数据导入后基本不变
 
 
 def list_herbs(
@@ -70,6 +77,7 @@ def get_herb_by_name(db: Session, name: str) -> Herb | None:
     return db.execute(stmt).scalar_one_or_none()
 
 
+@ttl_cache(ttl=_CACHE_TTL, maxsize=16, ignore_types=(Session,))
 def categories(db: Session) -> list[dict]:
     rows = db.execute(
         select(Herb.category, func.count(Herb.id)).group_by(Herb.category)
@@ -77,6 +85,7 @@ def categories(db: Session) -> list[dict]:
     return [{"name": c or "未分类", "count": n} for c, n in sorted(rows, key=lambda r: -r[1])]
 
 
+@ttl_cache(ttl=_CACHE_TTL, maxsize=16, ignore_types=(Session,))
 def meridians(db: Session) -> list[dict]:
     """归经无法直接 group（字段是自由字符串），做一次拆分统计"""
     rows = db.execute(select(Herb.meridian)).scalars().all()

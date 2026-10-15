@@ -124,6 +124,10 @@ def get_checkpointer():
         # 不用 SqliteSaver.from_conn_string：它返回 context manager，
         # 退出 with 就关连接，而图是长生命周期单例。改为自建连接。
         conn = sqlite3.connect(str(db_path), check_same_thread=False)
+        # 与主库同样的并发处理：WAL + 写锁等待。问诊图每个节点都要写快照，
+        # 并发下这里是除主库之外第二个 `database is locked` 的来源。
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA busy_timeout=8000")
         saver = SqliteSaver(conn)
         saver.setup()
         logger.info("LangGraph checkpointer: sqlite(%s)", db_path)

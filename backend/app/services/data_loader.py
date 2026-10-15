@@ -13,6 +13,7 @@ import re
 from functools import lru_cache
 from pathlib import Path
 
+from app.core.cache import ttl_cache
 from app.core.config import get_settings
 from app.core.logging import get_logger
 from app.domain.safety.constants import BLACKLIST_HERBS
@@ -103,6 +104,7 @@ def whitelist_missing_in_query_layer() -> list[str]:
     ]
 
 
+@ttl_cache(ttl=300.0, maxsize=8)
 def dataset_stats() -> dict:
     """供 /api/v1/meta/dataset 展示的双层数据概况"""
     herbs = load_clean_herbs()

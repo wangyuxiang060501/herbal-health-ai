@@ -1,8 +1,8 @@
 # 中医药智慧康养系统
 
 > 题目：**基于多智能体协同与检索增强生成的中医药智慧康养系统的设计与实现**
-> 当前阶段：**P0 地基 + P1 核心闭环 + P2 多智能体编排 + P3 RAG 检索增强 + P4 前端 H5 已完成**
-> 清单进度：**108 / 157**；剩余整块内容为第六阶段（测试与优化 / 部署）
+> 当前阶段：**P0 → P5 全部完成**（地基 / 核心闭环 / 多智能体编排 / RAG 检索增强 / 前端 H5 / 测试优化部署）
+> 清单进度：**127 / 157**；剩余为毕业论文（6.4.5）与三项依赖外部条件的验证（真机、公网部署、备案）
 
 系统定位一句话：**把"需要专业中医师才能做的事"变成"手机上 5 分钟就能做的事"**，
 且严格守住两条红线——**不做疾病诊断**、**推荐的药材必须全部属于国家 106 种药食同源目录**。
@@ -29,13 +29,25 @@
 | **RAG 知识库** | ✅ | **734 片**切片（药材 604 / 药食同源 106 / 体质 9 / 症状 11 / 安全规则 4） |
 | **RAG 检索** | ✅ | 语义（hashing-bigram，512 维）+ BM25 关键词，**RRF(k=60) 融合**，同义词扩展；自检 **7/7** |
 | **引用回溯** | ✅ | Prompt 强制 `[n]` 标注，`rag_citations` 落库并回传前端，结果页「知识依据」卡片可点跳转 |
-| 测试 | ✅ | 后端 **177** + 前端 **23** = **200 个用例** |
+| **安全测试** | ✅ | SQL 注入 / XSS / 提示词注入 / 医疗术语过滤；含「前端不得使用 v-html」架构测试 |
+| **性能与并发** | ✅ | 并发 16×100 成功率 **100%**，p50 **395ms**；已修 SQLite 写锁导致的 3% 500 |
+| 测试 | ✅ | 后端 **226** 个用例全绿，覆盖率 **87%** |
+| **部署配置** | ✅ | 2 Dockerfile + 开发/生产 compose + Nginx 反代 + Let's Encrypt；**公网部署与备案未执行** |
 
 详细内容见 [`docs/阶段性开发报告_P0P1.md`](docs/阶段性开发报告_P0P1.md)、
 [`docs/阶段性开发报告_P2.md`](docs/阶段性开发报告_P2.md)、
 [`docs/阶段性开发报告_P3.md`](docs/阶段性开发报告_P3.md)、
-[`docs/阶段性开发报告_P4.md`](docs/阶段性开发报告_P4.md)。
-有/无 RAG 的真实对比实验见 [`docs/RAG_有无对比.md`](docs/RAG_有无对比.md)。
+[`docs/阶段性开发报告_P4.md`](docs/阶段性开发报告_P4.md)、
+[`docs/阶段性开发报告_P5.md`](docs/阶段性开发报告_P5.md)。
+
+专项文档：
+[数据库设计（含 ER 图）](docs/数据库设计.md) ·
+[用户使用手册](docs/用户使用手册.md) ·
+[部署手册](deploy/部署手册.md) ·
+[API 速查](docs/API接口速查.md) ·
+[性能测试报告](docs/性能测试报告.md) ·
+[有/无 RAG 对比实验](docs/RAG_有无对比.md) ·
+[系统架构设计（含第十二章实现对照）](系统架构设计.md)
 
 ---
 
@@ -81,8 +93,22 @@ python scripts/demo_consultation.py --provider mock   # 完全离线
 跑测试：
 
 ```bash
-cd backend && python -m pytest tests -q        # 177 passed
-cd ../frontend && npm test                     # 23 passed
+cd backend && python -m pytest tests -q                    # 226 passed，覆盖率 87%
+python -m pytest tests -q --cov=app --cov-report=term-missing
+cd ../frontend && npm test                                 # 28 passed
+```
+
+压测（起真实 uvicorn 做并发，报告落到 docs/性能测试报告.md）：
+
+```bash
+cd backend && python scripts/bench_api.py --concurrency 16 --requests 100 --markdown docs/性能测试报告.md
+```
+
+一键部署（**开发版**；生产版见 `deploy/部署手册.md`）：
+
+```bash
+cp .env.example .env
+docker compose up --build        # 前端 :5173，后端 :8000/docs
 ```
 
 看状态图 / 检索诊断：
@@ -164,16 +190,19 @@ herb-health-ai/
 │   │   │   └── context.py      上下文拼装 + 引用指令（强制 [n] 标注）
 │   │   └── core/            配置 / 数据库 / 日志 / 统一响应
 │   ├── data/                双层数据集（含溯源标注）+ kb/ 知识库切片
-│   ├── scripts/             数据体检 / 去重 / 导入 / 建库 / 建索引 / A-B 对比 / 演示
-│   └── tests/               177 个用例
+│   ├── scripts/             数据体检 / 去重 / 导入 / 建库 / 建索引 / A-B 对比 / 压测 / 文档导出 / 演示
+│   └── tests/               226 个用例（含集成 / 安全 / 性能护栏）
 ├── frontend/                ★ P4 前端 H5（Vue 3 + Vant 4）
 │   └── src/
 │       ├── views/           10 个页面（首页/药材库/详情/测试/结果/药膳/我的/记录/登录/关于）
 │       ├── components/      6 个组件（TabBar/Disclaimer/HerbCard/RecipeCard/StreamChat/LoadingState）
-│       ├── composables/     useSSE（POST 型 SSE，原生 EventSource 不支持 POST）
+│       ├── composables/     useSSE（POST 型 SSE + 空闲超时 + 早期失败重试）
 │       ├── stores/          user（本地身份）/ consult（问卷草稿）
 │       └── api/             统一请求层 + 业务码常量
-├── docs/                    体检报告 · 去重报告 · 阶段性开发报告 · 状态图
+├── deploy/                  ★ P5 部署：nginx.conf、init-ssl.sh、部署手册
+├── docker-compose.yml           开发环境编排（清单 1.4.2）
+├── docker-compose.prod.yml      生产编排（清单 6.3.1）
+├── docs/                    体检报告 · 去重报告 · 阶段性开发报告 · 状态图 · 数据库设计 · 用户手册
 └── _ref/                    参考仓库（.gitignore 已排除）
 ```
 
@@ -196,3 +225,7 @@ herb-health-ai/
    （见 `backend/requirements-full.txt`）。**`hashing` 是字面相似而非语义相似**，
    「怕冷→畏寒」这类同义全靠 BM25 关键词通道兜底，这个取舍在论文里要讲清楚。
 5. **论文里不要写「828 味药材知识库」**：知识库是 604 味唯一药材切片 + 106 药食同源，共 734 片。
+6. **Alembic 迁移脚本尚未编写**（清单 1.3.3 / 1.3.4）。开发期靠 `create_all` + 自动补列/补索引
+   （`_migrate_add_columns` / `_migrate_add_indexes`）。答辩若要演示"平滑升级"，建议补一版初始 revision。
+7. **公网部署未执行**：Docker 与 Nginx 配置已就绪（`deploy/`），但域名备案与云服务器购买需本人完成，
+   步骤见 `deploy/部署手册.md`。答辩可改用本机 `docker compose up` 演示。

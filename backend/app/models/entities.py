@@ -14,7 +14,16 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from sqlalchemy import Boolean, DateTime, Float, ForeignKey, Integer, String, Text
+from sqlalchemy import (
+    Boolean,
+    DateTime,
+    Float,
+    ForeignKey,
+    Index,
+    Integer,
+    String,
+    Text,
+)
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import Base
@@ -139,6 +148,14 @@ class Consultation(Base, TimestampMixin):
         Text, default="[]", comment="RAG 引用来源 JSON（P3，回答依据可溯源）"
     )
 
+    # 6.2.2 索引优化：历史列表与趋势图都是「按时间倒序取最近 N 条」，
+    # 没有 created_at 索引就是全表扫描 + 排序，数据一多响应会线性变差。
+    # (user_id, created_at) 复合索引覆盖「某用户的历史」这一最常见查询形态。
+    __table_args__ = (
+        Index("ix_consultations_created_at", "created_at"),
+        Index("ix_consultations_user_created", "user_id", "created_at"),
+    )
+
     user: Mapped[User | None] = relationship(back_populates="consultations")
     messages: Mapped[list["Message"]] = relationship(
         back_populates="consultation", cascade="all, delete-orphan"
@@ -158,6 +175,9 @@ class Message(Base, TimestampMixin):
     content: Mapped[str] = mapped_column(Text, default="")
     round_no: Mapped[int] = mapped_column(Integer, default=0)
 
+    # 详情接口按 (consultation_id, 轮次) 取整段对话，复合索引一次命中
+    __table_args__ = (Index("ix_messages_cid_round", "consultation_id", "round_no"),)
+
     consultation: Mapped[Consultation] = relationship(back_populates="messages")
 
 
@@ -175,6 +195,12 @@ class SafetyLog(Base, TimestampMixin):
     )
     replacement: Mapped[str] = mapped_column(String(64), default="", comment="替换为何种药材")
     detail: Mapped[str] = mapped_column(Text, default="")
+
+    # 审计日志按时间倒序翻页查看
+    __table_args__ = (
+        Index("ix_safety_logs_created_at", "created_at"),
+        Index("ix_safety_logs_rule", "rule"),
+    )
 
 
 class UsageLog(Base, TimestampMixin):

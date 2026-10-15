@@ -204,6 +204,10 @@ const sse = useSSE('/api/v1/consultation/stream', {
         })
       }
     }
+  },
+  // 6.2.4：超时 / 网络中断要给用户可见反馈，否则界面只会一直转圈
+  onError: (e) => {
+    blockMsg.value = e?.message || '网络连接异常，请稍后重试'
   }
 })
 const llmSource = ref('')

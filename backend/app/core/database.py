@@ -10,7 +10,7 @@ from __future__ import annotations
 from collections.abc import Iterator
 from pathlib import Path
 
-from sqlalchemy import create_engine, event
+from sqlalchemy import create_engine, event, text
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
@@ -45,10 +45,24 @@ class Base(DeclarativeBase):
 
 @event.listens_for(Engine, "connect")
 def _set_sqlite_pragmas(dbapi_connection, connection_record):  # pragma: no cover
-    """SQLite 下开启外键约束（MySQL 默认开启，保持两端行为一致）"""
+    """SQLite 连接级 PRAGMA
+
+    三条各有来由，都对应实测出来的问题：
+      foreign_keys=ON  —— MySQL 默认开启，保持两端行为一致
+      journal_mode=WAL —— 读写不再互斥。默认 rollback journal 模式下，
+                          任何写事务都会锁住整库，并发一上来直接 500
+      busy_timeout     —— 拿到锁之前的等待时间。不设的话 SQLite 遇到锁立即报
+                          `database is locked`，而不是等一会
+    实测（6.1.4）：并发 16 打 100 次问诊，未开 WAL+busy_timeout 时出现 3 次 500；
+    开启后 0 次。WAL 只在 SQLite 生效，换 MySQL 不受影响。
+    """
+    if not settings.database_url.startswith("sqlite"):
+        return
     try:
         cursor = dbapi_connection.cursor()
         cursor.execute("PRAGMA foreign_keys=ON")
+        cursor.execute("PRAGMA journal_mode=WAL")
+        cursor.execute("PRAGMA busy_timeout=8000")
         cursor.close()
     except Exception:
         pass
@@ -86,9 +100,50 @@ def _migrate_add_columns() -> None:
         pass
 
 
+# 6.2.2 新增索引（与 entities.py 中的 __table_args__ 保持一致）
+# create_all 只建缺失的表，不会给已存在的表补索引，所以这里显式补一次。
+_EXTRA_INDEXES: list[tuple[str, str]] = [
+    ("ix_consultations_created_at",
+     "CREATE INDEX IF NOT EXISTS ix_consultations_created_at "
+     "ON consultations (created_at)"),
+    ("ix_consultations_user_created",
+     "CREATE INDEX IF NOT EXISTS ix_consultations_user_created "
+     "ON consultations (user_id, created_at)"),
+    ("ix_messages_cid_round",
+     "CREATE INDEX IF NOT EXISTS ix_messages_cid_round "
+     "ON messages (consultation_id, round_no)"),
+    ("ix_safety_logs_created_at",
+     "CREATE INDEX IF NOT EXISTS ix_safety_logs_created_at "
+     "ON safety_logs (created_at)"),
+    ("ix_safety_logs_rule",
+     "CREATE INDEX IF NOT EXISTS ix_safety_logs_rule ON safety_logs (rule)"),
+]
+
+
+def _migrate_add_indexes() -> None:
+    """给老库补 6.2.2 的索引（幂等，用 IF NOT EXISTS）"""
+    from sqlalchemy import inspect
+
+    try:
+        insp = inspect(engine)
+        tables = set(insp.get_table_names())
+        for name, ddl in _EXTRA_INDEXES:
+            table = ddl.split(" ON ", 1)[1].split(" ", 1)[0]
+            if table not in tables:
+                continue
+            existing = {i["name"] for i in insp.get_indexes(table)}
+            if name in existing:
+                continue
+            with engine.begin() as conn:
+                conn.execute(text(ddl))
+    except Exception:  # pragma: no cover - 索引缺失只影响性能，不应阻断启动
+        pass
+
+
 def init_db() -> None:
     """建表（开发期用；正式环境走 Alembic 迁移）"""
     import app.models  # noqa: F401  注册全部模型到 Base.metadata
 
     Base.metadata.create_all(bind=engine)
     _migrate_add_columns()
+    _migrate_add_indexes()

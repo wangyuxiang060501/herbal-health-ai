@@ -284,7 +284,8 @@ def _persist_and_build(
     consultation.questionnaire = _dump(final.get("questionnaire") or {})
     consultation.special_groups = _dump(groups)
     consultation.constitution = _dump(constitution)
-    consultation.herbal_match = _dump(herbs)
+    # 存标准形态而非图的原始 herbs 字典，保证「写接口」与「读接口」返回同一结构
+    consultation.herbal_match = _dump(_build_recommend(herbs, final))
     consultation.recipe = _dump(final.get("recipe"))
     consultation.follow_up_rounds = rounds
     consultation.safety_verdict = _dump({
@@ -348,6 +349,34 @@ def _ai_text(phase: str, final: dict) -> str:
     if phase == "blocked":
         return final.get("block_reason", "")
     return final.get("interpretation", "") or final.get("herb_explanation", "")
+
+
+def _normalize_recommend(raw: dict | None) -> dict:
+    """读库时把「历史行」归一到标准形态
+
+    早期版本落的是图的原始 herbs 字典（键为 `candidates`），
+    而 `/start` 返回的是 `_build_recommend()` 的成品（键为 `herbs`）。
+    同一个业务对象在写接口和读接口里长得不一样，前端详情页就会取空。
+    这里做向后兼容：已是标准形态就原样返回，是老形态就补一层转换。
+    """
+    if not raw:
+        return {}
+    if "herbs" in raw:
+        return raw
+    retriever = data_loader.get_whitelist_retriever()
+    candidates = list(raw.get("candidates") or [])
+    return {
+        "herbs": candidates,
+        "rejected": list(raw.get("rejected") or []),
+        "explanation": "",
+        "rule_table_version": raw.get("rule_table_version", settings.rule_table_version),
+        "cross_checked": bool(raw.get("cross_checked")),
+        "evidence": [
+            retriever.get(c["name"]).to_dict()
+            for c in candidates
+            if retriever.get(c["name"])
+        ],
+    }
 
 
 def _build_recommend(herbs: dict, final: dict) -> dict:
@@ -527,9 +556,13 @@ def consultation_detail(db: Session, consultation_id: str) -> dict:
         "special_groups": _safe_json(c.special_groups) or [],
         "questionnaire": _load_questionnaire(c.questionnaire),
         "constitution": _safe_json(c.constitution),
-        "recommend": _safe_json(c.herbal_match),
+        "recommend": _normalize_recommend(_safe_json(c.herbal_match)),
         "recipe": _safe_json(c.recipe),
         "safety": _safe_json(c.safety_verdict),
+        # 免责声明是**不可缺失**的输出（安全层第三条闸），这里用常量兜底：
+        # 历史上 /start 会带 disclaimer 而详情接口不带，前端结果页读详情就会显示空白。
+        # 声明内容是固定的合规文本，不随个案变化，因此直接取常量而非落库。
+        "disclaimer": sg.DISCLAIMER,
         # 老库可能还没有这一列（见 database._migrate_add_columns），用 getattr 容错
         "rag_citations": _safe_json(getattr(c, "rag_citations", "") or "[]") or [],
         "messages": [

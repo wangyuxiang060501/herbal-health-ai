@@ -143,6 +143,8 @@ def complement_from_whitelist(db) -> int:
 
 
 def main():
+    from app.core.cache import cache_clear_all
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--reset", action="store_true", help="清空 herbs / whitelist 后重新导入")
     args = parser.parse_args()
@@ -159,6 +161,9 @@ def main():
         print(f"[OK] 白名单补齐 +{added} 条（原药材数据集未收录的法定可食用品种）")
         print(f"[OK] 查询层合计 {len(total_herbs)} 味药材")
         print(f"[OK] 数据库：{engine.url}")
+        # 数据变了，聚合统计缓存必须失效，否则接口还在返回导入前的类别/归经数
+        n = cache_clear_all()
+        print(f"[OK] 已清空 {n} 处热点缓存（类别/归经/数据集概况）")
     finally:
         db.close()
 

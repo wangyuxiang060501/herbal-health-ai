@@ -30,6 +30,11 @@ htmlcov/
 *.sqlite
 *.sqlite3
 data/*.db
+# SQLite 开启 WAL 后产生的伴生文件（6.2.2 起）
+*.db-shm
+*.db-wal
+*.sqlite-shm
+*.sqlite-wal
 var/
 chroma_store/
 storage/

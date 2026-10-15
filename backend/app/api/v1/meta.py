@@ -55,6 +55,14 @@ def questionnaire(mode: str = "full"):
     })
 
 
+@router.get("/cache", summary="热点缓存命中率（6.2.1）")
+def cache_stats():
+    """让「缓存到底有没有生效」可观测 —— 没命中率的缓存等于没加"""
+    from app.core.cache import cache_stats_all
+
+    return ok(cache_stats_all())
+
+
 @router.get("/constitutions", summary="九种体质说明")
 def constitutions():
     return ok(CONSTITUTION_INFO)
