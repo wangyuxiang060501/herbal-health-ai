@@ -28,7 +28,7 @@ export function useSSE(url, options = {}) {
     onEvent,
     onError,
     onDone,
-    idleTimeout = 45000, // 45s 没收到任何一帧即判定超时
+    idleTimeout = 180000, // 3 分钟：LLM 生成药膳可能需要 1-2 分钟
     maxRetries = 1, // 仅重试「连接早期」失败
     retryDelay = 800
   } = options

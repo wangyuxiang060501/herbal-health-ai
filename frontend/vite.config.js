@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 
 // 后端默认端口 8000（backend/app/core/config.py:port）
-const BACKEND = process.env.VITE_BACKEND || 'http://127.0.0.1:8000'
+const BACKEND = process.env.VITE_BACKEND || 'http://127.0.0.1:8001'
 
 export default defineConfig({
   plugins: [vue()],
