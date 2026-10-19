@@ -1,0 +1,65 @@
+# ============================================================================
+# 大赛演示编排（一键启动，评委无需任何外部依赖）
+#
+#   docker compose -f docker-compose.demo.yml up --build
+#   → 前端 http://localhost
+#   → 后端 http://localhost/api/docs
+#
+# 特点：
+#   · LLM 使用 mock 模式（完全离线，不花钱）
+#   · 数据在构建期已初始化
+#   · 只需 Docker，无需 Python / Node / Ollama
+# ============================================================================
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: herb-backend:demo
+    container_name: herb-backend-demo
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: sqlite:////app/var/app.db
+      CHECKPOINT_DB_PATH: /app/var/langgraph_ckpt.sqlite
+      RAG_CHROMA_DIR: /app/var/chroma
+      RAG_INDEX_PATH: /app/var/rag_index.jsonl
+      RAG_KB_PATH: data/kb/chunks.jsonl
+      APP_ENV: development
+      DEBUG: "true"
+      HOST: 0.0.0.0
+      PORT: "8000"
+      LLM_PROVIDER: mock
+      LLM_MODEL: mock
+      LLM_FALLBACK_CHAIN: mock
+      APP_SECRET_KEY: herbal-demo-key-2026
+    volumes:
+      - backend-data-demo:/app/var
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8000/health',timeout=4)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: herb-frontend:demo
+    container_name: herb-frontend-demo
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./deploy/nginx-demo.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  backend-data-demo:
+    name: herb-backend-data-demo

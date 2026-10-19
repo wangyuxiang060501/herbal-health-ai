@@ -58,11 +58,11 @@
             下图由后端 <code>GET /api/v1/consultation/graph</code> 实时导出，
             与线上执行的图是同一份定义。
           </p>
-          <div v-for="n in nodes" :key="n.name" class="node-row">
-            <van-tag :type="n.kind === 'llm' ? 'primary' : 'default'" size="mini">
-              {{ n.kind === 'llm' ? 'LLM' : '规则' }}
+          <div v-for="n in nodes" :key="n.id" class="node-row">
+            <van-tag :type="n.id?.includes('agent') || n.id?.includes('follow') || n.id?.includes('recipe') ? 'primary' : 'default'" size="mini">
+              {{ n.id?.includes('agent') || n.id?.includes('follow') || n.id?.includes('recipe') ? 'LLM' : '规则' }}
             </van-tag>
-            <b>{{ n.name }}</b>
+            <b>{{ n.id }}</b>
             <span>{{ n.label }}</span>
           </div>
           <van-button
@@ -124,7 +124,7 @@ const showSrc = ref(false)
 const nodes = computed(() => graph.value?.nodes || [])
 const mermaid = computed(() => graph.value?.mermaid || '')
 const blacklist = computed(() => {
-  const b = rules.value?.blacklist || rules.value?.blacklist_herbs || []
+  const b = rules.value?.blacklist_sample || rules.value?.blacklist || []
   return Array.isArray(b) ? b.slice(0, 30) : []
 })
 
@@ -135,7 +135,7 @@ onMounted(async () => {
     dataset.value = {
       unique: d.query_layer?.unique_herbs,
       raw: d.query_layer?.raw_records,
-      whitelist: d.whitelist_layer?.count,
+      whitelist: d.recommendation_layer?.count,
       blacklist: d.query_layer?.blacklist_count
     }
     config.value = c
@@ -148,7 +148,7 @@ onMounted(async () => {
 watch(tab, async (v) => {
   if (v === 1 && !graph.value) {
     try {
-      graph.value = await getGraph('json')
+      graph.value = await getGraph('mermaid')
     } catch {
       /* 忽略 */
     }

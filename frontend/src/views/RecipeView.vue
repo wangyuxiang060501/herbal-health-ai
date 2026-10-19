@@ -100,7 +100,41 @@ const error = ref('')
 const recipe = computed(() => {
   const r = data.value?.recipe
   if (!r) return ''
-  return typeof r === 'string' ? r : r.text || r.content || ''
+  if (typeof r === 'string') return r
+  // 后端 recipe 结构：{plan: "JSON+免责文本", source: "...", enabled: true}
+  const plan = r.plan || r.text || r.content || ''
+  // 去掉 LLM 可能输出的 markdown 代码块包裹
+  const cleaned = plan.replace(/^```(?:json)?\s*\n?/i, '').replace(/\n?```\s*$/i, '').trim()
+  if (typeof cleaned === 'string' && cleaned.startsWith('{')) {
+    // 提取 JSON 部分（LLM 输出可能在 JSON 后拼接免责文本）
+    let jsonEnd = 0
+    let depth = 0
+    for (let i = 0; i < cleaned.length; i++) {
+      if (cleaned[i] === '{') depth++
+      else if (cleaned[i] === '}') { depth--; if (depth === 0) { jsonEnd = i + 1; break } }
+    }
+    const jsonPart = jsonEnd > 0 ? cleaned.slice(0, jsonEnd) : cleaned
+    const tail = jsonEnd > 0 ? cleaned.slice(jsonEnd).trim() : ''
+    try {
+      const parsed = JSON.parse(jsonPart)
+      const recipes = parsed.recipes || []
+      const result = recipes.map((rc) => {
+        const parts = [`【${rc.name}】（${rc.type || '药膳'}）`]
+        if (rc.fit_constitution) parts.push(`适宜体质：${rc.fit_constitution}`)
+        if (rc.ingredients?.length) {
+          parts.push('用料：' + rc.ingredients.map(i => `${i.name} ${i.amount || ''}`).join('、'))
+        }
+        if (rc.steps?.length) {
+          parts.push('做法：\n' + rc.steps.map((s, i) => `${i + 1}. ${s}`).join('\n'))
+        }
+        if (rc.caution?.length) parts.push('禁忌：' + rc.caution.join('；'))
+        if (rc.cycle_notice) parts.push('疗程：' + rc.cycle_notice)
+        return parts.join('\n')
+      }).join('\n\n')
+      return tail ? result + '\n\n' + tail : result
+    } catch { return plan }
+  }
+  return plan
 })
 const herbs = computed(() => data.value?.recommend?.herbs || [])
 const rejected = computed(() => data.value?.recommend?.rejected || [])

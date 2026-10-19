@@ -2,6 +2,10 @@ import { defineStore } from 'pinia'
 import { loginApi, registerApi, getProfile } from '@/api'
 import { tokens } from '@/api/tokens'
 
+const K_PHONE = 'u_phone'
+const K_NICK = 'u_nick'
+const K_UID = 'u_uid'
+
 /**
  * 用户身份（清单 5.4.1 联调版）
  *

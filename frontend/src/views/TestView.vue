@@ -282,7 +282,7 @@ async function submitAnswer() {
   }
   submitting.value = true
   try {
-    const res = await answerConsultation(currentId.value, { answer: followAnswer.value })
+    const res = await answerConsultation(currentId.value, { answer: followAnswer.value, enable_recipe: enableRecipe.value })
     consult.setResult(currentId.value, res)
     if (res.phase === 'completed') {
       router.replace(`/result/${currentId.value}`)

@@ -110,18 +110,16 @@ const greeting = computed(() => {
 })
 
 const llmText = computed(() => {
-  if (!llm.value || !llm.value.provider) return '加载中…'
-  return `${llm.value.provider}${llm.value.model ? ' · ' + llm.value.model : ''}`
+  if (!llm.value || !llm.value.primary) return '加载中…'
+  return llm.value.primary
 })
-
-const datasetUnique = computed(() => dataset.value?.query_layer?.unique_herbs)
 
 onMounted(async () => {
   try {
     const [d, c, l] = await Promise.all([getDataset(), getConstitutions(), getLlmStatus()])
     dataset.value = {
       unique: d.query_layer?.unique_herbs ?? d.total_herbs ?? '—',
-      whitelist: d.whitelist_layer?.count ?? '—'
+      whitelist: d.recommendation_layer?.count ?? '—'
     }
     constitutions.value = c
     llm.value = l

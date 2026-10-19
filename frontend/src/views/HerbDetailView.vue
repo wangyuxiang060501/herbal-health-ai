@@ -46,9 +46,9 @@
           <div v-if="verdict && verdict.verdict?.triggers?.length" class="triggers">
             <div v-for="(t, i) in verdict.verdict.triggers" :key="i" class="trigger">
               <van-tag :type="t.action === 'reject' ? 'danger' : 'warning'">
-                {{ actionText(t.action) }}
+                {{ actionText[t.action] || t.action }}
               </van-tag>
-              <span>{{ t.matched }} —— {{ t.reason }}</span>
+              <span>{{ t.matched }} —— {{ t.detail || t.reason }}</span>
               <span v-if="t.replacement" class="rep">替换为：{{ t.replacement }}</span>
             </div>
           </div>
